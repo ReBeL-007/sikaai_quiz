@@ -27,12 +27,12 @@ class HomeController extends Controller
 
     {
         $quizzes = Quiz::all();
-        foreach ($quizzes as $key => $quiz) {
-            $attemptsCount = $quiz->attempts()->count();
-            if(!($quiz->attempts_no >= $attemptsCount || $quiz->attempts_no == 0 )){
-                $quizzes->forget($key);
-            }
-        }
+        // foreach ($quizzes as $key => $quiz) {
+        //     $attemptsCount = $quiz->attempts()->count();
+        //     if(!($quiz->attempts_no >= $attemptsCount || $quiz->attempts_no == 0 )){
+        //         $quizzes->forget($key);
+        //     }
+        // }
         $attempts = Attempt::orderBy('total_marks','DESC')->take(5)->get();
         return view('admin.backend.index',compact('quizzes','attempts'));
     }

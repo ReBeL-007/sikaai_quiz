@@ -7,7 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-
+use \Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
 class RegisterController extends Controller
 {
     /*
@@ -28,7 +29,8 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
+    protected $redirect = "/login#register";
 
     /**
      * Create a new controller instance.
@@ -51,12 +53,26 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
-            'contact' => 'required',
-            'address' => 'required',
-            'school' => 'required',
-            'passed' => 'required',
+            'password' => 'required|string|min:6'
         ]);
+    }
+
+    public function register(Request $request)
+    {
+        $validators = $this->validator($request->all());
+            if ($validators->fails()) {
+            return redirect('/login#register')
+                        ->withErrors($validators)
+                        ->withInput();
+        }
+
+        event(new Registered($user = $this->create($request->all())));
+
+        $this->guard()->login($user);
+
+
+        return $this->registered($request, $user)
+                        ?: redirect('/login#register');
     }
 
     /**
@@ -67,20 +83,16 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        // dd($data);
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'contact' => $data['contact'],
-            'address' => $data['address'],
-            'school' => $data['school'],
-            'passed' => $data['passed'],
         ]);
     }
 
+
     public function showRegistrationForm()
     {
-        return redirect('/#registerModal');
+        return redirect('/login#register');
     }
 }

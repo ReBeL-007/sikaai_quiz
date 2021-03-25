@@ -19,7 +19,7 @@
                     <h2 class="title">Sign in</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Username" name="email" autocomplete="false" />
+                        <input type="text" placeholder="Email" name="email" value="{{ old('email', null) }}" autocomplete="off" />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
@@ -34,6 +34,11 @@
                         </label>
                     </div>
                     <input type="submit" value="Login" class="btn solid" />
+                    @if ($errors->has('name'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('name') }}</strong>
+                    </span>
+                    @endif
                     @if ($errors->has('email'))
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $errors->first('email') }}</strong>
@@ -70,17 +75,37 @@
                     <h2 class="title">Sign up</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Username" name="username" />
+                        <input type="text" placeholder="Name" name="name" value="{{ old('name', null) }}" autocomplete="new-name" />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input type="email" placeholder="Email" name="email" />
+                        <input type="email" placeholder="Email"  value="{{ old('email', null) }}" name="email" autocomplete="new-email"  autocomplete="off"/>
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Password" name="password" />
+                        <input type="password" placeholder="Password" name="password"  autocomplete="new-password"/>
                     </div>
                     <input type="submit" class="btn" value="Sign up" />
+                    @if ($errors->has('name'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('name') }}</strong>
+                    </span>
+                    @endif
+                    @if ($errors->has('email'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('email') }}</strong>
+                    </span>
+                    @endif
+                    @if ($errors->has('password'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('password') }}</strong>
+                    </span>
+                    @endif
+                    @if ($errors->has('invalid'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('invalid') }}</strong>
+                    </span>
+                    @endif
                     <p class="social-text">Or Sign up with social platforms</p>
                     <div class="social-media">
                         <a href="#" class="social-icon">
@@ -125,8 +150,23 @@
             </div>
         </div>
     </div>
-
+    <script src="{{ asset('/backend/plugins/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('js/login/registerSigninapp.js')}}"></script>
+    <script>
+        $(function(){
+            const href = window.location.href.split('#');
+            const modal = href[href.length-1];
+            if(window.location.href.indexOf(modal) != -1) {
+            if(modal == 'register'){
+                $('.container').addClass('sign-up-mode');
+            }
+            }
+
+            $(document).on('click','#sign-in-btn','#sign-up-btn',function(){
+                $('.invalid-feedback').remove();
+            });
+        });
+    </script>
 </body>
 
 </html>

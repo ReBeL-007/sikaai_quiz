@@ -24,7 +24,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-5">
+        <div class="col-md-6">
             <div class="card" style="box-shadow: 0px 3px 6px #00000029;border-radius: 10px;">
                 <div class="card-body d-flex justify-content-center align-items-center">
                     @php
@@ -43,9 +43,8 @@
                     array_push($data,$arr);
                     }
                     @endphp
-                    <figure class="highcharts-figure">
+                    <figure class="">
                         <div id="chart-quiz"></div>
-
                     </figure>
                     <script>
                         Highcharts.chart('chart-quiz', {

@@ -13,12 +13,6 @@
                 </a>
             </li>
             <li class="nav-item has-treeview">
-                <a href="{{route('courses')}}" class="nav-link">
-                    <i class="nav-icon fas fa-trophy"></i>
-                    <p>My Courses</p>
-                </a>
-            </li>
-            <li class="nav-item has-treeview">
                 <a href="{{route('quiz_index')}}" class="nav-link">
                     <i class="nav-icon fas fa-trophy"></i>
                     <p>Test</p>
@@ -26,7 +20,6 @@
             </li>
         </ul>
     </nav>
-
     <!-- /.sidebar-menu -->
 </div>
 <!-- /.sidebar -->

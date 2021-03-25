@@ -7,9 +7,9 @@
 
 @section('content')
 <section id="content">
-    <div class="container">
+    <div>
         <div class="row">
-            <div class="col-md-8 content ">
+            <div class="col-md-3 content ">
                 <div class="leaderboard">
                     <h1 class="mx-auto text-center"><svg class="ico-cup">
                             <use xlink:href="#cup"></use>
@@ -24,114 +24,115 @@
                         @endforeach
                     </ol>
                 </div>
-             </div>
-
-    <div class="col-md-4">
-        <div class="upcoming-test y-scroll">
-            <h4>Upcoming Tests <small><a href="{{route('quiz_index')}}">See all</a></small> </h4>
-            @if (count($upcoming_tests)==0)
-            <p>No Upcoming Tests</p>
-            @else
-
-            @foreach ($upcoming_tests as $test)
-            @php
-            $start_date = new Carbon\Carbon($test->start_at);
-            $remaining_days = $start_date->diffInDays(Carbon\Carbon::now());
-            @endphp
-
-            <div class="upcoming-test-list" @if ($remaining_days==2) style="background: rgba(190, 230, 243, 0.5);"
-                @elseif($remaining_days==3) style="background: rgba(255, 221, 89, 0.3);" @elseif($remaining_days>3)
-                style="background:
-                rgba(169, 227, 200, 0.7);"@endif>
-                <div class="row">
-                    <div class="col-md-4">
-                        <h3>{{$start_date->format('M d')}},</h3>
-                        <p>{{$start_date->format('g:i A')}}</p>
-                    </div>
-                    <div class="col-md-5">
-                        <h5>{{$test->course->category->name}} ( {{$test->course->title}} )</h5>
-                        <p>{{$test->title}}</p>
-                    </div>
-                    <div class="col-md-3 live-class">
-                        <a href="{{route('course_detail',[$test->course->id])}}">View Course</a>
-                    </div>
-                </div>
             </div>
 
-            @endforeach
-            @endif
+            <div class="col-md-4">
+                <div class="upcoming-test y-scroll">
+                    <h4>Upcoming Tests <small><a href="{{route('quiz_index')}}">See all</a></small> </h4>
+                    @if (count($upcoming_tests)==0)
+                    <p>No Upcoming Tests</p>
+                    @else
 
-        </div>
+                    @foreach ($upcoming_tests as $test)
+                    @php
+                    $start_date = new Carbon\Carbon($test->start_at);
+                    $remaining_days = $start_date->diffInDays(Carbon\Carbon::now());
+                    @endphp
+
+                    <div class="upcoming-test-list" @if ($remaining_days==2)
+                        style="background: rgba(190, 230, 243, 0.5);" @elseif($remaining_days==3)
+                        style="background: rgba(255, 221, 89, 0.3);" @elseif($remaining_days>3)
+                        style="background:
+                        rgba(169, 227, 200, 0.7);"@endif>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h3>{{$start_date->format('M d')}},</h3>
+                                <p>{{$start_date->format('g:i A')}}</p>
+                            </div>
+                            <div class="col-md-5">
+                                <h5>{{$test->course->category->name}} ( {{$test->course->title}} )</h5>
+                                <p>{{$test->title}}</p>
+                            </div>
+                            <div class="col-md-3 live-class">
+                                <a href="{{route('course_detail',[$test->course->id])}}">View Course</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    @endforeach
+                    @endif
+
+                </div>
 
 
 
-        {{-- <div class="test-result">
+                {{-- <div class="test-result">
                     <h4>Test Results</h4>
                     <div class="test-result-content">
 
                         <img src="{{asset('Teacher_Profile.png')}}" alt="">
 
-        <div class="row">
-            <div class="col-md-4 chart">
-                <img src="{{asset('Teacher_Profile.png')}}" alt="">
-            </div>
-            <div class="col-md-8 test-result-content-description">
                 <div class="row">
-                    <div class="col-md-2 ellipse-1">
-                        <img src="{{asset('Ellipse 54.png')}}" alt="">
+                    <div class="col-md-4 chart">
+                        <img src="{{asset('Teacher_Profile.png')}}" alt="">
                     </div>
-                    <div class="col-md-7">
-                        <p>English</p>
-                    </div>
-                    <div class="col-md-3">
-                        <p> 78</p>
-                    </div>
-                </div>
-                <div class="row" style="margin-top: -10px;">
-                    <div class="col-md-2 ellipse-1">
-                        <img src="{{asset('Ellipse 52.png')}}" alt="">
-                    </div>
-                    <div class="col-md-7">
-                        <p>Logical Reasoning </p>
-                    </div>
-                    <div class="col-md-3">
-                        <p> 78</p>
-                    </div>
-                </div>
-                <div class="row" style="margin-top: -10px;">
-                    <div class="col-md-2 ellipse-1">
-                        <img src="{{asset('Ellipse 55.png')}}" alt="">
-                    </div>
-                    <div class="col-md-7">
-                        <p>Quantative Analysis</p>
-                    </div>
-                    <div class="col-md-3">
-                        <p> 78</p>
-                    </div>
-                </div>
-                <div class="row" style="margin-top: -10px;">
-                    <div class="col-md-2 ellipse-1">
-                        <img src="{{asset('Ellipse 53.png')}}" alt="">
-                    </div>
-                    <div class="col-md-7">
-                        <p>General Awareness</p>
-                    </div>
-                    <div class="col-md-3">
-                        <p> 78</p>
-                    </div>
-                </div>
-                <div class="row" style="margin-top: -10px;">
-                    <div class="col-md-9">
-                        <p style="font-weight: 600;">Total Marks</p>
-                    </div>
-                    <div class="col-md-3">
-                        <p style="font-weight: 600;">321</p>
+                    <div class="col-md-8 test-result-content-description">
+                        <div class="row">
+                            <div class="col-md-2 ellipse-1">
+                                <img src="{{asset('Ellipse 54.png')}}" alt="">
+                            </div>
+                            <div class="col-md-7">
+                                <p>English</p>
+                            </div>
+                            <div class="col-md-3">
+                                <p> 78</p>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: -10px;">
+                            <div class="col-md-2 ellipse-1">
+                                <img src="{{asset('Ellipse 52.png')}}" alt="">
+                            </div>
+                            <div class="col-md-7">
+                                <p>Logical Reasoning </p>
+                            </div>
+                            <div class="col-md-3">
+                                <p> 78</p>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: -10px;">
+                            <div class="col-md-2 ellipse-1">
+                                <img src="{{asset('Ellipse 55.png')}}" alt="">
+                            </div>
+                            <div class="col-md-7">
+                                <p>Quantative Analysis</p>
+                            </div>
+                            <div class="col-md-3">
+                                <p> 78</p>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: -10px;">
+                            <div class="col-md-2 ellipse-1">
+                                <img src="{{asset('Ellipse 53.png')}}" alt="">
+                            </div>
+                            <div class="col-md-7">
+                                <p>General Awareness</p>
+                            </div>
+                            <div class="col-md-3">
+                                <p> 78</p>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: -10px;">
+                            <div class="col-md-9">
+                                <p style="font-weight: 600;">Total Marks</p>
+                            </div>
+                            <div class="col-md-3">
+                                <p style="font-weight: 600;">321</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    </div> --}}
+        </div> --}}
     </div>
     </div>
     </div>

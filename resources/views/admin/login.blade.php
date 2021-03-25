@@ -44,9 +44,25 @@
                         style="margin: 3px 2em; cursor: pointer;">
                         {{ __('Remember Me') }}
                     </label>
+
                     <div class="inputBx">
                         <input type="submit" value="Log In" />
                     </div>
+                    @if ($errors->has('email'))
+                    <span class="" role="alert">
+                        <strong>{{ $errors->first('email') }}</strong>
+                    </span>
+                    @endif
+                    @if ($errors->has('password'))
+                    <span class="" role="alert">
+                        <strong>{{ $errors->first('password') }}</strong>
+                    </span>
+                    @endif
+                    @if ($errors->has('invalid'))
+                    <span class="invalid" role="alert">
+                        <strong>{{ $errors->first('invalid') }}</strong>
+                    </span>
+                    @endif
                 </form>
             </div>
         </div>
