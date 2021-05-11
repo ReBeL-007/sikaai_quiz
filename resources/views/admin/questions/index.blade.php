@@ -62,7 +62,7 @@
 
                         </td>
                         <td>
-                            {{ $question->id ?? '' }}
+                            {{ $key+1 }}
                         </td>
                         {{-- <td>
                                 {{ $question->subcategory->category->name ?? '' }}
@@ -113,7 +113,7 @@
                             'style' => 'display: inline-block;',
                             'method' => 'DELETE',
                             'onsubmit' => "return confirm('".trans("global.areYouSure")."');",
-                            'route' => ['admin.questions.destroy', $question->id])) !!}
+                            'route' => ['admin.questions.perma_del', $question->id])) !!}
                             {!! Form::submit(trans('global.delete'), array('class' => 'btn btn-xs btn-danger')) !!}
                             {!! Form::close() !!}
                             @endcan

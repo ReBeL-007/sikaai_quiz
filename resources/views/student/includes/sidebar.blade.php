@@ -1,5 +1,6 @@
 <a href="{{route('home')}}" class="brand-link">
     <img src="{{asset('asmita.png')}}" alt="Asmita Logo" class="brand-image" />
+    <span class="brand-text font-weight-light" style="font-weight: bold">AQuiz</span>
 </a>
 
 <div class="sidebar">

@@ -169,7 +169,7 @@
                     @foreach($attempts->attemptAnswers->where('question_id',$question->id)->first()->attemptOptions()->get()
                     as $option)
                     @if($option->answer_text!='')
-                    <textarea class="editor-readonly" id="answer_{{$question->id}}">{{$option->answer_text}}</textarea>
+                    <div class="readonly-editor" id="answer_{{$question->id}}">{{$option->answer_text}}</div>
                     @endif
                     @endforeach
                     <div>

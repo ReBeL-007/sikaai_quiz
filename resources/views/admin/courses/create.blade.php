@@ -22,7 +22,6 @@
                     @endif
                 </div>
             </div>
-            @if (Auth::user()->isAdmin())
             <div class="row">
                 <div class="col-md-12 form-group">
                     {!! Form::label('grade_id', 'Grade', ['class' => 'control-label row ']) !!}
@@ -35,7 +34,6 @@
                     @endif
                 </div>
             </div>
-            @endif
             @if (Auth::user()->isAdmin())
             <div class="row">
                 <div class="col-md-12 form-group">

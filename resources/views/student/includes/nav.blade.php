@@ -7,7 +7,7 @@
         </li>
     </ul>
 
-    <!-- SEARCH FORM -->
+    {{-- <!-- SEARCH FORM -->
 
     <!-- invisible form for mobile -->
     <div id="overlay" class="background-overlay">
@@ -35,22 +35,16 @@
                 </button>
             </div>
         </div>
-    </form>
+    </form> --}}
     <ul class="navbar-nav ml-auto notification-nav">
         <!-- Notifications Dropdown Menu -->
         <li class="nav-item dropdown">
             <a class="nav-link navigation-icon" data-toggle="dropdown" href="#">
-                <img src="{{asset('bell.png')}}" style="width: 1.6rem;">
+                <img src="{{asset('bell.png')}}" style="width: 1.6rem;"><span class="badge badge-danger navbar-badge notification-count"></span>
             </a>
-            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                <span class="dropdown-item dropdown-header">No Notification</span>
-                {{-- <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
-                    <i class="fas fa-envelope mr-2"></i> 4 new messages
-                    <span class="float-right text-muted text-sm">3 mins</span>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
+            <div class="dropdown-menu notification-menu dropdown-menu-lg dropdown-menu-right">
+
+                {{--<a href="#" class="dropdown-item">
                     <i class="fas fa-users mr-2"></i> 8 friend requests
                     <span class="float-right text-muted text-sm">12 hours</span>
                 </a>
@@ -60,7 +54,7 @@
                     <span class="float-right text-muted text-sm">2 days</span>
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a> --}}
+                --}}
             </div>
         </li>
     </ul>

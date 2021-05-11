@@ -6,6 +6,8 @@
 
 #content .content {
     border-right: 1.5px solid #D2DAE2;
+    max-width: none !important;
+    /* background-color: black; */
 }
 
 .ongoing-courses {
@@ -147,8 +149,7 @@
     box-sizing: border-box;
     border-radius: 10px;
     width: 100%;
-    padding: 0 30px;
-    /* width: 110%; */
+    padding: 0 20px;
 }
 
 .upcoming-test h4 {
@@ -171,8 +172,7 @@
 .upcoming-test-list {
     background: rgba(244, 196, 194, 0.5);
     border-radius: 10px;
-    width: 115%;
-    margin-left: -20px;
+    width: 100%;
     margin-bottom: 10px;
     padding: 0 5px;
 }
@@ -210,7 +210,7 @@
     font-style: normal;
     font-weight: bold;
     font-size: 8px;
-    padding: 2px;
+    padding: 5px;
     color: #2E2F48;
     text-transform: uppercase;
 }
@@ -381,17 +381,15 @@
 
 .leaderboard {
 
-    width: 285px;
-    height: 308px;
     background: white;
     border-radius: 10px;
-    box-shadow: 0 7px 30px rgba(62, 9, 11, 0.3);
+    /* box-shadow: 0 7px 30px rgba(62, 9, 11, 0.3); */
     color: white;
   }
   .leaderboard h1 {
     font-size: 18px;
     color: black !important;
-    padding: 12px 13px 18px;
+    padding: 12px 13px 5px;
   }
   .leaderboard h1 svg {
     width: 25px;
@@ -551,3 +549,14 @@
     -webkit-transition: all .35s ease-in-out;
     transition: all .35s ease-in-out;
   }
+  .select2-selection__rendered {
+    line-height: 25px !important;
+    color: black;
+}
+.select2-container .select2-selection--single {
+    height: 25px !important;
+}
+.select2-container{
+    width: 200px !important;
+}
+

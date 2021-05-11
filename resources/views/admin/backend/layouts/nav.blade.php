@@ -7,7 +7,7 @@
       </li>
     </ul>
 
-    <!-- SEARCH FORM -->
+    {{-- <!-- SEARCH FORM -->
     <form class="form-inline ml-3">
       <div class="input-group input-group-sm">
         <input class="form-control form-control-navbar" type="search" placeholder="Search for Courses"
@@ -18,15 +18,15 @@
           </button>
         </div>
       </div>
-    </form>
+    </form> --}}
     <ul class="navbar-nav ml-auto notification-nav">
       <!-- Notifications Dropdown Menu -->
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
-          <img src="{{asset('bell.png')}}" style="width: 1.6rem;">
+          <img src="{{asset('bell.png')}}" style="width: 1.6rem;"><span class="badge badge-danger navbar-badge notification-count"></span>
         </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-item dropdown-header">15 Notifications</span>
+        <div class="dropdown-menu notification-menu dropdown-menu-lg dropdown-menu-right">
+          {{-- <span class="dropdown-item dropdown-header">15 Notifications</span>
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item">
             <i class="fas fa-envelope mr-2"></i> 4 new messages
@@ -43,7 +43,7 @@
             <span class="float-right text-muted text-sm">2 days</span>
           </a>
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a> --}}
         </div>
       </li>
     </ul>
@@ -63,14 +63,14 @@
               left: 0px;
               will-change: transform;
             ">
-          <a class="dropdown-item" href="page-profile.html"><i class="dropdown-icon fe fe-user"></i> Profile</a>
+          {{-- <a class="dropdown-item" href="page-profile.html"><i class="dropdown-icon fe fe-user"></i> Profile</a>
           <a class="dropdown-item" href="app-setting.html"><i class="dropdown-icon fe fe-settings"></i> Settings</a>
           <a class="dropdown-item" href="app-email.html"><span class="float-right"><span
                 class="badge badge-primary">6</span></span><i class="dropdown-icon fe fe-mail"></i> Inbox</a>
           <a class="dropdown-item" href="javascript:void(0)"><i class="dropdown-icon fe fe-send"></i> Message</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="javascript:void(0)"><i class="dropdown-icon fe fe-help-circle"></i> Need
-            help?</a>
+            help?</a> --}}
           <a class="dropdown-item" href="{{route('admin.logout')}}"><i class="dropdown-icon fe fe-log-out"></i> Sign out</a>
         </div>
       </div>

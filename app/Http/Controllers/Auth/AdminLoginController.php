@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
 use Auth;
 
 class AdminLoginController extends Controller
@@ -32,7 +33,8 @@ class AdminLoginController extends Controller
         }
 
         //if unsuccessful, then redirect back to the login with the form data
-        return redirect()->back()->withInput($request->only('email','remember'));
+        return redirect()->back()->withInput($request->only('email','remember'))->withErrors(["invalid"=>"These credentials do not match our records."]);
+
     }
 
     public function logout(Request $request)

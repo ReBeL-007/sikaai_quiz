@@ -31,6 +31,9 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/test', 'QuizController@index')->name('quiz_index');
 Route::get('/mycourses', 'HomeController@courses')->name('courses');
+Route::get('/notification', 'HomeController@get_notifications')->name('get_notifications');
+Route::get('/notification/show/{id}', 'HomeController@show_notifications')->name('show_notifications');
+Route::get('/notification/readall', 'HomeController@read_all_notifications')->name('read_all_notifications');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 Route::post('/contact_us', 'HomeController@contactUs')->name('contact_us');
 Route::get('/courseDetail/{course}','HomeController@courseDetail')->name('course_detail');
@@ -52,12 +55,14 @@ Route::get('/gradeSheet', 'TestController@gradeSheet')->name('gradeSheet');
 
 
 Route::get('/question/{quiz_id}', 'TestController@getQuestions')->name('get_question');
+Route::get('/quiz/top/{quiz}', 'HomeController@get_attempt_top')->name('get_top_attempt');
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('login');
     Route::post('/login', 'Auth\AdminLoginController@login')->name('login');
     Route::get('/', 'Admin\HomeController@index')->name('dashboard');
     Route::get('/logout', 'Auth\AdminLoginController@logout')->name('logout');
+    Route::get('/quiz/top/{quiz}', 'Admin\HomeController@get_attempt_top')->name('get_top_attempt');
 
      //change password
      Route::get('change-password', 'Admin\ChangePasswordController@create')->name('password.create');
@@ -131,6 +136,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
     // attempts
     Route::get('quizzes/attempts/view/{id}', 'Admin\QuizzesController@editAttempts')->name('show_attempts');
     Route::post('quizzes/attempts/quiz', 'Admin\QuizzesController@getQuizAttempts')->name('get_quiz_attempts');
+    Route::get('quizzes/attempts/quiz/list', 'Admin\QuizzesController@getListAttempt')->name('get_list_quiz_attempts');
     Route::post('quizzes/attempts/answer', 'Admin\QuizzesController@updateAnswer')->name('update_answer');
     Route::post('quizzes/attempts/update', 'Admin\QuizzesController@updateAttempt')->name('update_attempt');
 

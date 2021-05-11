@@ -41,4 +41,6 @@ class QuizController extends Controller
         }
         return view('student.quiz.index',compact('quizzes','attempted_quizzes','upcoming_quizzes'));
     }
+
 }
+

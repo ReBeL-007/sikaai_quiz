@@ -45,7 +45,7 @@ section .contentBx .formBx{
 section .contentBx .formBx h2{
 	color: #607d8b;
 	font-weight: 600;
-	font-size: 1.5em;
+	font-size: 2rem;
 	text-transform: uppercase;
 	margin-bottom: 20px;
 	border-bottom: 4px solid #FFBB07;
@@ -67,7 +67,6 @@ section .contentBx .formBx .inputBx span{
 }
 section .contentBx .formBx .inputBx input{
 	width: 100%;
-	height: 35px;
 	padding: 10px;
 	outline:none;
 	font-weight: 400;
@@ -167,4 +166,21 @@ section .contentBx .formBx .sci li img{
 	font-weight: 500;
 
 	}
+}
+.remember-checkbox{
+    transform: scale(1.5);
+}
+.remember-container{
+    margin-left: 1rem;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.submit{
+    height: 50px;
+}
+.error-container{
+    text-align: center;
+    font-size:1.5rem;
+    color: red;
 }

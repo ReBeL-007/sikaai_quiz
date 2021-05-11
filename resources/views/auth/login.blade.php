@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="{{ asset('img/favicon.jpg') }}">
     <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
-    <!-- <link rel="stylesheet" href="css/style.css" /> -->
     <link rel="stylesheet" href="{{asset('css/login/register-sign-in.css')}}" />
-    <title>Sign in & Sign up Form</title>
+    <title>AsmitaQuiz</title>
 </head>
 
 <body>
@@ -54,7 +54,8 @@
                         <strong>{{ $errors->first('invalid') }}</strong>
                     </span>
                     @endif
-                    <p class="social-text">Or Sign in with social platforms</p>
+                    <a href="{{ route ('password.request') }}">Forget Password?</a>
+                    {{-- <p class="social-text">Or Sign in with social platforms</p>
                     <div class="social-media">
                         <a href="#" class="social-icon">
                             <i class="fab fa-facebook-f"></i>
@@ -68,45 +69,45 @@
                         <a href="#" class="social-icon">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
-                    </div>
+                    </div> --}}
                 </form>
                 <form action="{{route('register')}}" method="POST" class="sign-up-form">
                     @csrf
                     <h2 class="title">Sign up</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Name" name="name" value="{{ old('name', null) }}" autocomplete="new-name" />
+                        <input type="text" placeholder="Name" name="new-name" value="{{ old('new-name', null) }}" autocomplete="new-name" />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input type="email" placeholder="Email"  value="{{ old('email', null) }}" name="email" autocomplete="new-email"  autocomplete="off"/>
+                        <input type="email" placeholder="Email"  value="{{ old('new-email', null) }}" name="new-email" autocomplete="new-email"  autocomplete="off"/>
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Password" name="password"  autocomplete="new-password"/>
+                        <input type="password" placeholder="Password" name="new-password"  autocomplete="new-password"/>
                     </div>
                     <input type="submit" class="btn" value="Sign up" />
-                    @if ($errors->has('name'))
+                    @if ($errors->has('new-name'))
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('name') }}</strong>
+                        <strong>{{ str_replace('new-','',$errors->first('new-name')) }}</strong>
                     </span>
                     @endif
-                    @if ($errors->has('email'))
+                    @if ($errors->has('new-email'))
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('email') }}</strong>
+                        <strong>{{ str_replace('new-','',$errors->first('new-email'))}}</strong>
                     </span>
                     @endif
-                    @if ($errors->has('password'))
+                    @if ($errors->has('new-password'))
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('password') }}</strong>
+                        <strong>{{ str_replace('new-','',$errors->first('new-password')) }}</strong>
                     </span>
                     @endif
-                    @if ($errors->has('invalid'))
+                    @if ($errors->has('mew-invalid'))
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('invalid') }}</strong>
+                        <strong>{{ str_replace('new-','',$errors->first('new-invalid')) }}</strong>
                     </span>
                     @endif
-                    <p class="social-text">Or Sign up with social platforms</p>
+                    {{-- <p class="social-text">Or Sign up with social platforms</p>
                     <div class="social-media">
                         <a href="#" class="social-icon">
                             <i class="fab fa-facebook-f"></i>
@@ -120,7 +121,7 @@
                         <a href="#" class="social-icon">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
-                    </div>
+                    </div> --}}
                 </form>
             </div>
         </div>
@@ -130,8 +131,7 @@
                 <div class="content">
                     <h3>New here ?</h3>
                     <p>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis,
-                        ex ratione. Aliquid!
+                        Just this button faraway from us
                     </p>
                     <button class="btn transparent" id="sign-up-btn">Sign up</button>
                 </div>
@@ -141,8 +141,7 @@
                 <div class="content">
                     <h3>One of us ?</h3>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-                        laboriosam ad deleniti.
+                        Hop in!
                     </p>
                     <button class="btn transparent" id="sign-in-btn">Sign in</button>
                 </div>

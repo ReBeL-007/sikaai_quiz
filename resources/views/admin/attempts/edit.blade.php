@@ -284,6 +284,7 @@ window.speechSynthesis.speak(msg);
                 });
 
         $attempt_no = 0;
+
         $.each($attempts,function(i,ele){
             if($attempt_no==i){
             $('.users-select').append('<option value='+i+'>'+$attempts[i].user.name+'</option>').trigger('selected');
@@ -307,7 +308,11 @@ window.speechSynthesis.speak(msg);
             loadAttempts();
             }
         });
+        if($attempts.length ==0){
+            $('.answers-container').append('<p class="text-center">No attempts available</p>');
+        }else{
         loadAttempts();
+        }
         function loadAttempts(){
             $attempt = $attempts[$attempt_no];
             $quiz = $attempt.quiz;
