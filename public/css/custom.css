@@ -594,11 +594,11 @@ img[data-dz-thumbnail] {
 
 .leaderboard {
 
-    width: 285px;
-    height: 308px;
+    width: 400px;
+    height: 468px;
     background: white;
     border-radius: 10px;
-    box-shadow: 0 7px 30px rgba(62, 9, 11, 0.3);
+    /* box-shadow: 0 7px 30px rgba(62, 9, 11, 0.3); */
     color: white;
   }
   .leaderboard h1 {
@@ -764,3 +764,7 @@ img[data-dz-thumbnail] {
     -webkit-transition: all .35s ease-in-out;
     transition: all .35s ease-in-out;
   }
+
+  .content-wrapper>.content {
+    padding: 0 2rem 2rem 2rem;
+}

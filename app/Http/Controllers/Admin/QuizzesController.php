@@ -6,6 +6,8 @@ use App\Attempt;
 use App\AttemptAnswer;
 use App\Quiz;
 use App\Course;
+use App\User;
+use App\Admin;
 use App\Exports\QuizAttemptsExport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -14,7 +16,8 @@ use App\Http\Requests\StoreTestsRequest;
 use App\Http\Requests\UpdateTestsRequest;
 use Maatwebsite\Excel\Facades\Excel;
 use Symfony\Component\HttpFoundation\Response;
-
+use App\Notifications\QuizNotification;
+use Notification;
 class QuizzesController extends Controller
 {
     public function __construct()
@@ -32,9 +35,9 @@ class QuizzesController extends Controller
 
         if (request('show_deleted') == 1) {
             abort_if(Gate::denies('quiz-access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-            $quizzes = Quiz::onlyTrashed()->get();
+            $quizzes = Quiz::onlyTrashed()->ofTeacher()->get();
         } else {
-            $quizzes = Quiz::all();
+            $quizzes = Quiz::ofTeacher()->get();
         }
         return view('admin.quizzes.index', compact('quizzes'));
     }
@@ -47,10 +50,10 @@ class QuizzesController extends Controller
     public function create()
     {
         abort_if(Gate::denies('quiz-create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        $courses = \App\Course::get();
+        $courses = \App\Course::ofTeacher()->get();
         $courses_ids = $courses->pluck('id');
         $courses = $courses->pluck('title', 'id')->prepend('Please select Course', '');
-        $lessons = \App\Lesson::whereIn('course_id', $courses_ids)->get()->pluck('title', 'id')->prepend('Please select Lesson', '');
+        $lessons = ['Please select Course First'=> ''];
         return view('admin.quizzes.create', compact('courses', 'lessons'));
     }
 
@@ -64,8 +67,14 @@ class QuizzesController extends Controller
     {
         abort_if(Gate::denies('quiz-create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         $quiz = Quiz::create($request->all());
+        $teachers = \Auth::user()->isAdmin() ? array_filter((array)$request->input('teachers')) : [\Auth::user()->id];
+        $quiz->teachers()->sync($teachers);
         $quiz->remaining_marks = $quiz->full_marks;
         $quiz->save();
+        $users = User::all();
+        $admins = Admin::all();
+        Notification::send($users,new QuizNotification($quiz,route('quiz_index')));
+        Notification::send($admins,new QuizNotification($quiz,route('admin.quizzes.index')));
         return redirect()->route('admin.quizzes.index');
     }
 
@@ -199,15 +208,21 @@ class QuizzesController extends Controller
 
     public function editAttempts($id)
     {
-        $attempts = Attempt::where('quiz_id', '=', $id)->with('quiz', 'user', 'quiz.questions.questionOptions', 'attemptAnswers.attemptOptions')->get()->toJSON();
+        $attempts = Attempt::where('quiz_id', '=', $id)->with('quiz', 'user', 'quiz.questions.questionOptions', 'attemptAnswers.attemptOptions')->where('status','submitted')->get()->toJSON();
         return view('admin.attempts.edit', compact('id'));
     }
 
     public function getQuizAttempts(Request $request)
     {
         $id = $request->id;
-        $attempts = Attempt::where('quiz_id', '=', $id)->with('quiz', 'user', 'quiz.questions.questionOptions', 'attemptAnswers.attemptOptions')->get()->toJSON();
+        $attempts = Attempt::where('quiz_id', '=', $id)->where('status','submitted')->with('quiz', 'user', 'quiz.questions.questionOptions', 'attemptAnswers.attemptOptions')->get()->toJSON();
         return $attempts;
+    }
+
+    public function getListAttempt()
+    {
+        $attempts = Attempt::where('status','submitted');
+        return view('admin.attempts.list', compact('attempts'));
     }
 
     public function updateAttempt(Request $request)

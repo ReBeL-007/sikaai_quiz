@@ -28,22 +28,22 @@
                     Average Score:
                     @php
                     $totalMarks = 0;
-                    foreach ($quiz->attempts as $attempt) {
+                    foreach ($quiz->attempts->where('status','submitted') as $attempt) {
                     $totalMarks += $attempt->total_marks;
                     }
-                    if (count($quiz->attempts) !=0) {
-                    echo(round($totalMarks/count($quiz->attempts),2));
+                    if (count($quiz->attempts->where('status','submitted')) !=0) {
+                    echo(round($totalMarks/count($quiz->attempts->where('status','submitted')),2));
                     }else{
                     echo(0);
                     }
                     @endphp
                 </div>
                 <div class="col-md-3 review-elem grading-text">
-                    Responses: {{count($quiz->attempts)}}
+                    Responses: {{count($quiz->attempts->where('status','submitted'))}}
                 </div>
             </div>
         </div>
-        @if (count($quiz->attempts) !=0)
+        @if (count($quiz->attempts->where('status','submitted')) !=0)
         <a class="btn btn-primary mt-3" href="{{route('admin.show_attempts',['id'=>$quiz->id])}}">Review Answer</a>
         <a class="btn btn-success mt-3" href="{{route('admin.quizzes.export',['id'=>$quiz->id])}}">Download Excel</a>
         @else
@@ -81,7 +81,7 @@
                     }
                     array_push($data,$arr);
                     }
-                    foreach ($quiz->attempts as $attempt) {
+                    foreach ($quiz->attempts->where('status','submitted') as $attempt) {
                     $answer = $attempt->attemptAnswers()->where('question_id',$question->id)->first();
                     if($answer != null){
                     if($answer->marks > 0){

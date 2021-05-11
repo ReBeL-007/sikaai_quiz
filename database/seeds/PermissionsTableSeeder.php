@@ -78,26 +78,26 @@ class PermissionsTableSeeder extends Seeder
                 'title' => 'user_access',
                 'slug' => 'user-access',
             ],
-            [
-                'title' => 'group_create',
-                'slug' => 'group-create',
-            ],
-            [
-                'title' => 'group_edit',
-                'slug' => 'group-edit',
-            ],
-            [
-                'title' => 'group_show',
-                'slug' => 'group-show',
-            ],
-            [
-                'title' => 'group_delete',
-                'slug' => 'group-delete',
-            ],
-            [
-                'title' => 'group_access',
-                'slug' => 'group-access',
-            ],
+            // [
+            //     'title' => 'group_create',
+            //     'slug' => 'group-create',
+            // ],
+            // [
+            //     'title' => 'group_edit',
+            //     'slug' => 'group-edit',
+            // ],
+            // [
+            //     'title' => 'group_show',
+            //     'slug' => 'group-show',
+            // ],
+            // [
+            //     'title' => 'group_delete',
+            //     'slug' => 'group-delete',
+            // ],
+            // [
+            //     'title' => 'group_access',
+            //     'slug' => 'group-access',
+            // ],
             [
                 'title' => 'course_create',
                 'slug' => 'course-create',
@@ -217,27 +217,27 @@ class PermissionsTableSeeder extends Seeder
             [
                 'title' => 'grade_access',
                 'slug' => 'grade-access',
-            ],
-            [
-                'title' => 'student_create',
-                'slug' => 'student-create',
-            ],
-            [
-                'title' => 'student_edit',
-                'slug' => 'student-edit',
-            ],
-            [
-                'title' => 'student_show',
-                'slug' => 'student-show',
-            ],
-            [
-                'title' => 'student_delete',
-                'slug' => 'student-delete',
-            ],
-            [
-                'title' => 'student_access',
-                'slug' => 'student-access',
-            ],
+            ]
+            // [
+            //     'title' => 'student_create',
+            //     'slug' => 'student-create',
+            // ],
+            // [
+            //     'title' => 'student_edit',
+            //     'slug' => 'student-edit',
+            // ],
+            // [
+            //     'title' => 'student_show',
+            //     'slug' => 'student-show',
+            // ],
+            // [
+            //     'title' => 'student_delete',
+            //     'slug' => 'student-delete',
+            // ],
+            // [
+            //     'title' => 'student_access',
+            //     'slug' => 'student-access',
+            // ],
         ];
 
         Permission::insert($permissions);

@@ -5,6 +5,7 @@ use App\Attempt;
 use App\Quiz;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
 class HomeController extends Controller
 {
@@ -34,6 +35,27 @@ class HomeController extends Controller
         //     }
         // }
         $attempts = Attempt::orderBy('total_marks','DESC')->take(5)->get();
-        return view('admin.backend.index',compact('quizzes','attempts'));
+        $quiz_for_leaderboard = Quiz::ofTeacher()->get();
+        return view('admin.backend.index',compact('quizzes','attempts','quiz_for_leaderboard'));
+    }
+
+    public function get_attempt_top($quiz)
+    {
+        $quiz = Quiz::ofTeacher()->where('id',$quiz)->first();
+        if($quiz){
+
+        $attempts = $quiz->attempts()->with('user')->where('status','submitted')->orderBy('total_marks','DESC')->get();
+        $filter_attempt = collect();
+        foreach ($attempts as $key=>$attempt) {
+            if(!$filter_attempt->contains('user_id',$attempt->user_id)){
+                $filter_attempt->push($attempt);
+            }
+            if($key>4){
+                break;
+            }
+        }
+        return $filter_attempt;
+    }
+    return Response::HTTP_NOT_FOUND;
     }
 }

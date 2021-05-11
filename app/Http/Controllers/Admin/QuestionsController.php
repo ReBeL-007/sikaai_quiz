@@ -32,13 +32,11 @@ class QuestionsController extends Controller
                         $q->whereIn('quiz_id', Quiz::ofTeacher()->pluck('id'));
                     });
                 }
-        // $questions = Question::get();
-        // dd($questions);
         if (request('show_deleted') == 1) {
             abort_if(Gate::denies('question-access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
             $questions = $questions->onlyTrashed()->get();
         } else {
-            $questions = $questions->get();
+            $questions = $questions->where('deleted_at',NULL)->get();
         }
         return view('admin.questions.index', compact('questions'));
     }
@@ -119,7 +117,6 @@ class QuestionsController extends Controller
             }
         }
         elseif($request->type == 'True or False'){
-            // dd($request->all());
             $options = $request->torf;
             $point = $request->points;
             foreach($options as $key => $option){
@@ -132,17 +129,17 @@ class QuestionsController extends Controller
             }
         }
         elseif($request->type == 'Short Answer'){
-            $options = $request->saq;
-            // $point = $request->points;
-            foreach($options as $key => $option){
+            $option = $request->saq;
+            if(isset($option)){
+
             $data2 = [
                 'option_text' => $option,
-                // 'points' => (($key+1)==$point)?1:0,
                 'question_id' => $question->id,
             ];
                 Option::create($data2);
             }
-        }
+
+            }
         return back()->with('flash_success','Question Created Successfully.');
     }
 

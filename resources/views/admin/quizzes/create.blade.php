@@ -36,8 +36,7 @@
         <div class="row">
             <div class="col-md-12 form-group">
                 {!! Form::label('quiz_type', 'Quiz Type', ['class' => 'control-label required']) !!}
-                {!! Form::select('quiz_type', [''=>'Select Quiz Type','Mock Test'=>'Mock Test','Practice
-                Quiz'=>'Practice Quiz','Normal Quiz'=>'Normal Quiz'],
+                {!! Form::select('quiz_type', [''=>'Select Quiz Type','Mock Test'=>'Mock Test','Practice Quiz'=>'Practice Quiz','Normal Quiz'=>'Normal Quiz'],
                 old('quiz_type'), ['class' => 'form-control select2']) !!}
                 <p class="help-block"></p>
                 @if($errors->has('quiz_type'))
