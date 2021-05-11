@@ -63,6 +63,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
     Route::get('/', 'Admin\HomeController@index')->name('dashboard');
     Route::get('/logout', 'Auth\AdminLoginController@logout')->name('logout');
     Route::get('/quiz/top/{quiz}', 'Admin\HomeController@get_attempt_top')->name('get_top_attempt');
+    Route::get('/notification', 'Admin\HomeController@get_notifications')->name('get_notifications');
+    Route::get('/notification/show/{id}', 'Admin\HomeController@show_notifications')->name('show_notifications');
+    Route::get('/notification/readall', 'Admin\HomeController@read_all_notifications')->name('read_all_notifications');
 
      //change password
      Route::get('change-password', 'Admin\ChangePasswordController@create')->name('password.create');

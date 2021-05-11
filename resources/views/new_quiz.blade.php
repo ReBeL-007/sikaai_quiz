@@ -959,7 +959,7 @@
                 case "Short Answer":
                     $('.answer-container').removeClass('d-none');
                     answerInterval = setInterval(function() {
-                        localStorage.setItem('short_answer_'+quiz.id + '_' + $user_id,$answer_editor.getData());
+                        localStorage.setItem('short_answer_'+quiz.questions[$ele].id+ '_' + $user_id,$answer_editor.getData());
                     }, 5000);
                     break;
             }
@@ -979,7 +979,7 @@
             $.each($answer, function(i, ele) {
                 if (ele.question_id == quiz.questions[$question_no-1].id) {
                     if(ele.options == 'text_answer'){
-                        $answer_editor.setData(localStorage.getItem('short_answer_'+quiz.id + '_' + $user_id));
+                        $answer_editor.setData(localStorage.getItem('short_answer_'+quiz.questions[$question_no-1].id + '_' + $user_id));
                     }else{
                     $.each(ele.options, function(key, val) {
                         $("#option-" + val).trigger('click');
@@ -1066,7 +1066,7 @@
             if(quiz.questions[$question_no-1].type == "Short Answer"){
                 if($answer_editor.getData() != ''){
                     option = "text_answer";
-                localStorage.setItem('short_answer_'+quiz.id + '_' + $user_id,$answer_editor.getData());
+                localStorage.setItem('short_answer_'+$question_id + '_' + $user_id,$answer_editor.getData());
                 }
             }
             if(option.length!=0){
@@ -1166,14 +1166,16 @@
         });
 
         function submit(){
+            console.log($answer);
             let finalAnswer = [];
             $.each($answer,function(i,element){
                 ele = element;
                 if(ele.options == "text_answer"){
-                    ele.options = localStorage.getItem('short_answer_'+quiz.id + '_' + $user_id);
+                    ele.options = localStorage.getItem('short_answer_'+ele.question_id + '_' + $user_id);
                 }
                 finalAnswer.push(ele);
             });
+            console.log(finalAnswer);
             $.ajax({
                 type: 'POST'
                 , url: "{{ route('test_update') }}"

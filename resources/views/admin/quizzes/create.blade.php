@@ -71,7 +71,7 @@
                 @endif
             </div>
         </div>
-        <div class="row">
+        {{-- <div class="row">
             <div class="col-md-12 form-group">
                 {!! Form::label('published', 'Published', ['class' => 'control-label']) !!}
                 {!! Form::hidden('published', 0) !!}
@@ -83,11 +83,11 @@
                 </p>
                 @endif
             </div>
-        </div>
+        </div> --}}
 
         <div class="row">
             <div class="col-md-12 form-group">
-                {!! Form::label('answer_publish', 'Publish Answer', ['class' => 'control-label']) !!}
+                {!! Form::label('answer_publish', 'Publish Result', ['class' => 'control-label']) !!}
                 {!! Form::hidden('answer_publish', 0) !!}
                 {!! Form::checkbox('answer_publish', 1, false, ['id'=>'']) !!}
                 <p class="help-block"></p>

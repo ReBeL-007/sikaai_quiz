@@ -289,7 +289,7 @@
     function get_notification() {
                 $.ajax({
                 type: 'GET'
-                , url: "{{ route('get_notifications') }}"
+                , url: "{{ route('admin.get_notifications') }}"
                 ,success: function(data) {
                     if(data.length == 0){
                         $('.notification-menu').html(`
@@ -300,14 +300,14 @@
                         $('.notification-count').text(data.length);
                 $.each(data,function(i,ele){
                     $('.notification-menu').append(`
-                            <a href="${"{{ route('show_notifications','temp_id') }}".replace('temp_id',ele.id)}" class="dropdown-item notification">
+                            <a href="${"{{ route('admin.show_notifications','temp_id') }}".replace('temp_id',ele.id)}" class="dropdown-item notification">
                                 <p><i class="fas fa-trophy mr-2"></i>${ele.data.message}</p>
                                 <span class="float-right text-muted text-sm">${moment(ele.created_at).fromNow()}</span>
                             </a>
                         <div class="dropdown-divider"></div>
                     `);
                 });
-                $('.notification-menu').append('<div class="dropdown-divider"></div><a href="{{ route("read_all_notifications") }}" class="dropdown-item read-notification dropdown-footer">Mark as Read</a>');
+                $('.notification-menu').append('<div class="dropdown-divider"></div><a href="{{ route("admin.read_all_notifications") }}" class="dropdown-item read-notification dropdown-footer">Mark as Read</a>');
                     }
                 }
             });

@@ -332,7 +332,7 @@ window.speechSynthesis.speak(msg);
                         $image = '<div class="row image-viewer">';
                         $.each($attempt_answers.attempt_options,function($i,$ele){
                         if($ele.answer_text!=null){
-                            $option += '<textarea class="readonly-editor" id="answer_'+i+'">'+$ele.answer_text+'</textarea>';
+                            $option += '<div class="readonly-editor" id="answer_'+i+'">'+$ele.answer_text+'</div>';
                         }
                         if($ele.image !=null){
                         $image += '<div class="col-md-4"><img class="img-thumbnail rounded" src="/'+$ele.image.replace('public','storage')+'" alt="Picture "'+$i+'></div>';

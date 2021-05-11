@@ -170,7 +170,7 @@
             $('.leaderbord-ol').html('<p style="color:black;text-align:center;">No Leaderboard Data</p>');
             $.ajax({
                     type: 'GET'
-                    , url: "{{ route('get_top_attempt','quiz_id') }}".replace('quiz_id',$id)
+                    , url: "{{ route('admin.get_top_attempt','quiz_id') }}".replace('quiz_id',$id)
                     ,success: function(data) {
                         if(data.length>0){
                             $('.leaderbord-ol').html('');

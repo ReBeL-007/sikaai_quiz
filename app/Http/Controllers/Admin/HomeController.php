@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 use App\Attempt;
 use App\Quiz;
+use Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Symfony\Component\HttpFoundation\Response;
@@ -58,4 +59,25 @@ class HomeController extends Controller
     }
     return Response::HTTP_NOT_FOUND;
     }
+
+    public function get_notifications(){
+        return Auth::user()->unreadNotifications;
+    }
+
+    public function show_notifications($id){
+        $notification = Auth::user()->notifications()->where('id', $id)->first();
+        if ($notification) {
+            $notification->markAsRead();
+            return redirect($notification->data['url']);
+        }
+    }
+
+    public function read_all_notifications()
+    {
+        Auth::user()->unreadNotifications()->get()->map(function($n) {
+            $n->markAsRead();
+        });
+        return back();
+    }
+
 }

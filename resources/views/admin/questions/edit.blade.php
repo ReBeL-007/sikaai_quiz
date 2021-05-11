@@ -46,10 +46,9 @@
                         Multiple Answers</option>
                     <option value="True or False" {{($question->type == 'True or False') ? 'selected' : '' }}>True or
                         False </option>
-                    {{-- <option value="Short Answer" {{$question->type == 'Short Answer' ? 'selected' : '' }}>Short
-                    Answer
+                    <option value="Short Answer" {{$question->type == 'Short Answer' ? 'selected' : '' }}>Short Answer
                     </option>
-                    <option value="Long Answer" {{$question->type == 'Long Answer' ? 'selected' : '' }}>Long Answer
+                    {{-- <option value="Long Answer" {{$question->type == 'Long Answer' ? 'selected' : '' }}>Long Answer
                     </option> --}}
                 </select>
                 @if($errors->has('type'))
@@ -511,7 +510,7 @@
                                             <label for="option2">
                                             </label>
                                         </div>
-                                        <div class="col-md-8">b
+                                        <div class="col-md-8">
                                         <input class="{{ $errors->has('torf') ? 'is-invalid' : '' }}" name="torf[]" type="text" value="False" readonly>
 
                                         </div>
@@ -542,6 +541,11 @@
         @endif
         <span class="help-block">{{ trans('cruds.question.fields.question_text_helper') }}</span>
     </div>`);
+    InlineEditor.create( document.querySelector( '#saq' ),ckConfig ).then(editor=>{
+            editor.model.document.on( 'change', ( evt, data ) => {
+            $this.parents('.option-container').find('textarea').html(editor.getData());
+                });
+            });
                 }
                 else {
                     $("#maq , #add_maq_option").hide();
