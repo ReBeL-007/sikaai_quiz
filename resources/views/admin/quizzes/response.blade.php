@@ -121,7 +121,9 @@
         plotShadow: false,
         type: 'pie'
       },
-
+      exporting: {
+    enabled: false
+  },
     legend: {
         align: 'left',
         verticalAlign: 'top',

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 23, 2021 at 09:39 AM
+-- Generation Time: May 11, 2021 at 08:24 AM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.6
 
@@ -44,8 +44,10 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Admin', 'admin@admin.com', '$2y$10$AmrSF8D/HunNjgj1ilcJh.twh34HKecGjy7t8Jfss4sRFNRuHgqAK', 'xh1VuxQGQnLoudBylLADp0OOD05GXgFDyzRt09QhhcHEQdVTmOG2tFzG3A5H', '2021-03-23 05:16:52', '2021-03-23 05:16:52', NULL),
-(2, 'Ram Thapa', 'ram@teacher.com', '$2y$10$xF9pBYINJ2wDsXDo.CSbmus2XmXTFjfTLyxFMN9ytpMPwDcCFDHp6', NULL, '2021-03-23 05:23:14', '2021-03-23 05:23:14', NULL);
+(1, 'Admin', 'admin@admin.com', '$2y$10$kSrb48RfpSvq5aRMhaHP3uWGngDRPMmq8mKzqrBhYT5lgz0dx4pge', 'XMVQeF4uCbya5bsXQZRx3xDuPubg3Re5frZj3dKnRbaQB16saQtboLxPrJkd', '2021-05-06 13:44:29', '2021-05-06 13:44:29', NULL),
+(2, 'ITAdmin', 'it@admin.com', '$2y$10$QznToYUY/phjPPSM9Fsn0.PzIrEwbPKj0RbbmG3.HiIu55npcbNJS', NULL, '2021-05-06 13:48:57', '2021-05-06 13:48:57', NULL),
+(3, 'Ram Thapa', 'ram@admin.com', '$2y$10$fRNP/G0G7oKy8nnps6Q64e.x5D1RwEQqOEcKVgEzzqyFjLgbay8k.', 'wilfO6bZO1uGo4gZv1gPNJMi2rbnkf8iBwjySUrAMKWi0ZmcS5vLxuBOQMlX', '2021-05-06 13:54:59', '2021-05-06 13:57:21', NULL),
+(4, 'Sam Karki', 'sam@admin.com', '$2y$10$/5g0vAzGHCxI9SzQ0WA16enEof1V1pMROa5mQ0mU/5XJnbh.Wi9sS', NULL, '2021-05-06 15:04:23', '2021-05-06 15:08:45', NULL);
 
 -- --------------------------------------------------------
 
@@ -86,7 +88,9 @@ CREATE TABLE `admins_roles` (
 
 INSERT INTO `admins_roles` (`admin_id`, `role_id`) VALUES
 (1, 1),
-(2, 3);
+(2, 1),
+(3, 3),
+(4, 3);
 
 -- --------------------------------------------------------
 
@@ -106,13 +110,6 @@ CREATE TABLE `attempts` (
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `attempts`
---
-
-INSERT INTO `attempts` (`id`, `quiz_id`, `user_id`, `total_marks`, `status`, `feedback`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(2, 4, 1, 10.00, 'submitted', NULL, '2021-03-23 07:51:59', '2021-03-23 07:52:08', NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -130,14 +127,6 @@ CREATE TABLE `attempt_answers` (
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `attempt_answers`
---
-
-INSERT INTO `attempt_answers` (`id`, `attempt_id`, `question_id`, `marks`, `feedback`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 2, 6, 10.00, NULL, '2021-03-23 07:52:08', '2021-03-23 07:52:08', NULL),
-(2, 2, 7, 0.00, 'bigrexa tw', '2021-03-23 07:52:08', '2021-03-23 09:56:17', NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -154,15 +143,6 @@ CREATE TABLE `attempt_options` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `attempt_options`
---
-
-INSERT INTO `attempt_options` (`id`, `attempt_answer_id`, `option_id`, `answer_text`, `image`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 7, NULL, NULL, '2021-03-23 07:52:08', '2021-03-23 07:52:08', NULL),
-(2, 2, 9, NULL, NULL, '2021-03-23 07:52:08', '2021-03-23 07:52:08', NULL),
-(3, 2, 10, NULL, NULL, '2021-03-23 07:52:08', '2021-03-23 07:52:08', NULL);
 
 -- --------------------------------------------------------
 
@@ -184,8 +164,7 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `name`, `description`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Science', NULL, '2021-03-23 05:20:45', '2021-03-23 05:20:45', NULL),
-(2, 'Mathematics', NULL, '2021-03-23 06:02:46', '2021-03-23 06:02:46', NULL);
+(1, 'Science', NULL, '2021-05-06 14:06:17', '2021-05-06 14:06:17', NULL);
 
 -- --------------------------------------------------------
 
@@ -210,8 +189,8 @@ CREATE TABLE `courses` (
 --
 
 INSERT INTO `courses` (`id`, `category_id`, `grade_id`, `title`, `slug`, `description`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 1, 'Fundamentals of Science', 'fundamentals-of-science', NULL, '2021-03-23 05:24:59', '2021-03-23 05:24:59', NULL),
-(2, 2, 1, 'Compulsory Math', 'compulsory-math', NULL, '2021-03-23 06:03:39', '2021-03-23 06:03:39', NULL);
+(1, 1, 1, 'Fundamentals of Science', 'fundamentals-of-science', NULL, '2021-05-06 14:08:41', '2021-05-06 14:08:41', NULL),
+(2, 1, 1, 'Fundamentals of Science', 'fundamentals-of-science', NULL, '2021-05-06 15:25:16', '2021-05-06 15:26:26', NULL);
 
 -- --------------------------------------------------------
 
@@ -243,7 +222,8 @@ CREATE TABLE `course_user` (
 --
 
 INSERT INTO `course_user` (`course_id`, `admin_id`) VALUES
-(1, 2);
+(1, 3),
+(2, 4);
 
 -- --------------------------------------------------------
 
@@ -265,7 +245,7 @@ CREATE TABLE `grades` (
 --
 
 INSERT INTO `grades` (`id`, `name`, `description`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'One', NULL, '2021-03-23 05:21:05', '2021-03-23 05:21:05', NULL);
+(1, 'Ten', NULL, '2021-05-06 14:06:34', '2021-05-06 14:06:34', NULL);
 
 -- --------------------------------------------------------
 
@@ -306,10 +286,8 @@ CREATE TABLE `lessons` (
 --
 
 INSERT INTO `lessons` (`id`, `course_id`, `title`, `slug`, `short_text`, `position`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 'Measurement', 'measurement', NULL, 1, '2021-03-23 05:31:42', '2021-03-23 05:31:42', NULL),
-(2, 1, 'Force', 'force', NULL, 2, '2021-03-23 06:30:27', '2021-03-23 06:30:27', NULL),
-(3, 1, 'Pressure', 'pressure', NULL, 3, '2021-03-23 06:34:22', '2021-03-23 06:34:22', NULL),
-(4, 1, 'Pressure', 'pressure', NULL, 4, '2021-03-23 06:35:31', '2021-03-23 06:35:44', '2021-03-23 06:35:44');
+(1, 1, 'Measurement', 'measurement', NULL, 1, '2021-05-06 14:09:18', '2021-05-06 14:09:18', NULL),
+(2, 2, 'Force', 'force', NULL, 1, '2021-05-06 15:29:42', '2021-05-06 15:29:42', NULL);
 
 -- --------------------------------------------------------
 
@@ -353,8 +331,7 @@ CREATE TABLE `media` (
 --
 
 INSERT INTO `media` (`id`, `model_type`, `model_id`, `collection_name`, `name`, `file_name`, `mime_type`, `disk`, `size`, `manipulations`, `custom_properties`, `responsive_images`, `order_column`, `created_at`, `updated_at`) VALUES
-(1, 'App\\Course', 1, 'thumbnail', '605954cd68b05_illustration3', '605954cd68b05_illustration3.png', 'image/png', 'public', 68126, '[]', '[]', '[]', 1, '2021-03-23 05:24:59', '2021-03-23 05:24:59'),
-(2, 'App\\Course', 2, 'thumbnail', '60595e0cb2329_illustration', '60595e0cb2329_illustration.png', 'image/png', 'public', 62333, '[]', '[]', '[]', 2, '2021-03-23 06:03:39', '2021-03-23 06:03:39');
+(1, 'App\\Course', 1, 'thumbnail', '6093d1bb69c7b_logo_final-01-300x300', '6093d1bb69c7b_logo_final-01-300x300.png', 'image/png', 'public', 15421, '[]', '[]', '[]', 1, '2021-05-06 14:08:42', '2021-05-06 14:08:42');
 
 -- --------------------------------------------------------
 
@@ -403,7 +380,59 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (28, '2020_10_11_142513_create_attempt_answers_table', 1),
 (29, '2020_10_11_142529_create_attempt_options_table', 1),
 (30, '2020_12_14_182817_add_columns_to_quiz_tables', 1),
-(31, '2021_03_02_164554_add_columns_to_quiz_tale', 1);
+(31, '2021_03_02_164554_add_columns_to_quiz_tale', 1),
+(32, '2021_05_05_201517_create_notifications_table', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notifications`
+--
+
+CREATE TABLE `notifications` (
+  `id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `notifiable_type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `notifiable_id` bigint(20) UNSIGNED NOT NULL,
+  `data` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `read_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `notifications`
+--
+
+INSERT INTO `notifications` (`id`, `type`, `notifiable_type`, `notifiable_id`, `data`, `read_at`, `created_at`, `updated_at`) VALUES
+('02b811b9-9e45-45bc-be5e-1b0898731d23', 'App\\Notifications\\QuizNotification', 'App\\Admin', 2, '{\"message\":\"Measurement Practice was added.\",\"url\":\"http:\\/\\/localhost:8000\\/admin\\/quizzes\"}', NULL, '2021-05-10 16:22:54', '2021-05-10 16:22:54'),
+('033fdf23-d25d-4a04-8b80-c5c266b8274a', 'App\\Notifications\\QuizNotification', 'App\\Admin', 3, '{\"message\":\"Measurement Practice was added.\",\"url\":\"http:\\/\\/localhost:8000\\/admin\\/quizzes\"}', NULL, '2021-05-10 16:22:54', '2021-05-10 16:22:54'),
+('0a902f06-d0d4-4419-abd7-373c0c55917c', 'App\\Notifications\\QuizNotification', 'App\\Admin', 4, '{\"message\":\"Measurement Practice\\\\n was added.\",\"url\":\"http:\\/\\/localhost:8000\\/admin\\/quizzes\"}', NULL, '2021-05-10 16:07:04', '2021-05-10 16:07:04'),
+('1e425a46-7ab1-4eb7-b83e-191b7fdb721a', 'App\\Notifications\\QuizNotification', 'App\\Admin', 1, '{\"message\":\"Measurement Practice was added.\",\"url\":\"http:\\/\\/localhost:8000\\/admin\\/quizzes\"}', NULL, '2021-05-10 16:40:47', '2021-05-10 16:40:47'),
+('29b381ee-62ca-443d-a191-aa708d84c6af', 'App\\Notifications\\QuizNotification', 'App\\Admin', 4, '{\"message\":\"Measurement Practice was added.\",\"url\":\"http:\\/\\/localhost:8000\\/admin\\/quizzes\"}', NULL, '2021-05-10 16:19:24', '2021-05-10 16:19:24'),
+('33706b46-072c-4e5b-be13-6222a2ad99d4', 'App\\Notifications\\QuizNotification', 'App\\User', 2, '{\"message\":\"Measurement Practice was added.\",\"url\":\"http:\\/\\/localhost:8000\\/test\"}', '2021-05-10 16:19:35', '2021-05-10 16:19:24', '2021-05-10 16:19:35'),
+('45bf0a33-a98a-4a50-8a88-caa2eee5d1d6', 'App\\Notifications\\QuizNotification', 'App\\User', 2, '{\"message\":\"Measurement Practice was added.\",\"url\":\"http:\\/\\/localhost:8000\\/test\"}', NULL, '2021-05-10 16:40:47', '2021-05-10 16:40:47'),
+('51b2585e-2cd6-4c44-9a88-0f299ab7166e', 'App\\Notifications\\QuizNotification', 'App\\User', 2, '{\"message\":\"Measurement Practice was added.\",\"url\":\"http:\\/\\/localhost:8000\\/test\"}', NULL, '2021-05-10 16:22:54', '2021-05-10 16:22:54'),
+('51ede86d-7c63-4658-a176-79b3d741f21a', 'App\\Notifications\\QuizNotification', 'App\\Admin', 3, '{\"message\":\"Measurement Practice was added.\",\"url\":\"http:\\/\\/localhost:8000\\/admin\\/quizzes\"}', NULL, '2021-05-10 16:09:25', '2021-05-10 16:09:25'),
+('543f5fb1-cefe-4e4b-b742-3e7c7d17f81b', 'App\\Notifications\\QuizNotification', 'App\\Admin', 4, '{\"message\":\"Measurement Practice was added.\",\"url\":\"http:\\/\\/localhost:8000\\/admin\\/quizzes\"}', NULL, '2021-05-10 16:40:47', '2021-05-10 16:40:47'),
+('549f270b-7d73-426e-852b-8620966bd682', 'App\\Notifications\\QuizNotification', 'App\\Admin', 2, '{\"message\":\"Measurement Practice was added.\",\"url\":\"http:\\/\\/localhost:8000\\/admin\\/quizzes\"}', NULL, '2021-05-10 16:40:47', '2021-05-10 16:40:47'),
+('5be8f3dc-241b-4f5e-97ee-db4b0cdadb1f', 'App\\Notifications\\QuizNotification', 'App\\User', 1, '{\"message\":\"Measurement Practice was added.\",\"url\":\"http:\\/\\/localhost:8000\\/test\"}', '2021-05-10 16:40:05', '2021-05-10 16:22:54', '2021-05-10 16:40:05'),
+('5d251bd2-316f-47a8-ad02-485dc62f44a5', 'App\\Notifications\\QuizNotification', 'App\\Admin', 1, '{\"message\":\"Measurement Practice was added.\",\"url\":\"http:\\/\\/localhost:8000\\/admin\\/quizzes\"}', NULL, '2021-05-10 16:09:25', '2021-05-10 16:09:25'),
+('717fbed4-52cc-4aba-b984-4dfd9a0d8547', 'App\\Notifications\\QuizNotification', 'App\\Admin', 2, '{\"message\":\"Measurement Practice\\\\n was added.\",\"url\":\"http:\\/\\/localhost:8000\\/admin\\/quizzes\"}', NULL, '2021-05-10 16:07:04', '2021-05-10 16:07:04'),
+('72362b6a-6d0a-4d28-ad63-ba3c8d29d7f9', 'App\\Notifications\\QuizNotification', 'App\\Admin', 4, '{\"message\":\"Measurement Practice was added.\",\"url\":\"http:\\/\\/localhost:8000\\/admin\\/quizzes\"}', NULL, '2021-05-10 16:22:54', '2021-05-10 16:22:54'),
+('767d417b-9603-4336-bc01-9315dc9fea41', 'App\\Notifications\\QuizNotification', 'App\\User', 1, '{\"message\":\"Measurement Practice was added.\",\"url\":\"http:\\/\\/localhost:8000\\/test\"}', NULL, '2021-05-10 16:40:47', '2021-05-10 16:40:47'),
+('7c02ab4b-029a-4b3b-a4de-542298a15f57', 'App\\Notifications\\QuizNotification', 'App\\User', 1, '{\"message\":\"Measurement Practice\\\\n was added.\",\"url\":\"http:\\/\\/localhost:8000\\/test\"}', '2021-05-10 16:07:35', '2021-05-10 16:07:04', '2021-05-10 16:07:35'),
+('90563fec-7a33-4308-a257-0231cf248f5e', 'App\\Notifications\\QuizNotification', 'App\\Admin', 4, '{\"message\":\"Measurement Practice was added.\",\"url\":\"http:\\/\\/localhost:8000\\/admin\\/quizzes\"}', NULL, '2021-05-10 16:09:25', '2021-05-10 16:09:25'),
+('94bf3c63-5a62-4db8-9c79-0dda2c1f6a67', 'App\\Notifications\\QuizNotification', 'App\\Admin', 2, '{\"message\":\"Measurement Practice was added.\",\"url\":\"http:\\/\\/localhost:8000\\/admin\\/quizzes\"}', NULL, '2021-05-10 16:19:24', '2021-05-10 16:19:24'),
+('95d4e944-4ca2-453b-91ca-ec15cfbd473d', 'App\\Notifications\\QuizNotification', 'App\\Admin', 1, '{\"message\":\"Measurement Practice was added.\",\"url\":\"http:\\/\\/localhost:8000\\/admin\\/quizzes\"}', NULL, '2021-05-10 16:22:54', '2021-05-10 16:22:54'),
+('997bd457-3f4c-4fd3-9d1c-25e2332e478a', 'App\\Notifications\\QuizNotification', 'App\\User', 1, '{\"message\":\"Measurement Practice was added.\",\"url\":\"http:\\/\\/localhost:8000\\/test\"}', '2021-05-10 16:40:05', '2021-05-10 16:19:24', '2021-05-10 16:40:05'),
+('9c4a48e1-7dee-4567-a275-bbf250849f05', 'App\\Notifications\\QuizNotification', 'App\\Admin', 2, '{\"message\":\"Measurement Practice was added.\",\"url\":\"http:\\/\\/localhost:8000\\/admin\\/quizzes\"}', NULL, '2021-05-10 16:09:25', '2021-05-10 16:09:25'),
+('ac76a755-b144-4800-9df9-a823361f4891', 'App\\Notifications\\QuizNotification', 'App\\User', 1, '{\"message\":\"Measurement Practice was added.\",\"url\":\"http:\\/\\/localhost:8000\\/test\"}', '2021-05-10 16:17:45', '2021-05-10 16:09:25', '2021-05-10 16:17:45'),
+('b82d3742-b06f-4b79-b602-fde90c2cc5cb', 'App\\Notifications\\QuizNotification', 'App\\Admin', 1, '{\"message\":\"Measurement Practice\\\\n was added.\",\"url\":\"http:\\/\\/localhost:8000\\/admin\\/quizzes\"}', NULL, '2021-05-10 16:07:04', '2021-05-10 16:07:04'),
+('c6d3b2d4-055a-445a-910c-806da5da0927', 'App\\Notifications\\QuizNotification', 'App\\Admin', 1, '{\"message\":\"Measurement Practice was added.\",\"url\":\"http:\\/\\/localhost:8000\\/admin\\/quizzes\"}', NULL, '2021-05-10 16:19:24', '2021-05-10 16:19:24'),
+('eca37264-0134-41a9-b58a-7e7673f323e6', 'App\\Notifications\\QuizNotification', 'App\\Admin', 3, '{\"message\":\"Measurement Practice\\\\n was added.\",\"url\":\"http:\\/\\/localhost:8000\\/admin\\/quizzes\"}', NULL, '2021-05-10 16:07:04', '2021-05-10 16:07:04'),
+('f7593ad5-723c-429d-b40f-25ac1a9a7ad6', 'App\\Notifications\\QuizNotification', 'App\\Admin', 3, '{\"message\":\"Measurement Practice was added.\",\"url\":\"http:\\/\\/localhost:8000\\/admin\\/quizzes\"}', NULL, '2021-05-10 16:19:24', '2021-05-10 16:19:24'),
+('facfc7b2-8adb-4ac1-a814-a23393b45c14', 'App\\Notifications\\QuizNotification', 'App\\Admin', 3, '{\"message\":\"Measurement Practice was added.\",\"url\":\"http:\\/\\/localhost:8000\\/admin\\/quizzes\"}', NULL, '2021-05-10 16:40:47', '2021-05-10 16:40:47');
 
 -- --------------------------------------------------------
 
@@ -426,14 +455,16 @@ CREATE TABLE `options` (
 --
 
 INSERT INTO `options` (`id`, `question_id`, `option_text`, `points`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(7, 6, '<p>test</p>', 1, '2021-03-23 07:51:06', '2021-03-23 07:51:06', NULL),
-(8, 6, '<p>test</p>', 0, '2021-03-23 07:51:06', '2021-03-23 07:51:06', NULL),
-(9, 7, '<p>test</p>', 1, '2021-03-23 07:51:39', '2021-03-23 07:51:39', NULL),
-(10, 7, '<p>test</p>', 0, '2021-03-23 07:51:39', '2021-03-23 07:51:39', NULL),
-(11, 8, '<p>Blue  Vitrol</p>', 1, '2021-03-23 10:26:55', '2021-03-23 10:26:55', NULL),
-(12, 8, '<p>Baking soda</p>', 0, '2021-03-23 10:26:55', '2021-03-23 10:26:55', NULL),
-(13, 8, '<p>Washing soda</p>', 0, '2021-03-23 10:26:55', '2021-03-23 10:26:55', NULL),
-(14, 8, '<p>Gypsum</p>', 0, '2021-03-23 10:26:55', '2021-03-23 10:26:55', NULL);
+(1, 1, '<p>kg</p>', 1, '2021-05-06 14:16:01', '2021-05-06 14:16:01', NULL),
+(2, 1, '<p>gram</p>', 0, '2021-05-06 14:16:01', '2021-05-06 14:16:01', NULL),
+(3, 1, '<p>pound</p>', 0, '2021-05-06 14:16:01', '2021-05-06 14:16:01', NULL),
+(4, 2, '<p>kg</p>', 1, '2021-05-06 14:43:43', '2021-05-06 14:43:43', NULL),
+(5, 2, '<p>gram</p>', 0, '2021-05-06 14:43:43', '2021-05-06 14:43:43', NULL),
+(6, 2, '<p>meter</p>', 1, '2021-05-06 14:43:43', '2021-05-06 14:43:43', NULL),
+(7, 2, '<p>second</p>', 1, '2021-05-06 14:43:43', '2021-05-06 14:43:43', NULL),
+(8, 3, 'True', 1, '2021-05-06 14:44:31', '2021-05-06 14:44:31', NULL),
+(9, 3, 'False', 0, '2021-05-06 14:44:31', '2021-05-06 14:44:31', NULL),
+(10, 4, '<p>Measurement is the process of comparing known quantity with unknown quantity.</p>', NULL, '2021-05-06 14:45:59', '2021-05-06 14:45:59', NULL);
 
 -- --------------------------------------------------------
 
@@ -550,9 +581,11 @@ CREATE TABLE `questions` (
 --
 
 INSERT INTO `questions` (`id`, `question_text`, `question_hint`, `image`, `answer_explanation`, `type`, `marks`, `time`, `time_type`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(6, '<p>test</p>', NULL, NULL, NULL, 'Multiple Choices', '10', NULL, NULL, '2021-03-23 07:51:06', '2021-03-23 07:51:06', NULL),
-(7, '<p>test</p>', NULL, NULL, NULL, 'Multiple Answers', '20', NULL, NULL, '2021-03-23 07:51:39', '2021-03-23 07:51:39', NULL),
-(8, '<p>which one of the following salts does not contain water of crystillisation?</p>', NULL, NULL, '<p>Answer:  b</p>', 'Multiple Choices', '1', '30', NULL, '2021-03-23 10:26:55', '2021-03-23 10:26:55', NULL);
+(1, '<p>What is SI unit of mass?</p>', '<p><strong>SI</strong> is the metric system that is used universally as a standard for measurements.</p>', NULL, '<p>SI unit of mass is kg.</p>', 'Multiple Choices', '10', NULL, NULL, '2021-05-06 14:16:01', '2021-05-06 14:16:01', NULL),
+(2, '<p>Which of them listed below are <strong>SI </strong>units?</p>', NULL, NULL, '<p>kg,gram and second are <strong>SI</strong> units.</p>', 'Multiple Answers', '10', '60', NULL, '2021-05-06 14:43:43', '2021-05-06 14:43:43', NULL),
+(3, '<p>Is second <strong>SI</strong> unit of time?</p>', NULL, NULL, '<p>Second is SI unit of time.</p>', 'True or False', '10', NULL, NULL, '2021-05-06 14:44:31', '2021-05-06 14:44:31', NULL),
+(4, '<p>What is measurement?</p>', NULL, NULL, '<p>Measurement is the process of comparing known quantity with unknown quantity.</p>', 'Short Answer', '10', NULL, NULL, '2021-05-06 14:45:59', '2021-05-06 14:45:59', NULL),
+(5, '<p>What is SI?</p>', NULL, NULL, NULL, 'Short Answer', '10', '60', NULL, '2021-05-10 13:50:59', '2021-05-10 13:50:59', NULL);
 
 -- --------------------------------------------------------
 
@@ -570,9 +603,11 @@ CREATE TABLE `question_quiz` (
 --
 
 INSERT INTO `question_quiz` (`question_id`, `quiz_id`) VALUES
-(6, 4),
-(7, 4),
-(8, 4);
+(1, 1),
+(2, 1),
+(3, 1),
+(4, 1),
+(5, 1);
 
 -- --------------------------------------------------------
 
@@ -608,7 +643,8 @@ CREATE TABLE `quizzes` (
 --
 
 INSERT INTO `quizzes` (`id`, `course_id`, `lesson_id`, `title`, `description`, `published`, `attempts_no`, `created_at`, `updated_at`, `deleted_at`, `start_at`, `end_at`, `time`, `time_type`, `pass_marks`, `full_marks`, `remaining_marks`, `quiz_type`, `answer_view`, `answer_publish`) VALUES
-(4, 1, 1, 'Measurement Practice', NULL, 0, 1, '2021-03-23 07:41:22', '2021-03-23 07:41:22', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Mock Test', NULL, 1);
+(1, 1, 1, 'Measurement Practice', NULL, 0, 0, '2021-05-06 14:10:14', '2021-05-06 19:51:34', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Practice Quiz', 'end_of_quiz', 1),
+(2, 2, 2, 'Force Mock Test', NULL, 0, 1, '2021-05-06 15:50:34', '2021-05-06 15:50:34', NULL, NULL, NULL, NULL, NULL, 40.00, 100.00, 100.00, 'Mock Test', 'end_of_quiz', 1);
 
 -- --------------------------------------------------------
 
@@ -633,6 +669,13 @@ CREATE TABLE `quiz_user` (
   `quiz_id` int(10) UNSIGNED DEFAULT NULL,
   `admin_id` int(10) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `quiz_user`
+--
+
+INSERT INTO `quiz_user` (`quiz_id`, `admin_id`) VALUES
+(2, 4);
 
 -- --------------------------------------------------------
 
@@ -781,27 +824,6 @@ INSERT INTO `roles_permissions` (`role_id`, `permission_id`) VALUES
 (2, 54),
 (2, 55),
 (2, 56),
-(3, 1),
-(3, 2),
-(3, 3),
-(3, 4),
-(3, 5),
-(3, 6),
-(3, 7),
-(3, 8),
-(3, 9),
-(3, 10),
-(3, 11),
-(3, 12),
-(3, 13),
-(3, 14),
-(3, 15),
-(3, 16),
-(3, 17),
-(3, 18),
-(3, 19),
-(3, 20),
-(3, 21),
 (3, 22),
 (3, 23),
 (3, 24),
@@ -859,7 +881,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`, `deleted_at`, `address`, `contact`, `school`, `passed`) VALUES
-(1, 'Nomlanga Sweeney', 'admin@admin.com', '$2y$10$/u3K9wtnvksdgfDL8ZXi3.mfWWMlexpGkNgYYCzx7hu.Vr99BR8mC', 'Jy6yE0aKaYlSzfkG2y1zL39KClrAYE3qEjeIabTAsXDKs8MTMZuDp8X95quP', '2021-03-23 07:32:13', '2021-03-23 07:32:13', NULL, 'pohysawovy@mailinator.com', '104', 'halebobuki@mailinator.com', 'wopoqir@mailinator.com');
+(1, 'Bibek Khatri', 'bibekkhatri81@gmail.com', '$2y$10$/1v4we5IrTfS27XUWis2e.wLiTLpwe1VPZaiZw9pBqfPfyOcwYwJC', NULL, '2021-05-06 16:08:57', '2021-05-06 16:08:57', NULL, NULL, NULL, NULL, NULL),
+(2, 'Ram Thapa', 'ram@ram.com', '$2y$10$UfTvfPqVh4vqunSLXOYfn.F7ZR8/V6OYAPxYrVlSn.eEq.QxZDQuq', NULL, '2021-05-10 16:19:09', '2021-05-10 16:19:09', NULL, NULL, NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -990,6 +1013,13 @@ ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `notifications`
+--
+ALTER TABLE `notifications`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `notifications_notifiable_type_notifiable_id_index` (`notifiable_type`,`notifiable_id`);
+
+--
 -- Indexes for table `options`
 --
 ALTER TABLE `options`
@@ -1074,31 +1104,31 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `attempts`
 --
 ALTER TABLE `attempts`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `attempt_answers`
 --
 ALTER TABLE `attempt_answers`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `attempt_options`
 --
 ALTER TABLE `attempt_options`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `courses`
@@ -1122,25 +1152,25 @@ ALTER TABLE `groups`
 -- AUTO_INCREMENT for table `lessons`
 --
 ALTER TABLE `lessons`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `media`
 --
 ALTER TABLE `media`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `options`
 --
 ALTER TABLE `options`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `permissions`
@@ -1152,13 +1182,13 @@ ALTER TABLE `permissions`
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `quizzes`
 --
 ALTER TABLE `quizzes`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -1170,7 +1200,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
