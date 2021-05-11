@@ -74,7 +74,7 @@
                     @if($errors->has('thumbnail'))
                         <span class="text-danger">{{ $errors->first('thumbnail') }}</span>
                     @endif
-                    {{-- {!! Form::label('course_image', 'Course image', ['class' => 'control-label']) !!}
+                    <!-- {!! Form::label('course_image', 'Course image', ['class' => 'control-label']) !!}
                     {!! Form::file('course_image', ['class' => 'form-control', 'style' => 'margin-top: 4px;']) !!}
                     {!! Form::hidden('course_image_max_size', 8) !!}
                     {!! Form::hidden('course_image_max_width', 4000) !!}
@@ -87,7 +87,7 @@
                         <p class="help-block">
                             {{ $errors->first('course_image') }}
                         </p>
-                    @endif --}}
+                    @endif -->
                 </div>
             </div>
             <div class="row">
