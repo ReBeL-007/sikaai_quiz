@@ -90,10 +90,9 @@ class LessonsController extends Controller
     {
         abort_if(Gate::denies('lesson-create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         if(isset($request->course)){
-            $courses = \App\Course::where('id',$request->course)->pluck('title', 'id');
-
+            $courses = \App\Course::where('id',$request->course)->ofTeacher()->pluck('title', 'id');
         }else{
-            $courses = \App\Course::all()->pluck('title', 'id');
+            $courses = \App\Course::ofTeacher()->get()->pluck('title', 'id');
 
         }
 

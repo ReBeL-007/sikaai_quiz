@@ -29,7 +29,7 @@
                 <label for="quiz_id" placeholder="Please select a quiz">Please select a quiz</label>
                 <select class="{{ $errors->has('quiz') ? 'is-invalid' : '' }}" name="quiz_id" id="quiz_id" required>
                     @if (count($quizzes)>1)
-                    <option value="" rel-time="" rel-marks="">Please select Quiz</option>
+                    <option value="" rel-time="" rel-marks="" rel-type="">Please select Quiz</option>
                     @endif
                     @foreach($quizzes as $id => $quiz)
                     <option value="{{ $quiz->id }}" {{ old('quiz_id') == $quiz->id ? 'selected' : '' }}
@@ -69,9 +69,10 @@
             <option value="Multiple Answers" {{ old('type') == 'Multiple Answers' ? 'selected' : '' }}>Multiple Answers
             </option>
             <option value="True or False" {{ old('type') == 'True or False' ? 'selected' : '' }}>True or False </option>
-            {{-- <option value="Short Answer" {{ old('type') == 'Short Answer' ? 'selected' : '' }}>Short Answer
+            <option value="Short Answer" {{ old('type') == 'Short Answer' ? 'selected' : '' }}>Short Answer
             </option>
-            <option value="Long Answer" {{ old('type') == 'Long Answer' ? 'selected' : '' }}>Long Answer </option> --}}
+            {{-- <option value="Long Answer" {{ old('type') == 'Long Answer' ? 'selected' : '' }}>Long Answer </option>
+            --}}
         </select>
         @if($errors->has('type'))
         <div class="invalid-feedback">
@@ -248,6 +249,7 @@
 </form>
 
 </div>
+
 @endsection
 
 @section('scripts')
@@ -256,6 +258,7 @@
     $(document).ready(function(){
         $(document).on('change','#quiz_id',function(){
             $selected_option = $(this).find('option:selected');
+            console.log($selected_option.attr('rel-type'));
             if( $selected_option.attr('rel-time') == ''){
                 $('#time-container').removeClass('d-none');
             }else{
@@ -299,14 +302,17 @@
                 $("#time, #time_type").attr('disabled','true');
                 }
             });
-            var i=$('#mcq input[type="radio"]').length;
         //adding options dynamically
         $('#add_mcq_option').click(function(){
+            var i=$('#mcq input[type="radio"]').length;
             i++;
-            $('#mcq').append('<div class="col-md-12 row option-pad" id="row'+i+'"><br><div class="icheck-success"> <input type="radio" name="points" id="option'+i+'" value="1"> <label for="option'+i+'"> </label> </div> <div class="col-md-8 option-container"> <label for="question-text" class="editor-label">Option '+i+'</label> <textarea class="d-none" name="option_text[]" required></textarea> <div class="option-editor {{ $errors->has('option_text') ? 'is-invalid' : '' }}" id="option_text_'+i+'">{{ old('option_text[]', '') }}</div> </div> <div class="col-md-1"><button id="'+i+'" class="btn btn-secondary remove" alt="Delete this option"><i class="fas fa-trash"></i></button></div> @if($errors->has('option_text')) <div class="invalid-feedback"> {{ $errors->first('option_text') }} </div> @endif <span class="help-block">{{ trans('cruds.option.fields.option_text_helper') }}</span> </div>');
+            if($('#maq-row'+i).length >0 && i == 4){
+                i=3;
+            }
+            $('#mcq').append('<div class="col-md-12 row option-pad" id="row'+i+'"><br><div class="icheck-success"> <input type="radio" name="points" id="option'+i+'" value="1"> <label for="option'+i+'"> </label> </div> <div class="col-md-8 option-container"> <label for="question-text" class="editor-label">Option '+i+'</label> <textarea class="d-none" name="option_text[]" required></textarea> <div class="option-editor " id="option_text_'+i+'">{{ old('option_text[]', '') }}</div> </div> <div class="col-md-1"><button id="'+i+'" class="btn btn-secondary remove" alt="Delete this option"><i class="fas fa-trash"></i></button></div>');
 
             var j = $('#mcq input[type="radio"]').length;
-            // console.log(j)
+
             if(j>=4){
                     $('#add_mcq_option').hide();
                 }
@@ -327,11 +333,25 @@
                     }
         });
 
-        var a=$('#maq input[type="checkbox"]').length;
         //adding maq options dynamically
         $('#add_maq_option').click(function(){
+            a=$('#maq input[type="checkbox"]').length;
             a++;
-            $('#maq').append('<div class="col-md-12 row option-pad"> <div class="icheck-success"> <input type="checkbox" name="maq_points[]" id="checkbox'+a+'" value="'+a+'"> <label for="checkbox'+a+'"> </label> </div> <div class="col-md-8 option-container"> <label for="question-text" class="editor-label">Option '+a+'</label> <textarea class="d-none" name="option_text2[]" required></textarea> <div class="option-editor {{ $errors->has('option_text2') ? 'is-invalid' : '' }}" id="option_text_maq_'+a+'">{{ old('option_text2[]', '') }}</div> </div> @if($errors->has('option_text2')) <div class="invalid-feedback"> {{ $errors->first('option_text2') }} </div><div class="col-md-1"><button id="'+a+'" class="btn btn-secondary remove" alt="Delete this option"><i class="fas fa-trash"></i></button> @endif <span class="help-block">{{ trans('cruds.option.fields.option_text_helper') }}</span> </div>');
+            if($('#maq-row'+a).length >0 && a == 4){
+                a=3;
+            }
+            $('#maq').append(`<div class="col-md-12 row option-pad" id="maq-row${a}">
+                <div class="icheck-success"> <input type="checkbox" name="maq_points[]" id="checkbox${a}" value="${a}"> <label
+                        for="checkbox${a}"> </label> </div>
+                <div class="col-md-8 option-container"> <label for="question-text" class="editor-label">Option ${a}</label>
+                    <textarea class="d-none" name="option_text2[]" required></textarea>
+                    <div class="option-editor" id="option_text_maq_${a}">
+                        {{ old('option_text2[]', '') }}</div>
+                </div>
+                <div class="col-md-1"><button id="${a}" class="btn btn-secondary remove2" alt="Delete this option"><i
+                            class="fas fa-trash"></i></button>
+                </div>
+            </div>`);
             let $this = $('#option_text_maq_'+a);
             InlineEditor.create( document.querySelector( '#option_text_maq_'+a ), optionConfig ).then(editor=>{
                 editor.model.document.on( 'change', ( evt, data ) => {
@@ -345,9 +365,9 @@
                 }
         });
 
-        $('body').on('click','.remove2',function(){
+        $(document).on('click','.remove2',function(){
             var button_id = $(this).attr("id");
-            $('#row'+button_id+'').remove();
+            $('#maq-row'+button_id+'').remove();
             var b = $('#maq input[type="checkbox"]').length;
             if(b<4){
                         $('#add_maq_option').show();

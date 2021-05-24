@@ -10,7 +10,7 @@
     <!-- <link rel="stylesheet" href="css/style.css" /> -->
     <link rel = "icon" href ="{{asset('gci.jpg')}}" type = "image/x-icon">
     <link rel="stylesheet" href="{{asset('css/login/register-sign-in.css')}}" />
-    <title>Sign in & Sign up Form</title>
+    <title>AsmitaQuiz</title>
 </head>
 
 <body>
@@ -78,35 +78,35 @@
                     <h2 class="title">Sign up</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Name" name="name" value="{{ old('name', null) }}" autocomplete="new-name" />
+                        <input type="text" placeholder="Name" name="new-name" value="{{ old('new-name', null) }}" autocomplete="new-name" />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input type="email" placeholder="Email"  value="{{ old('email', null) }}" name="email" autocomplete="new-email"  autocomplete="off"/>
+                        <input type="email" placeholder="Email"  value="{{ old('new-email', null) }}" name="new-email" autocomplete="new-email"  autocomplete="off"/>
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Password" name="password"  autocomplete="new-password"/>
+                        <input type="password" placeholder="Password" name="new-password"  autocomplete="new-password"/>
                     </div>
                     <input type="submit" class="btn" value="Sign up" />
-                    @if ($errors->has('name'))
+                    @if ($errors->has('new-name'))
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('name') }}</strong>
+                        <strong>{{ str_replace('new-','',$errors->first('new-name')) }}</strong>
                     </span>
                     @endif
-                    @if ($errors->has('email'))
+                    @if ($errors->has('new-email'))
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('email') }}</strong>
+                        <strong>{{ str_replace('new-','',$errors->first('new-email'))}}</strong>
                     </span>
                     @endif
-                    @if ($errors->has('password'))
+                    @if ($errors->has('new-password'))
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('password') }}</strong>
+                        <strong>{{ str_replace('new-','',$errors->first('new-password')) }}</strong>
                     </span>
                     @endif
-                    @if ($errors->has('invalid'))
+                    @if ($errors->has('mew-invalid'))
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('invalid') }}</strong>
+                        <strong>{{ str_replace('new-','',$errors->first('new-invalid')) }}</strong>
                     </span>
                     @endif
                     <!-- <p class="social-text">Or Sign up with social platforms</p>

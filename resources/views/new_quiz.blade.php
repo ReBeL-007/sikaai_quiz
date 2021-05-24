@@ -595,6 +595,25 @@
         height: 2rem;
         cursor: pointer;
     }
+
+    .answer-container {
+        border: 1px #0e7fe1 solid;
+        position: relative;
+        border-radius: 8px;
+    }
+
+    .answer-append {
+        position: absolute;
+        top: -.5rem;
+        left: 1rem;
+        background-color: white;
+        padding: 0px 10px 0px 10px;
+        font-size: .7rem;
+    }
+
+    .ck.ck-editor__editable:not(.ck-editor__nested-editable).ck-rounded-corners {
+        border-radius: 8px;
+    }
 </style>
 <div class="live-test-wrapper">
     <div class="row d-flex justify-content-center cover">
@@ -626,6 +645,9 @@
                         </div>
                     </div>
                     <br />
+                    <div>
+                        Question <span class="question-no-span"></span> out of <span class="total-question-span"></span>
+                    </div>
                     <div class="question-container">
                         <div class="question" rel="">
                             <div class="row">
@@ -681,6 +703,11 @@
                                         </label>
                                     </div>
                                 </div>
+                                <div class="answer-container d-none">
+                                    <div class="answer" id="answer-editor">
+                                    </div>
+                                    <div class="answer-append">Write your answer</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -705,6 +732,7 @@
 
 @endsection
 @section('scripts')
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
 <script>
     let $question_editor;
     InlineEditor.create( document.querySelector('#question-editor'), {
@@ -766,6 +794,12 @@
                 editor.isReadOnly = true;
     } );
     });
+
+    let $answer_editor;
+        InlineEditor.create( document.querySelector('#answer-editor'), answerConfig
+        ) .then( editor => {
+                $answer_editor = editor;
+    } );
     $(function () {
         let editors = [];
         var quiz = [];
@@ -775,7 +809,10 @@
         var $total_question = 0;
         var $user_id = '{{auth()->user()->id }}';
         let timer;
-
+        let answerInterval;
+        let $left_time = null;
+        let $time_answer = [];
+        let $timers = [];
         //question from ajax
         $.ajax({
             url: "{{route('get_question',$quiz)}}"
@@ -784,31 +821,19 @@
             , success: function(json) {
                 quiz = json;
                 $total_question = quiz.questions.length;
+                $('.total-question-span').html($total_question);
             }
         });
         function setCookie(cname, cvalue, exdays) {
-            d = new Date();
-            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-            expires = "expires=" + d.toUTCString();
-            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/;";
+            Cookies.set(cname, cvalue, { expires: exdays});
         }
 
         // fuction to get cookie
         function getCookie(cname) {
-            name = cname + "=";
-            ca = document.cookie.split(';');
-            for (i = 0; i < ca.length; i++) {
-                c = ca[i];
-                while (c.charAt(0) == ' ') {
-                    c = c.substring(1);
-                }
-                if (c.indexOf(name) == 0) {
-                    return c.substring(name.length, c.length);
-                }
-            }
-            return "";
+            return Cookies.get(cname) ;
         }
-        if (getCookie('attempt_' + quiz.id + '_' + $user_id) == '' || getCookie('attempt_' + quiz.id + '_' + $user_id) == 'undefined') {
+
+        if (getCookie('attempt_' + quiz.id + '_' + $user_id) == '' || getCookie('attempt_' + quiz.id + '_' + $user_id) == undefined) {
             $.ajax({
                 type: 'POST'
                 ,async:false
@@ -829,10 +854,13 @@
             $attempt = JSON.parse(getCookie('attempt_' + quiz.id + '_' + $user_id));
         }
 
-        if (getCookie('answer_'+quiz.id + '_' + $user_id) != '') {
+        if (getCookie('answer_'+quiz.id + '_' + $user_id) != undefined) {
             $answer = JSON.parse(getCookie('answer_'+quiz.id + '_' + $user_id));
         }
-        if (getCookie('question_no_' + quiz.id + '_' + $user_id) != '') {
+        if (getCookie('time_answer_'+quiz.id + '_' + $user_id) != undefined) {
+            $time_answer = JSON.parse(getCookie('time_answer_'+quiz.id + '_' + $user_id));
+        }
+        if (getCookie('question_no_' + quiz.id + '_' + $user_id) != undefined) {
             $question_no = parseInt(getCookie('question_no_' + quiz.id + '_' + $user_id));
         }
         if(quiz.time!=null){
@@ -848,7 +876,6 @@
                 break;
             }
             time *= 1000;
-            console.log(time);
             $date =new Date($attempt.created_at);
             $now  = new Date();
             $leftTime = (($date.getTime()+time)-$now)/(1000*60);
@@ -862,20 +889,27 @@
         getQuestion($question_no);
 
         function getQuestion($ele) {
+            clearInterval(answerInterval);
+            $answer_editor.setData('');
             $ele--;
             setCookie('question_no_' + quiz.id + '_' + $user_id, $question_no, 1);
             //disabling prev and next button
             if ($question_no != 1) {
+                $('.prev').removeClass('d-none');
                 $('.prev').prop('disabled', false);
             } else {
+                $('.prev').addClass('d-none');
                 $('.prev').prop('disabled', true);
             }
             if ($question_no <= $total_question) {
+                $('.next').removeClass('d-none');
                 $('.next').prop('disabled', false);
             } else {
+                $('.next').addClass('d-none');
                 $('.next').prop('disabled', true);
             }
             //updating question as per question number
+            let is_time_up = false;
             if(quiz.questions[$ele].time != null){
                 switch(quiz.questions[$ele].time_type){
                 case 1:
@@ -888,26 +922,45 @@
                 time = quiz.questions[$ele].time/60;
                 break;
             }
-            $('.prev').remove();
-            setLogoutTimer(time,'question');
+            // $('.prev').remove();
+            $.each($time_answer,function(i,data){
+                if(data.question_id == quiz.questions[$ele].id){
+                    time = data.time;
+                    if(time<=0){
+                        is_time_up = true;
+                    }
+                }
+            });
+            if(is_time_up){
+                $('.option-wrapper').addClass('d-none');
+            }else{
+                $timers.push({"timer":setLogoutTimer(time,'question'),"question_no":quiz.questions[$ele].id});
+            }
             $('.time-indicator').removeClass('d-none');
             }
             $('.option-wrapper').addClass('d-none');
+            $('.answer-container').addClass('d-none');
             switch (quiz.questions[$ele].type) {
                 case "Multiple Choices":
                     $.each(quiz.questions[$ele].question_options, function(i, ele) {
-                       renderOption(i,ele);
+                       renderOption(i,ele,is_time_up=is_time_up);
                     });
                     break;
                 case "True or False":
                 $.each(quiz.questions[$ele].question_options, function(i, ele) {
-                       renderOption(i,ele);
+                       renderOption(i,ele,is_time_up=is_time_up);
                     });;
                     break;
                 case "Multiple Answers":
                 $.each(quiz.questions[$ele].question_options, function(i, ele) {
-                       renderOption(i,ele,'checkbox');
+                       renderOption(i,ele,'checkbox',is_time_up=is_time_up);
                     });
+                    break;
+                case "Short Answer":
+                    $('.answer-container').removeClass('d-none');
+                    answerInterval = setInterval(function() {
+                        localStorage.setItem('short_answer_'+quiz.questions[$ele].id+ '_' + $user_id,$answer_editor.getData());
+                    }, 5000);
                     break;
             }
             $question_template = renderQuestion($question_no,quiz.questions[$ele].question_text,quiz.questions[$ele].question_hint,quiz.questions[$ele].id,quiz.answer_view,quiz.questions[$ele].answer_explanation);
@@ -916,7 +969,6 @@
 
     //progress bar
     progress = ($answer.length/$total_question)*100;
-    console.log($answer.length);
     $('.progress-bar').css('width',progress+'%');
     $('.progress-percent').html(parseInt(progress)+'%');
     //selecting selected answers
@@ -926,9 +978,13 @@
         function selectOption() {
             $.each($answer, function(i, ele) {
                 if (ele.question_id == quiz.questions[$question_no-1].id) {
+                    if(ele.options == 'text_answer'){
+                        $answer_editor.setData(localStorage.getItem('short_answer_'+quiz.questions[$question_no-1].id + '_' + $user_id));
+                    }else{
                     $.each(ele.options, function(key, val) {
                         $("#option-" + val).trigger('click');
                     });
+                }
                 }
             });
         }
@@ -938,6 +994,7 @@
             $('.hint').removeClass('show');
             $('.question').addClass(`questions-${question_no}`).attr('rel',`${question_id}`);
             $('.question-no').html('Q.'+question_no);
+            $('.question-no-span').html(question_no);
             $question_editor.setData(question_text);
             if(answer_available == 'during_quiz'){
                 $('.solution').attr('src',"{{asset('solution.png')}}").attr('data-original-title','Solution available').addClass('active');
@@ -962,9 +1019,11 @@
             }
         }
 
-        function renderOption(option_no,ele,option_type='radio'){
+        function renderOption(option_no,ele,option_type='radio',is_time_up=false){
             let $option_wrapper = $('.option-wrapper')[option_no];
-            $($option_wrapper).removeClass('d-none').removeClass('active');
+            if(!is_time_up){
+                $($option_wrapper).removeClass('d-none').removeClass('active');
+            }
             $($option_wrapper).find('input').attr('id','option-'+ele.id).val(ele.id);
             if(option_type == 'checkbox'){
                 $($option_wrapper).find('input').attr('type','checkbox').prop("checked", false);
@@ -977,14 +1036,23 @@
             $option_editors[option_no].setData(ele.option_text);
         }
 
-
         //when next btn is clicked
         $(document).on('click', '.next', function() {
             var selected_options = [];
             $.each($("input[name='option']:checked"), function() {
                 selected_options.push($(this).val());
             });
-            addAnswer(selected_options);
+            if(quiz.questions[$question_no-1].time == null){
+                $left_time = null;
+            }
+            addAnswer(selected_options,$left_time);
+            if(!quiz.time){
+                // clearInterval(timer);
+                $('.time-indicator').addClass('d-none');
+            }
+            $.each($("input[name='option']"), function() {
+                $(this).prop('checked',false);
+            });
             if($question_no<$total_question){
                 $question_no++;
             getQuestion($question_no);
@@ -993,19 +1061,39 @@
             }
         });
 
-        function addAnswer(option) {
+        function addAnswer(option,time=null) {
             var $question_id = quiz.questions[$question_no-1].id;
+            if(quiz.questions[$question_no-1].type == "Short Answer"){
+                if($answer_editor.getData() != ''){
+                    option = "text_answer";
+                localStorage.setItem('short_answer_'+$question_id + '_' + $user_id,$answer_editor.getData());
+                }
+            }
             if(option.length!=0){
             $answer.map(function(ele,i){
                 if (ele.question_id == $question_id) {
                         $answer.splice(i, 1);
                 }
             });
-                $answer.push({
+            $ans = {
                 'question_id': $question_id
                 , 'options': option
-            });
+            }
+            $answer.push($ans);
             setCookie('answer_'+quiz.id + '_' + $user_id, JSON.stringify($answer), 1);
+            }
+            if(time!=null){
+            $time_answer.map(function(ele,i){
+            if (ele.question_id == $question_id) {
+                    $time_answer.splice(i, 1);
+            }
+            });
+            $time_answer.push({
+                'question_id': $question_id
+                , 'options': (option == 0) ? 0:option
+                ,'time' : time
+            });
+            setCookie('time_answer_'+quiz.id + '_' + $user_id, JSON.stringify($time_answer), 1);
             }
         }
 
@@ -1015,7 +1103,17 @@
             $.each($("input[name='option']:checked"), function() {
                 selected_options.push($(this).val());
             });
-            addAnswer(selected_options);
+            if(quiz.questions[$question_no-1].time == null){
+                $left_time = null;
+            }
+            addAnswer(selected_options,$left_time);
+            if(!quiz.time){
+                // clearInterval(timer);
+                $('.time-indicator').addClass('d-none');
+            }
+            $.each($("input[name='option']"), function() {
+                $(this).prop('checked',false);
+            });
             if($question_no>0){
                 $question_no--;
             getQuestion($question_no);
@@ -1023,6 +1121,7 @@
             getQuestion($question_no);
             }
         });
+
 
         $(document).on('click','.hint.active',function(){
             $('.hint-text-container').removeClass('d-none');
@@ -1062,10 +1161,21 @@
                 selected_options.push($(this).val());
             });
             addAnswer(selected_options);
+            clearInterval(answerInterval);
             submit();
         });
 
         function submit(){
+            console.log($answer);
+            let finalAnswer = [];
+            $.each($answer,function(i,element){
+                ele = element;
+                if(ele.options == "text_answer"){
+                    ele.options = localStorage.getItem('short_answer_'+ele.question_id + '_' + $user_id);
+                }
+                finalAnswer.push(ele);
+            });
+            console.log(finalAnswer);
             $.ajax({
                 type: 'POST'
                 , url: "{{ route('test_update') }}"
@@ -1073,15 +1183,15 @@
                     'X-CSRF-TOKEN': '{{ csrf_token() }}'
                 , }
                 , data: {
-                    'answers': $answer
+                    'answers': finalAnswer
                     , 'quiz': quiz.id
                     , 'user': $user_id
                     ,'attempt': $attempt.id
                 , }
                 ,success: function(data) {
-                    setCookie('attempt_' + quiz.id + '_' + $user_id,'');
-                    setCookie('answer_' + quiz.id + '_' + $user_id,'');
-                    setCookie('question_no_' + quiz.id + '_' + $user_id,'');
+                    Cookies.remove('attempt_' + quiz.id + '_' + $user_id);
+                    Cookies.remove('answer_' + quiz.id + '_' + $user_id);
+                    Cookies.remove('question_no_' + quiz.id + '_' + $user_id);
                     window.location.replace("/response/"+$attempt.id);
                 }
             , });
@@ -1103,17 +1213,19 @@
           let second = String(parseInt(time % 60)).padStart(2,0);
           const stringTimer =+hour <= 0? `${minute}:${second}` : `${hour}:${minute}:${second}`;
           updateTimer.textContent = stringTimer;
+          $left_time = time/60;
           //if time = 0
 
         if (parseInt(time) === 0) {
             if (type == 'quiz'){
                 submit();
             }else{
+                if(timer_question_id == quiz.questions[$question_no-1].id){
                 var selected_options = [];
                 $.each($("input[name='option']:checked"), function() {
                     selected_options.push($(this).val());
                 });
-                addAnswer(selected_options);
+                addAnswer(selected_options,time=$left_time);
                 if($question_no<$total_question){
                     $question_no++;
                 getQuestion($question_no);
@@ -1121,12 +1233,33 @@
                 getQuestion($question_no);
                 }
             }
-            clearInterval(timer);
-              updateTimer.textContent = 'Time Up';
-            if($total_question == $question_no){
-                submit();
-            }
         }
+                $time_answer.map(function(ele,i){
+                if (ele.question_id == timer_question_id) {
+                        $time_answer.splice(i, 1);
+                }
+                });
+                $time_answer.push({
+                    'question_id': timer_question_id
+                    ,'time' : time/60
+                });
+                setCookie('time_answer_'+quiz.id + '_' + $user_id, JSON.stringify($time_answer), 1);
+                clearInterval(timer);
+                updateTimer.textContent = 'Time Up';
+                $('.time-indicator').addClass('d-none');
+        }
+            if(timer_question_id != undefined){
+                $time_answer.map(function(ele,i){
+            if (ele.question_id == timer_question_id) {
+                    $time_answer.splice(i, 1);
+            }
+            });
+            $time_answer.push({
+                'question_id': timer_question_id
+                ,'time' : time/60
+            });
+            setCookie('time_answer_'+quiz.id + '_' + $user_id, JSON.stringify($time_answer), 1);
+            }
 
           //delay
           time--;
@@ -1134,6 +1267,7 @@
         // conversion
         let intoSeconds = minutes * 60;
         let time = intoSeconds;
+        let timer_question_id = quiz.questions[$question_no-1].id
         tick();
         try{
         clearInterval(timer);
@@ -1141,11 +1275,8 @@
 
         }
         timer = setInterval(tick, 1000);
-
         return timer;
       };
-
-
 
 });
 

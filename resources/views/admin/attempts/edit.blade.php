@@ -284,6 +284,7 @@ window.speechSynthesis.speak(msg);
                 });
 
         $attempt_no = 0;
+
         $.each($attempts,function(i,ele){
             if($attempt_no==i){
             $('.users-select').append('<option value='+i+'>'+$attempts[i].user.name+'</option>').trigger('selected');
@@ -307,7 +308,11 @@ window.speechSynthesis.speak(msg);
             loadAttempts();
             }
         });
+        if($attempts.length ==0){
+            $('.answers-container').append('<p class="text-center">No attempts available</p>');
+        }else{
         loadAttempts();
+        }
         function loadAttempts(){
             $attempt = $attempts[$attempt_no];
             $quiz = $attempt.quiz;
@@ -327,7 +332,7 @@ window.speechSynthesis.speak(msg);
                         $image = '<div class="row image-viewer">';
                         $.each($attempt_answers.attempt_options,function($i,$ele){
                         if($ele.answer_text!=null){
-                            $option += '<textarea class="readonly-editor" id="answer_'+i+'">'+$ele.answer_text+'</textarea>';
+                            $option += '<div class="readonly-editor" id="answer_'+i+'">'+$ele.answer_text+'</div>';
                         }
                         if($ele.image !=null){
                         $image += '<div class="col-md-4"><img class="img-thumbnail rounded" src="/'+$ele.image.replace('public','storage')+'" alt="Picture "'+$i+'></div>';

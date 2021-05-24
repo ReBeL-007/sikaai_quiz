@@ -44,12 +44,12 @@
                     id="quiz_type" required>
                     <option value="" {{ $test->quiz_type || old('quiz_type') ? 'selected' : '' }}>Select Quiz Type
                     </option>
-                    <option value="Mock Test" {{ $test->quiz_type|| old('quiz_type') ? 'selected' : '' }}>Mock Test
+                    <option value="Mock Test" {{ ($test->quiz_type == "Mock Test"|| old('quiz_type') == "Mock Test") ? 'selected' : '' }}>Mock Test
                     </option>
-                    <option value="Practice Quiz" {{ $test->quiz_type|| old('quiz_type') ? 'selected' : '' }}>
+                    <option value="Practice Quiz" {{ ($test->quiz_type == "Practice Quiz" || old('quiz_type') == "Practice Quiz")? 'selected' : '' }}>
                         Practice
                         Quiz</option>
-                    <option value="Normal Quiz" {{ $test->quiz_type|| old('quiz_type') ? 'selected' : '' }}>Normal
+                    <option value="Normal Quiz" {{ ($test->quiz_type == "Normal Quiz" || old('quiz_type') == "Normal Quiz") ? 'selected' : '' }}>Normal
                         Quiz</option>
                 </select>
             </div>
@@ -100,7 +100,7 @@
     </div>
 </div>
 
-<div class="row">
+{{-- <div class="row">
     <div class="col-md-12 form-group">
         {!! Form::label('published', 'Published', ['class' => 'control-label']) !!}
         {!! Form::hidden('published', 0) !!}
@@ -112,11 +112,11 @@
         </p>
         @endif
     </div>
-</div>
+</div> --}}
 
 <div class="row">
     <div class="col-md-12 form-group">
-        {!! Form::label('answer_publish', 'Publish Answer', ['class' => 'control-label']) !!}
+        {!! Form::label('answer_publish', 'Publish Result', ['class' => 'control-label']) !!}
         {!! Form::hidden('answer_publish', 0) !!}
         {!! Form::checkbox('answer_publish', 1, false, ['id'=>'',($test->answer_publish)?'checked':'']) !!}
         <p class="help-block"></p>
@@ -182,7 +182,7 @@
         <input type="checkbox" name="" id="end_at" {{($test->end_at)?'checked':''}}> Enable
     </div>
 </div>
-<div class="form-group row">
+<div class="form-group row d-none " id="time-container">
     <div class="col-12 row">
         <label for="time" placeholder="Time Limit">Time Limit: </label>
         <div class="form-group col-lg-2">
@@ -210,7 +210,22 @@
             to add time per each question</small>
     </p>
 </div>
-<div class="row">
+<div class="row d-none" id="attempt-container">
+            <div class="col-md-12 form-group">
+                {!! Form::label('attempts_no', 'No of attempts', ['class' => 'control-label required']) !!}
+                {!! Form::number('attempts_no', old('attempts_no',0),
+                ['class' =>
+                'form-control', 'placeholder' => '','disabled']) !!}
+                <p class="help-block"><small class="form-text text-muted">0 means can attempt multiple times</small></p>
+                @if($errors->has('attempts_no'))
+                <p class="help-block">
+                    {{ $errors->first('attempts_no') }}
+                </p>
+                @endif
+
+            </div>
+        </div>
+<div class="row d-none" id="full-mark-container">
     <div class="col-md-12 form-group">
         {!! Form::label('full_marks', 'Total Marks', ['class' => 'control-label']) !!}
         {!! Form::number('full_marks', old('full_marks'), ['class' => 'form-control', 'placeholder' => '']) !!}
@@ -222,7 +237,7 @@
         @endif
     </div>
 </div>
-<div class="row">
+<div class="row d-none" id="pass-mark-container">
     <div class="col-md-12 form-group">
         {!! Form::label('pass_marks', 'Grade to pass', ['class' => 'control-label']) !!}
         {!! Form::number('pass_marks', old('pass_marks'), ['class' => 'form-control', 'placeholder' => '']) !!}
@@ -280,6 +295,7 @@
                         $('#attempts_no').removeAttr('disabled');
                         break;
                     default:
+                        $('#attempts_no').val(0);
                         break;
                 }
             });

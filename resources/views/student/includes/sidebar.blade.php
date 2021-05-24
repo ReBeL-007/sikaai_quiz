@@ -1,5 +1,5 @@
 <a href="{{route('home')}}" class="brand-link">
-    <img src="{{asset('gci.jpg')}}" alt="Asmita Logo" class="brand-image" />
+    <img src="{{asset('gci.jpg')}}" alt="GCI Logo" class="brand-image" />
 </a>
 
 <div class="sidebar">

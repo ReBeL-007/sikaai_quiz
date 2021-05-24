@@ -14,18 +14,46 @@
                     <h1 class="mx-auto text-center"><svg class="ico-cup">
                             <use xlink:href="#cup"></use>
                         </svg>Leaderboard</h1>
-                    <ol>
-                        @foreach ($attempts as $attempt)
-                        <li>
-                            <mark>{{$attempt->user->name}}</mark>
-                            <small>{{$attempt->total_marks}}</small>
-                        </li>
-
-                        @endforeach
+                    <div class="quiz-selection-container d-flex justify-content-center">
+                        <select name="quiz-selection" id="quiz-selection">
+                            @foreach ($quiz_for_leaderboard as $quiz)
+                            <option value="{{$quiz->id}}">{{$quiz->title}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <ol class="leaderbord-ol mt-2">
                     </ol>
                 </div>
             </div>
 
+            <div class="col-md-4 content">
+                <div class="upcoming-test y-scroll">
+                    <h4>Available Tests <small><a href="{{route('quiz_index')}}">See all</a></small> </h4>
+                    @if (count($quizzes)==0)
+                    <p>No Available Tests</p>
+                    @else
+
+                    @foreach ($quizzes as $test)
+
+                    <div class="upcoming-test-list" @if (rand(1,4)==2) style="background: rgba(190, 230, 243, 0.5);"
+                        @elseif(rand(1,4)==3) style="background: rgba(255, 221, 89, 0.3);" @elseif(rand(1,4)>3)
+                        style="background:
+                        rgba(169, 227, 200, 0.7);"@endif>
+                        <div class="row">
+                            <div class="col-md-9">
+                                <h5>{{$test->title}}</h5>
+                                <p>{{$test->course->category->name}} ( {{$test->course->title}} )</p>
+                            </div>
+                            <div class="col-md-3 live-class">
+                                <a href="{{route('quizUrl',['id'=>$test->id])}}">Take Quiz</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    @endforeach
+                    @endif
+                </div>
+            </div>
             <div class="col-md-4">
                 <div class="upcoming-test y-scroll">
                     <h4>Upcoming Tests <small><a href="{{route('quiz_index')}}">See all</a></small> </h4>
@@ -61,79 +89,77 @@
 
                     @endforeach
                     @endif
-
                 </div>
+            </div>
 
 
-
-                {{-- <div class="test-result">
+            {{-- <div class="test-result">
                     <h4>Test Results</h4>
                     <div class="test-result-content">
 
                         <img src="{{asset('Teacher_Profile.png')}}" alt="">
 
-                <div class="row">
-                    <div class="col-md-4 chart">
-                        <img src="{{asset('Teacher_Profile.png')}}" alt="">
+            <div class="row">
+                <div class="col-md-4 chart">
+                    <img src="{{asset('Teacher_Profile.png')}}" alt="">
+                </div>
+                <div class="col-md-8 test-result-content-description">
+                    <div class="row">
+                        <div class="col-md-2 ellipse-1">
+                            <img src="{{asset('Ellipse 54.png')}}" alt="">
+                        </div>
+                        <div class="col-md-7">
+                            <p>English</p>
+                        </div>
+                        <div class="col-md-3">
+                            <p> 78</p>
+                        </div>
                     </div>
-                    <div class="col-md-8 test-result-content-description">
-                        <div class="row">
-                            <div class="col-md-2 ellipse-1">
-                                <img src="{{asset('Ellipse 54.png')}}" alt="">
-                            </div>
-                            <div class="col-md-7">
-                                <p>English</p>
-                            </div>
-                            <div class="col-md-3">
-                                <p> 78</p>
-                            </div>
+                    <div class="row" style="margin-top: -10px;">
+                        <div class="col-md-2 ellipse-1">
+                            <img src="{{asset('Ellipse 52.png')}}" alt="">
                         </div>
-                        <div class="row" style="margin-top: -10px;">
-                            <div class="col-md-2 ellipse-1">
-                                <img src="{{asset('Ellipse 52.png')}}" alt="">
-                            </div>
-                            <div class="col-md-7">
-                                <p>Logical Reasoning </p>
-                            </div>
-                            <div class="col-md-3">
-                                <p> 78</p>
-                            </div>
+                        <div class="col-md-7">
+                            <p>Logical Reasoning </p>
                         </div>
-                        <div class="row" style="margin-top: -10px;">
-                            <div class="col-md-2 ellipse-1">
-                                <img src="{{asset('Ellipse 55.png')}}" alt="">
-                            </div>
-                            <div class="col-md-7">
-                                <p>Quantative Analysis</p>
-                            </div>
-                            <div class="col-md-3">
-                                <p> 78</p>
-                            </div>
+                        <div class="col-md-3">
+                            <p> 78</p>
                         </div>
-                        <div class="row" style="margin-top: -10px;">
-                            <div class="col-md-2 ellipse-1">
-                                <img src="{{asset('Ellipse 53.png')}}" alt="">
-                            </div>
-                            <div class="col-md-7">
-                                <p>General Awareness</p>
-                            </div>
-                            <div class="col-md-3">
-                                <p> 78</p>
-                            </div>
+                    </div>
+                    <div class="row" style="margin-top: -10px;">
+                        <div class="col-md-2 ellipse-1">
+                            <img src="{{asset('Ellipse 55.png')}}" alt="">
                         </div>
-                        <div class="row" style="margin-top: -10px;">
-                            <div class="col-md-9">
-                                <p style="font-weight: 600;">Total Marks</p>
-                            </div>
-                            <div class="col-md-3">
-                                <p style="font-weight: 600;">321</p>
-                            </div>
+                        <div class="col-md-7">
+                            <p>Quantative Analysis</p>
+                        </div>
+                        <div class="col-md-3">
+                            <p> 78</p>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: -10px;">
+                        <div class="col-md-2 ellipse-1">
+                            <img src="{{asset('Ellipse 53.png')}}" alt="">
+                        </div>
+                        <div class="col-md-7">
+                            <p>General Awareness</p>
+                        </div>
+                        <div class="col-md-3">
+                            <p> 78</p>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: -10px;">
+                        <div class="col-md-9">
+                            <p style="font-weight: 600;">Total Marks</p>
+                        </div>
+                        <div class="col-md-3">
+                            <p style="font-weight: 600;">321</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div> --}}
-    </div>
+        </div>
+    </div> --}}
     </div>
     </div>
     <svg style="display: none;">
@@ -165,5 +191,33 @@
 @section('scripts')
 <!-- additional js -->
 <!-- <script src="{{ asset('/js/admin/jquery.min.js')}}"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+    integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+    crossorigin="anonymous"></script>
+<script>
+    $(function(){
+        $('#quiz-selection').val($('#quiz-selection option:selected').val()).trigger('change');
+        get_attempts($('#quiz-selection').val());
+        $(document).on('change','#quiz-selection',function(){
+            get_attempts($(this).val());
+        });
+        function get_attempts($id){
+            $('.leaderbord-ol').html('<p style="color:black;text-align:center;">No Leaderboard Data</p>');
+            $.ajax({
+                    type: 'GET'
+                    , url: "{{ route('get_top_attempt','quiz_id') }}".replace('quiz_id',$id)
+                    ,success: function(data) {
+                        if(data.length>0){
+                            $('.leaderbord-ol').html('');
+                        }
+                    $.each(data,function(i,ele){
+                        $('.leaderbord-ol').append(`<li><mark>${ele.user.name}</mark>
+                            <small>${ele.total_marks}</small></li>`);
+                    });
+                    }
+                });
+            }
 
+    });
+</script>
 @endsection

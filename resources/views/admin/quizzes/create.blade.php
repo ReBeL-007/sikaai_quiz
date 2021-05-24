@@ -36,8 +36,7 @@
         <div class="row">
             <div class="col-md-12 form-group">
                 {!! Form::label('quiz_type', 'Quiz Type', ['class' => 'control-label required']) !!}
-                {!! Form::select('quiz_type', [''=>'Select Quiz Type','Mock Test'=>'Mock Test','Practice
-                Quiz'=>'Practice Quiz','Normal Quiz'=>'Normal Quiz'],
+                {!! Form::select('quiz_type', [''=>'Select Quiz Type','Mock Test'=>'Mock Test','Practice Quiz'=>'Practice Quiz','Normal Quiz'=>'Normal Quiz'],
                 old('quiz_type'), ['class' => 'form-control select2']) !!}
                 <p class="help-block"></p>
                 @if($errors->has('quiz_type'))
@@ -72,7 +71,7 @@
                 @endif
             </div>
         </div>
-        <div class="row">
+        {{-- <div class="row">
             <div class="col-md-12 form-group">
                 {!! Form::label('published', 'Published', ['class' => 'control-label']) !!}
                 {!! Form::hidden('published', 0) !!}
@@ -84,11 +83,11 @@
                 </p>
                 @endif
             </div>
-        </div>
+        </div> --}}
 
         <div class="row">
             <div class="col-md-12 form-group">
-                {!! Form::label('answer_publish', 'Publish Answer', ['class' => 'control-label']) !!}
+                {!! Form::label('answer_publish', 'Publish Result', ['class' => 'control-label']) !!}
                 {!! Form::hidden('answer_publish', 0) !!}
                 {!! Form::checkbox('answer_publish', 1, false, ['id'=>'']) !!}
                 <p class="help-block"></p>

@@ -19,6 +19,9 @@ textarea {
     vertical-align: top;
     /* 2 */
 }
+.option-container{
+    position: relative;
+}
 
 input[type="email"],
 input[type="text"] {

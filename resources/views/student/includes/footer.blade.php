@@ -247,6 +247,36 @@
                 editor.setData(value);
             });
     });
+
+    function get_notification() {
+                $.ajax({
+                type: 'GET'
+                , url: "{{ route('get_notifications') }}"
+                ,success: function(data) {
+                    if(data.length == 0){
+                        $('.notification-menu').html(`
+                            <span class="dropdown-item dropdown-header">No Notification</span>
+                        `);
+                    }else{
+                        $('.notification-menu').html('');
+                        $('.notification-count').text(data.length);
+                $.each(data,function(i,ele){
+                    $('.notification-menu').append(`
+                            <a href="${"{{ route('show_notifications','temp_id') }}".replace('temp_id',ele.id)}" class="dropdown-item notification">
+                                <p><i class="fas fa-trophy mr-2"></i>${ele.data.message}</p>
+                                <span class="float-right text-muted text-sm">${moment(ele.created_at).fromNow()}</span>
+                            </a>
+                        <div class="dropdown-divider"></div>
+                    `);
+                });
+                $('.notification-menu').append('<div class="dropdown-divider"></div><a href="{{ route("read_all_notifications") }}" class="dropdown-item read-notification dropdown-footer">Mark as Read</a>');
+                    }
+                }
+            });
+    }
+    get_notification();
+    setInterval(get_notification, 300000);
+
 });
 
 </script>

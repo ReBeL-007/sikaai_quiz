@@ -48,11 +48,20 @@ class TestController extends Controller
                 $question = Question::find($answer['question_id']);
                 $correct_answer = [];
                 foreach ($question->questionOptions()->get() as $key => $option) {
+
                     if($option->points == 1){
                         array_push($correct_answer,$option->id);
                     }
                 }
-
+                if($question->type == "Short Answer"){
+                    $attemptAnswerData += ['marks' => 0];
+                    $attemptAnswer = AttemptAnswer::create($attemptAnswerData);
+                    $attemptOptionData = [
+                        'attempt_answer_id' => $attemptAnswer->id,
+                        'answer_text' => $answer['options'],
+                    ];
+                    AttemptOption::create($attemptOptionData);
+                }else{
                 if(count(array_diff($answer['options'],$correct_answer))==0&&count(array_diff($correct_answer,$answer['options']))==0){
                     $attemptAnswerData += ['marks' => $question->marks];
                 }else{
@@ -68,6 +77,7 @@ class TestController extends Controller
                     AttemptOption::create($attemptOptionData);
                 }
             }
+        }
         }
         $attempt_answers = $attempt->attemptAnswers()->get();
         $marks = 0;
