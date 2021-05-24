@@ -4,8 +4,11 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- to accept http while server running on https -->
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
     <!-- <link rel="stylesheet" href="css/style.css" /> -->
+    <link rel = "icon" href ="{{asset('gci.jpg')}}" type = "image/x-icon">
     <link rel="stylesheet" href="{{asset('css/login/register-sign-in.css')}}" />
     <title>Sign in & Sign up Form</title>
 </head>
@@ -54,7 +57,7 @@
                         <strong>{{ $errors->first('invalid') }}</strong>
                     </span>
                     @endif
-                    <p class="social-text">Or Sign in with social platforms</p>
+                    <!-- <p class="social-text">Or Sign in with social platforms</p>
                     <div class="social-media">
                         <a href="#" class="social-icon">
                             <i class="fab fa-facebook-f"></i>
@@ -68,7 +71,7 @@
                         <a href="#" class="social-icon">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
-                    </div>
+                    </div> -->
                 </form>
                 <form action="{{route('register')}}" method="POST" class="sign-up-form">
                     @csrf
@@ -106,7 +109,7 @@
                         <strong>{{ $errors->first('invalid') }}</strong>
                     </span>
                     @endif
-                    <p class="social-text">Or Sign up with social platforms</p>
+                    <!-- <p class="social-text">Or Sign up with social platforms</p>
                     <div class="social-media">
                         <a href="#" class="social-icon">
                             <i class="fab fa-facebook-f"></i>
@@ -120,7 +123,7 @@
                         <a href="#" class="social-icon">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
-                    </div>
+                    </div> -->
                 </form>
             </div>
         </div>
@@ -129,9 +132,11 @@
             <div class="panel left-panel">
                 <div class="content">
                     <h3>New here ?</h3>
+                    <p style="text-transform:uppercase">
+                    Global College International
+                    </p>
                     <p>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis,
-                        ex ratione. Aliquid!
+                    To be a reputed learning center of academic excellence focused on teaching and research in diverse streams of management studies.
                     </p>
                     <button class="btn transparent" id="sign-up-btn">Sign up</button>
                 </div>
@@ -140,9 +145,11 @@
             <div class="panel right-panel">
                 <div class="content">
                     <h3>One of us ?</h3>
+                    <p style="text-transform:uppercase">
+                    Global College International
+                    </p>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-                        laboriosam ad deleniti.
+                    To be a reputed learning center of academic excellence focused on teaching and research in diverse streams of management studies.
                     </p>
                     <button class="btn transparent" id="sign-in-btn">Sign in</button>
                 </div>

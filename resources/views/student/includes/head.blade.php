@@ -5,10 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {{-- csrf-token for ajax post request --}}
   <meta name="csrf-token" content="{{ csrf_token() }}">
+  <!-- to accept http while server running on https -->
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{asset('/backend/plugins/fontawesome-free/css/all.min.css')}}">
   <link rel = "icon" href ="
-  {{asset('asmita.png')}}"
+  {{asset('gci.jpg')}}"
           type = "image/x-icon">
   <!-- Ionicons -->
   {{-- <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> --}}

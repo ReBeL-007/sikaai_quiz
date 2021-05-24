@@ -7,6 +7,8 @@
     <title>Admin Portal | egskill</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- to accept http while server running on https -->
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">   
     <!-- Bootstrap 3.3.7 -->
     <link rel="stylesheet" href="{{ asset('/backend/bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
     <!-- Font Awesome -->
