@@ -87,9 +87,7 @@
             <li
                 class="nav-item has-treeview {{ request()->is('admin/categories*') ? 'menu-open' : '' }} {{ request()->is('admin/grades*') ? 'menu-open' : '' }} {{ request()->is('admin/courses*') ? 'menu-open' : '' }} {{ request()->is('admin/lessons*') ? 'menu-open' : '' }}">
                 <a class="nav-link nav-dropdown-toggle" href="#">
-                    <i class="fa-fw fas fa-users">
-
-                    </i>
+                    <i class="fas fa-book"></i>
                     <p>
                         <span>{{ trans('cruds.courseManagement.title_singular') }}</span>
                         <i class="right fa fa-fw fa-angle-left" style="right:.5rem;"></i>
@@ -147,9 +145,7 @@
             <li
                 class="nav-item has-treeview {{ request()->is('admin/quizzes*') ? 'menu-open' : '' }} {{ request()->is('admin/questions*') ? 'menu-open' : '' }}">
                 <a class="nav-link nav-dropdown-toggle" href="#">
-                    <i class="fa-fw fas fa-users">
-
-                    </i>
+                    <i class="fas fa-square-root-alt"></i>
                     <p>
                         <span>{{ trans('cruds.quizManagement.title_singular') }}</span>
                         <i class="right fa fa-fw fa-angle-left" style="right:.5rem;"></i>
@@ -179,6 +175,17 @@
                     @endcan
                 </ul>
             </li>
+            @can('response-access')
+            <li class="nav-item">
+                <a href="{{ route('admin.responses.index') }}"
+                    class="nav-link {{ request()->is('admin/responses') || request()->is('admin/responses/*') ? 'active' : '' }}">
+                    <i class="fa-fw fas fa-reply">
+
+                    </i>
+                    <p><span>{{trans('cruds.response.title')}}</span></p>
+                </a>
+            </li>
+            @endcan
             @can('student-access')
             <li class="nav-item">
                 <a href="{{ route('admin.students.index') }}"

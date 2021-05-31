@@ -4,11 +4,12 @@
 @section('content')
 @can('user-create')
     <div style="margin-bottom: 10px;" class="row">
-        <div class="col-lg-12">
             <a class="btn btn-primary" href="{{ route("admin.users.create") }}">
                 {{ trans('global.add') }} {{ trans('cruds.user.title_singular') }}
             </a>
-        </div>
+            <a class="btn btn-success ml-2 " href="{{ route("admin.users.importUser") }}">
+                {{ trans('global.add') }} Users     <i class="fas fa-file-excel"></i>
+            </a>
     </div>
 @endcan
 <div class="card">
@@ -57,7 +58,7 @@
                                 {{ $user->email ?? '' }}
                             </td>
                             <td>
-                                @foreach($user->roles as $role)                                    
+                                @foreach($user->roles as $role)
                                 <span class="badge badge-info"> {{$role->title}} </span>
                                 @endforeach
                             </td>
@@ -124,7 +125,7 @@
           url: config.url,
           data: { ids: ids, _method: 'DELETE' }})
           .done(function () { location.reload() })
-          
+
       }
     }
   }

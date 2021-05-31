@@ -11,9 +11,15 @@
             href="{{ route("admin.questions.create")}}{{(request()->get('quiz') != Null)?'?quiz='.request()->get('quiz'):''}}">
             {{ trans('global.add') }} {{ trans('cruds.question.title_singular') }}
         </a>
+        @if(isset($quiz))
+            <a href="{{ route('admin.questions.showImport').'?quiz='.$quiz->id }}"
+                class="btn btn-primary">Add Questions <i class="fas fa-file-excel"></i><a>
+        @endif
     </div>
 </div>
+
 @endcan
+
 <p>
     <ul class="list-inline">
         <li><a href="{{ route('admin.questions.index') }}"

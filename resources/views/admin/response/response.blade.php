@@ -45,7 +45,7 @@
         </div>
         @if (count($quiz->attempts->where('status','submitted')) !=0)
         <a class="btn btn-primary mt-3" href="{{route('admin.show_attempts',['id'=>$quiz->id])}}">Review Answer</a>
-        <a class="btn btn-success mt-3" href="{{route('admin.responses.export',['id'=>$quiz->id])}}">Download Excel</a>
+        <a class="btn btn-success mt-3" href="{{route('admin.quizzes.export',['id'=>$quiz->id])}}">Download Excel</a>
         @else
         <br>
         <p class="text-center">No Any Responses</p>

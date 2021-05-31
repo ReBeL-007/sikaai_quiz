@@ -200,6 +200,22 @@ return [
 		],
     ],
 
+    'response' => [
+        'title' => 'Quiz Responses',
+        'title_singular' => 'Quiz Response',
+		'created_at' => 'Time',
+		'fields' => [
+			'course' => 'Course',
+			'lesson' => 'Lesson',
+			'title' => 'Quiz',
+			'description' => 'Description',
+			'response' => 'Response',
+			'questions' => 'Questions',
+			'published' => 'Published',
+            'answer_published'   => 'Answer Published'
+		],
+    ],
+
     'question'       => [
         'title'          => 'Questions',
         'title_singular' => 'Question',

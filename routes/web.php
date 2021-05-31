@@ -71,6 +71,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
      Route::get('change-password', 'Admin\ChangePasswordController@create')->name('password.create');
      Route::post('change-password', 'Admin\ChangePasswordController@update')->name('password.update');
 
+     Route::get('users/import', 'Admin\UserImportController@show')->name('users.showImport');
+     Route::post('users/import', 'Admin\UserImportController@store')->name('users.importUser');
+
     //password reset routes
     Route::post('/password/email', 'Auth\AdminForgotPasswordController@sendResetLinkEmail')->name('password.email');
     Route::get('/password/reset', 'Auth\AdminForgotPasswordController@showLinkRequestForm')->name('password.request');
@@ -129,12 +132,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
     Route::post('/spatie/media/remove', 'Admin\SpatieMediaController@destroy')->name('media.remove');
 
     //quizzes
-    Route::get('quizzes/response/export/{id}', ['uses' => 'Admin\QuizzesController@export', 'as' => 'quizzes.export']);
     Route::resource('quizzes', 'Admin\QuizzesController');
     Route::delete('quizzes_mass_destroy', ['uses' => 'Admin\QuizzesController@massDestroy', 'as' => 'quizzes.mass_destroy']);
     Route::post('quizzes_restore/{id}', ['uses' => 'Admin\QuizzesController@restore', 'as' => 'quizzes.restore']);
     Route::delete('quizzes_perma_del/{id}', ['uses' => 'Admin\QuizzesController@perma_del', 'as' => 'quizzes.perma_del']);
     Route::get('quizzes/response/{id}', ['uses' => 'Admin\QuizzesController@response', 'as' => 'quizzes.response']);
+    Route::post('quizzes/ispublished', ['uses' => 'Admin\QuizzesController@update_publish', 'as' => 'quizzes.updatePublish']);
+    Route::post('quizzes/isanswerpublished', ['uses' => 'Admin\QuizzesController@update_answer_publish', 'as' => 'quizzes.updateAnswerPublish']);
 
     // attempts
     Route::get('quizzes/attempts/view/{id}', 'Admin\QuizzesController@editAttempts')->name('show_attempts');
@@ -153,8 +157,19 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
     Route::resource('questions', 'Admin\QuestionsController');
     Route::post('questions_restore/{id}', ['uses' => 'Admin\QuestionsController@restore', 'as' => 'questions.restore']);
     Route::delete('questions_perma_del/{id}', ['uses' => 'Admin\QuestionsController@perma_del', 'as' => 'questions.perma_del']);
+    Route::get('questions/import/questions', 'Admin\QuestionImportController@show')->name('questions.showImport');
+    Route::post('questions/import/questions', 'Admin\QuestionImportController@store')->name('questions.importQuestion');
 
     Route::resource('admitcard', 'AdmitCardController');
+
+    // Responses
+    Route::delete('responses/destroy', 'Admin\QuizResponsesController@massDestroy')->name('responses.massDestroy');
+    Route::resource('responses', 'Admin\QuizResponsesController');
+    Route::post('responses_restore/{id}', ['uses' => 'Admin\QuizResponsesController@restore', 'as' => 'responses.restore']);
+    Route::delete('responses_perma_del/{id}', ['uses' => 'Admin\QuizResponsesController@perma_del', 'as' => 'responses.perma_del']);
+    Route::get('responses/view/{id}', ['uses' => 'Admin\QuizResponsesController@response', 'as' => 'responses.response']);
+    Route::get('responses/view/list/{id}', ['uses' => 'Admin\QuizResponsesController@listResponse', 'as' => 'responses.responseList']);
+    Route::get('response/export/{id}', ['uses' => 'Admin\QuizzesController@export', 'as' => 'responses.export']);
 
     // students
     Route::delete('students/destroy', 'Admin\StudentsController@massDestroy')->name('students.massDestroy');

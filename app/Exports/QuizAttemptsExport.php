@@ -19,13 +19,17 @@ class QuizAttemptsExport implements FromArray,WithHeadings
     public function array(): array
     {
         $quiz = Quiz::findOrFail($this->id);
+        $full_marks = 0;
+        foreach($quiz->questions as $question){
+           $full_marks+=$question->marks;
+        }
         $attempts = $quiz->attempts;
         $results = [];
         foreach ($attempts as $attempt) {
         $data = [
             'user' => $attempt->user->name,
             'total_marks' => $attempt->total_marks,
-            'full_marks' => $quiz->full_marks,
+            'full_marks' => $full_marks,
 
         ];
         foreach ($attempt->attemptAnswers as $key => $answer) {

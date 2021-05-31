@@ -20,6 +20,9 @@ class QuizController extends Controller
         $attempted_quizzes = [];
         $upcoming_quizzes = [];
         foreach ($quizzes as $key => $quiz) {
+            if($quiz->published){
+                $quizzes = $quizzes->forget($key);
+            }
             if($quiz->start_at != null){
                 $start_date = new Carbon($quiz->start_at);
                 $remaining_days = $start_date->diffInSeconds($now,false);

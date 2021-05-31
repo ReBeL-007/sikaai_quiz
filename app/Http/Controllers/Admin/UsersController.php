@@ -23,11 +23,11 @@ class UsersController extends Controller
     //
     public function index()
     {
-       
+
         abort_if(Gate::denies('user-access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $users = Admin::with('roles')->get();
-        
+
         return view('admin.backend.users.index', compact('users'));
     }
 
@@ -115,4 +115,5 @@ class UsersController extends Controller
         return response(null, Response::HTTP_NO_CONTENT);
 
     }
+
 }
