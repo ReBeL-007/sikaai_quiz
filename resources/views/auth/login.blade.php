@@ -10,7 +10,7 @@
     <!-- <link rel="stylesheet" href="css/style.css" /> -->
     <link rel = "icon" href ="{{asset('gci.jpg')}}" type = "image/x-icon">
     <link rel="stylesheet" href="{{asset('css/login/register-sign-in.css')}}" />
-    <title>AsmitaQuiz</title>
+    <title>GCI-Quiz</title>
 </head>
 
 <body>

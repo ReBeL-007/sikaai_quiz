@@ -20,7 +20,6 @@
     </ul>
 </p>
 
-
 <div class="card">
     <div class="card-header">
         {{ trans('cruds.quizzes.title_singular') }} @lang('global.list')
@@ -37,6 +36,7 @@
                     <th>@lang('cruds.quizzes.fields.title')</th>
                     <th>@lang('cruds.quizzes.fields.description')</th>
                     {{-- <th>@lang('cruds.quizzes.fields.questions')</th> --}}
+                    <th>@lang('cruds.quizzes.fields.published')</th>
                     <th>@lang('cruds.quizzes.fields.answer_published')</th>
                     @if( request('show_deleted') == 1 )
                     <th>&nbsp;</th>
@@ -47,7 +47,7 @@
             </thead>
 
             <tbody>
-                @foreach ($quizzes as $quiz)
+                @foreach ($quizzes as $key=>$quiz)
                 <tr data-entry-id="{{ $quiz->id }}">
                     <td></td>
                     <td>{{ $quiz->course->title or '' }}</td>
@@ -55,7 +55,21 @@
                     @endif
                     <td>{{ $quiz->title }}</td>
                     <td>{!! $quiz->description !!}</td>
-                    <td>{{ Form::checkbox("answer_publish", 1, $quiz->answer_publish == 1 ? true : false, ["disabled"]) }}
+                    <td>
+                        <div class="container">
+                            <label class="switch" for="publish-checkbox-{{$quiz->id}}" >
+                              <input type="checkbox" class="publish-switch" id="publish-checkbox-{{$quiz->id}}" rel-id="{{$quiz->id}}" {{$quiz->published == 1 ? 'checked' : ''}}/>
+                              <div class="toggle-slider round"></div>
+                            </label>
+                          </div>
+                    </td>
+                    <td>
+                        <div class="container">
+                            <label class="switch" for="answer-publish-checkbox-{{$quiz->id}}" >
+                              <input type="checkbox" class="answer-publish-switch" id="answer-publish-checkbox-{{$quiz->id}}" rel-id="{{$quiz->id}}"  {{$quiz->answer_publish == 1 ? 'checked' : ''}}/>
+                              <div class="toggle-slider publish-slider round"></div>
+                            </label>
+                          </div>
                     </td>
                     @if( request('show_deleted') == 1 )
                     <td>
@@ -87,8 +101,6 @@
                         @can('quiz-edit') <a href="{{ route('admin.quizzes.edit',[$quiz->id]) }}"
                             class="btn btn-xs btn-info">@lang('global.edit')</a>
                         @endcan
-                        <a href="{{ route('admin.quizzes.response',[$quiz->id]) }}"
-                            class="btn btn-xs btn-success    ">Response</a>
                         @can('quiz-delete')
                         {!! Form::open(array(
                         'style' => 'display: inline-block;',
@@ -156,6 +168,41 @@
         $($.fn.dataTable.tables(true)).DataTable()
             .columns.adjust();
     });
+
+    $(document).on('click','.publish-switch',function(){
+        let is_published = false;
+        let id = $(this).attr('rel-id');
+        if($(this).prop('checked')){
+            is_published = true;
+        }
+        $.ajax({
+            headers: {'x-csrf-token': _token},
+            method: 'POST',
+            url: "{{ route('admin.quizzes.updatePublish') }}",
+            data: { id: id, is_published : is_published},
+            success : function(data){
+
+            },
+        })
+    })
+
+    $(document).on('click','.answer-publish-switch',function(){
+        let is_published = false;
+        let id = $(this).attr('rel-id');
+        if($(this).prop('checked')){
+            is_published = true;
+        }
+        $.ajax({
+            headers: {'x-csrf-token': _token},
+            method: 'POST',
+            url: "{{ route('admin.quizzes.updateAnswerPublish') }}",
+            data: { id: id, is_published : is_published},
+            success : function(data){
+
+            },
+        })
+    })
+
 })
 
 </script>

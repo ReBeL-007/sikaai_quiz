@@ -4,42 +4,26 @@ namespace App\Http\Controllers\Admin;
 
 use App\Attempt;
 use App\AttemptAnswer;
-use App\Quiz;
-use App\Course;
-use App\User;
-use App\Admin;
 use App\Exports\QuizAttemptsExport;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreTestsRequest;
-use App\Http\Requests\UpdateTestsRequest;
-use Maatwebsite\Excel\Facades\Excel;
+use App\Quiz;
+use Gate;
 use Symfony\Component\HttpFoundation\Response;
-use App\Notifications\QuizNotification;
-use Notification;
-class QuizzesController extends Controller
+use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+
+class QuizResponsesController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth:admin');
     }
-    /**
-     * Display a listing of Test.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index(Request $request)
     {
-        abort_if(Gate::denies('quiz-access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-        if (request('show_deleted') == 1) {
-            abort_if(Gate::denies('quiz-access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-            $quizzes = Quiz::onlyTrashed()->ofTeacher()->get();
-        } else {
+        abort_if(Gate::denies('response-access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
             $quizzes = Quiz::ofTeacher()->get();
-        }
-        return view('admin.quizzes.index', compact('quizzes'));
+        return view('admin.response.index', compact('quizzes'));
     }
 
     /**
@@ -54,7 +38,7 @@ class QuizzesController extends Controller
         $courses_ids = $courses->pluck('id');
         $courses = $courses->pluck('title', 'id')->prepend('Please select Course', '');
         $lessons = ['Please select Course First'=> ''];
-        return view('admin.quizzes.create', compact('courses', 'lessons'));
+        return view('admin.response.create', compact('courses', 'lessons'));
     }
 
     /**
@@ -74,8 +58,8 @@ class QuizzesController extends Controller
         $users = User::all();
         $admins = Admin::all();
         Notification::send($users,new QuizNotification($quiz,route('quiz_index')));
-        Notification::send($admins,new QuizNotification($quiz,route('admin.quizzes.index')));
-        return redirect()->route('admin.quizzes.index');
+        Notification::send($admins,new QuizNotification($quiz,route('admin.response.index')));
+        return redirect()->route('admin.response.index');
     }
 
 
@@ -94,7 +78,7 @@ class QuizzesController extends Controller
         $lessons = \App\Lesson::whereIn('course_id', $courses_ids)->get()->pluck('title', 'id')->prepend('Please select lesson', '');
         $test = Quiz::findOrFail($id);
 
-        return view('admin.quizzes.edit', compact('test', 'courses', 'lessons'));
+        return view('admin.response.edit', compact('test', 'courses', 'lessons'));
     }
 
     /**
@@ -118,7 +102,7 @@ class QuizzesController extends Controller
             $request->request->add(['time' => null, 'time_type' => null]);
         }
         $quiz->update($request->all());
-        return redirect()->route('admin.quizzes.index');
+        return redirect()->route('admin.response.index');
     }
 
 
@@ -133,7 +117,7 @@ class QuizzesController extends Controller
         abort_if(Gate::denies('quiz-show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         $test = Quiz::findOrFail($id);
 
-        return view('admin.quizzes.show', compact('test'));
+        return view('admin.response.show', compact('test'));
     }
 
 
@@ -149,7 +133,7 @@ class QuizzesController extends Controller
         $test = Quiz::findOrFail($id);
         $test->delete();
 
-        return redirect()->route('admin.quizzes.index');
+        return redirect()->route('admin.response.index');
     }
 
     /**
@@ -200,24 +184,16 @@ class QuizzesController extends Controller
         return redirect()->route('admin.quizzes.index');
     }
 
-    public function update_publish(Request $request){
-        $quiz = Quiz::findOrFail($request->id);
-        $quiz->published = ($request->is_published == 'true')?True:False;
-        $quiz->save();
-        return response()->json('success', 200);
-    }
-
-    public function update_answer_publish(Request $request){
-        $quiz = Quiz::findOrFail($request->id);
-        $quiz->answer_publish = ($request->is_published == 'true')?True:False;
-        $quiz->save();
-        return response()->json('success', 200);
-    }
-
     public function response($id)
     {
         $quiz = Quiz::findOrFail($id);
         return view('admin.quizzes.response', compact('quiz'));
+    }
+
+    public function listResponse($id)
+    {
+        $quiz = Quiz::findOrFail($id);
+        return view('admin.response.listResponse', compact('quiz'));
     }
 
     public function editAttempts($id)
@@ -272,6 +248,7 @@ class QuizzesController extends Controller
 
     public function export($id)
     {
-        return Excel::download(new QuizAttemptsExport($id), 'quiz_attempts.xlsx');
+        $quiz = Quiz::findOrFail($this->id);
+        return Excel::download(new QuizAttemptsExport($id), $quiz->title.'.xlsx');
     }
 }

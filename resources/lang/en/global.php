@@ -202,6 +202,7 @@ return [
     'reports_x_axis_field'                 => 'X-axis - please choose one of date/time fields',
     'reports_y_axis_field'                 => 'Y-axis - please choose one of number fields',
     'reset_password_woops'                 => '<strong>Whoops!</strong> There were problems with input:',
+    'responses'                             => 'Responses',
     'restore'                              => 'Restore',
     'sample_answer'                        => 'Sample answer',
     'sample_category'                      => 'Sample category',

@@ -11,7 +11,9 @@ use App\Http\Requests\UpdateQuestionRequest;
 use App\Question;
 use App\Option;
 use Gate;
+use Illuminate\Foundation\Console\Presets\None;
 use Illuminate\Http\Request;
+use phpDocumentor\Reflection\Types\Null_;
 use Symfony\Component\HttpFoundation\Response;
 
 class QuestionsController extends Controller
@@ -25,8 +27,10 @@ class QuestionsController extends Controller
     public function index(Request $request)
     {
         abort_if(Gate::denies('question-access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $quiz = Null;
         if(isset($request->quiz)){
-            $questions = Quiz::findOrFail($request->quiz)->questions();
+            $quiz = Quiz::findOrFail($request->quiz);
+            $questions = $quiz->questions();
         }else{
         $questions = Question::whereHas('quizzes', function ($q) {
                         $q->whereIn('quiz_id', Quiz::ofTeacher()->pluck('id'));
@@ -38,7 +42,7 @@ class QuestionsController extends Controller
         } else {
             $questions = $questions->where('deleted_at',NULL)->get();
         }
-        return view('admin.questions.index', compact('questions'));
+        return view('admin.questions.index', compact('questions','quiz'));
     }
 
     public function create(Request $request)
