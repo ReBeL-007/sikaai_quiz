@@ -39,6 +39,10 @@ class HomeController extends Controller
         $upcoming_tests = [];
         $quiz_for_leaderboard = [];
         foreach ($quizzes as $key => $quiz) {
+            if(!$quiz->published){
+                $quizzes = $quizzes->forget($key);
+                continue;
+            }
             if($quiz->start_at != null){
                 $start_date = new Carbon($quiz->start_at);
                 $remaining_days = $start_date->diffInSeconds($now,false);

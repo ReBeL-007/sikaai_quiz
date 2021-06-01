@@ -96,7 +96,7 @@
                         @endcan
                         @can('question-show')
                         <a href="{{ route('admin.questions.index').'?quiz='.$quiz->id }}"
-                            class="btn btn-xs btn-primary">@lang('global.view')
+                            class="btn btn-xs btn-primary">@lang('global.add')
                             {{ trans('cruds.question.title_singular')}}</a> @endcan
                         @can('quiz-edit') <a href="{{ route('admin.quizzes.edit',[$quiz->id]) }}"
                             class="btn btn-xs btn-info">@lang('global.edit')</a>

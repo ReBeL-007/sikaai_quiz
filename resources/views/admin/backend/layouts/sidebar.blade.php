@@ -94,7 +94,7 @@
                     </p>
                 </a>
                 <ul class="nav nav-treeview" style="margin-left: 1rem;">
-                    @can('category-access')
+                    {{-- @can('category-access')
                     <li class="nav-item">
                         <a href="{{ route("admin.categories.index") }}"
                             class="nav-link {{ request()->is('admin/categories') || request()->is('admin/categories/*') ? 'active' : '' }}">
@@ -118,7 +118,7 @@
                             <p><span>{{ trans('cruds.grade.title') }}</span></p>
                         </a>
                     </li>
-                    @endcan
+                    @endcan --}}
 
                     @can('course-access')
                     <li class="nav-item">
@@ -130,7 +130,7 @@
                     </li>
                     @endcan
 
-                    @can('lesson-access')
+                    {{-- @can('lesson-access')
                     <li class="nav-item">
                         <a href="{{ route('admin.lessons.index') }}"
                             class="nav-link {{ request()->is('admin/lessons') || request()->is('admin/lessons/*') ? 'active' : '' }}">
@@ -138,7 +138,7 @@
                             <p><span>{{trans('cruds.lessons.title')}}</span></p>
                         </a>
                     </li>
-                    @endcan
+                    @endcan --}}
                 </ul>
             </li>
 
@@ -162,7 +162,7 @@
                     </li>
                     @endcan
 
-                    @can('question-access')
+                    {{-- @can('question-access')
                     <li class="nav-item">
                         <a href="{{ route('admin.questions.index') }}"
                             class="nav-link {{ request()->is('admin/questions') || request()->is('admin/questions/*') ? 'active' : '' }}">
@@ -172,7 +172,7 @@
                             <p><span>{{trans('cruds.question.title')}}</span></p>
                         </a>
                     </li>
-                    @endcan
+                    @endcan --}}
                 </ul>
             </li>
             @can('response-access')

@@ -14,7 +14,7 @@
     <div class="card-body">
     {!! Form::model($course, ['method' => 'PUT', 'route' => ['admin.courses.update', $course->id], 'files' => true,]) !!}
 
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-md-12 form-group">
                     {!! Form::label('category_id', 'Category', ['class' => 'control-label row required']) !!}
                     {!! Form::select('category_id', $categories, old('category_id'), ['class' => 'form-control select2']) !!}
@@ -38,8 +38,8 @@
                         </p>
                     @endif
                 </div>
-            </div>
-            @if (Auth::user()->isAdmin())
+            </div> --}}
+            {{-- @if (Auth::user()->isAdmin())
             <div class="row">
                 <div class="col-md-12 form-group">
                     {!! Form::label('teachers', 'Teachers', ['class' => 'control-label row']) !!}
@@ -52,7 +52,7 @@
                     @endif
                 </div>
             </div>
-            @endif
+            @endif --}}
             <div class="row">
                 <div class="col-md-12 form-group">
                     {!! Form::label('title', 'Title', ['class' => 'control-label required']) !!}

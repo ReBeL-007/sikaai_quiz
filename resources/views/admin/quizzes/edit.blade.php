@@ -25,7 +25,7 @@
                 @endif
             </div>
         </div>
-        <div class="row">
+        {{-- <div class="row">
             <div class="col-md-12 form-group">
                 {!! Form::label('lesson_id', 'Lesson', ['class' => 'control-label']) !!}
                 {!! Form::select('lesson_id', $lessons, old('lesson_id'), ['class' => 'form-control select2']) !!}
@@ -36,7 +36,7 @@
                 </p>
                 @endif
             </div>
-        </div>
+        </div> --}}
         <div class="form-group" id="quiz_type-container">
             <label for="quiz_type" class="required">Quiz Type: </label>
             <div class="form-group">
@@ -100,7 +100,7 @@
     </div>
 </div>
 
-{{-- <div class="row">
+<div class="row">
     <div class="col-md-12 form-group">
         {!! Form::label('published', 'Published', ['class' => 'control-label']) !!}
         {!! Form::hidden('published', 0) !!}
@@ -112,7 +112,10 @@
         </p>
         @endif
     </div>
-</div> --}}
+</div>
+<p class="help-block">
+    <small class="text-muted"><i class="fas fa-exclamation"></i>&nbsp;&nbsp;&nbsp;Publish the quiz to user.</small>
+</p>
 
 <div class="row">
     <div class="col-md-12 form-group">
@@ -127,6 +130,9 @@
         @endif
     </div>
 </div>
+<p class="help-block">
+    <small class="text-muted"><i class="fas fa-exclamation"></i>&nbsp;&nbsp;&nbsp;Allow user to view answer after completion of quiz</small>
+</p>
 
 <div class="form-group" id="answer-view-container">
     <div class="row">

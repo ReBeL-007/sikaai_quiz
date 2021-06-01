@@ -36,7 +36,7 @@ class HomeController extends Controller
         //     }
         // }
         $attempts = Attempt::orderBy('total_marks','DESC')->take(5)->get();
-        $quiz_for_leaderboard = Quiz::ofTeacher()->get();
+        $quiz_for_leaderboard = Quiz::ofTeacher()->get()->where('published',1);
         return view('admin.backend.index',compact('quizzes','attempts','quiz_for_leaderboard'));
     }
 

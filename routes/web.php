@@ -97,16 +97,16 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
     Route::resource('groups', 'Admin\GroupsController');
 
     // Categories
-    Route::delete('categories/destroy', 'Admin\CategoriesController@massDestroy')->name('categories.massDestroy');
-    Route::resource('categories', 'Admin\CategoriesController');
-    Route::post('categories_restore/{id}', ['uses' => 'Admin\CategoriesController@restore', 'as' => 'categories.restore']);
-    Route::delete('categories_perma_del/{id}', ['uses' => 'Admin\CategoriesController@perma_del', 'as' => 'categories.perma_del']);
+    // Route::delete('categories/destroy', 'Admin\CategoriesController@massDestroy')->name('categories.massDestroy');
+    // Route::resource('categories', 'Admin\CategoriesController');
+    // Route::post('categories_restore/{id}', ['uses' => 'Admin\CategoriesController@restore', 'as' => 'categories.restore']);
+    // Route::delete('categories_perma_del/{id}', ['uses' => 'Admin\CategoriesController@perma_del', 'as' => 'categories.perma_del']);
 
     // Grades
-    Route::delete('grades/destroy', 'Admin\GradesController@massDestroy')->name('grades.massDestroy');
-    Route::resource('grades', 'Admin\GradesController');
-    Route::post('grades_restore/{id}', ['uses' => 'Admin\GradesController@restore', 'as' => 'grades.restore']);
-    Route::delete('grades_perma_del/{id}', ['uses' => 'Admin\GradesController@perma_del', 'as' => 'grades.perma_del']);
+    // Route::delete('grades/destroy', 'Admin\GradesController@massDestroy')->name('grades.massDestroy');
+    // Route::resource('grades', 'Admin\GradesController');
+    // Route::post('grades_restore/{id}', ['uses' => 'Admin\GradesController@restore', 'as' => 'grades.restore']);
+    // Route::delete('grades_perma_del/{id}', ['uses' => 'Admin\GradesController@perma_del', 'as' => 'grades.perma_del']);
 
     // Courses
     Route::delete('courses_mass_destroy', ['uses' => 'Admin\CoursesController@massDestroy', 'as' => 'courses.mass_destroy']);
@@ -148,9 +148,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
     Route::post('quizzes/attempts/update', 'Admin\QuizzesController@updateAttempt')->name('update_attempt');
 
     // assignments
-    Route::resource('assignments', 'Admin\AssignmentController');
-    Route::post('assignments/media', 'Admin\AssignmentController@storeMedia')->name('assignments.storeMedia');
-    Route::get('assignments/pointCriteria', 'Admin\AssignmentController@getPointCriteria')->name('assignments.pointCriteria');
+    // Route::resource('assignments', 'Admin\AssignmentController');
+    // Route::post('assignments/media', 'Admin\AssignmentController@storeMedia')->name('assignments.storeMedia');
+    // Route::get('assignments/pointCriteria', 'Admin\AssignmentController@getPointCriteria')->name('assignments.pointCriteria');
 
     // Questions
     Route::delete('questions/destroy', 'Admin\QuestionsController@massDestroy')->name('questions.massDestroy');
@@ -172,9 +172,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
     Route::get('response/export/{id}', ['uses' => 'Admin\QuizzesController@export', 'as' => 'responses.export']);
 
     // students
-    Route::delete('students/destroy', 'Admin\StudentsController@massDestroy')->name('students.massDestroy');
-    Route::resource('students', 'Admin\StudentsController');
-    Route::post('students_restore/{id}', ['uses' => 'Admin\StudentsController@restore', 'as' => 'students.restore']);
-    Route::delete('students_perma_del/{id}', ['uses' => 'Admin\StudentsController@perma_del', 'as' => 'students.perma_del']);
+    // Route::delete('students/destroy', 'Admin\StudentsController@massDestroy')->name('students.massDestroy');
+    // Route::resource('students', 'Admin\StudentsController');
+    // Route::post('students_restore/{id}', ['uses' => 'Admin\StudentsController@restore', 'as' => 'students.restore']);
+    // Route::delete('students_perma_del/{id}', ['uses' => 'Admin\StudentsController@perma_del', 'as' => 'students.perma_del']);
 
 });

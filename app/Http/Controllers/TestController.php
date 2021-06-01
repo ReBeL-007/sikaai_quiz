@@ -139,6 +139,9 @@ class TestController extends Controller
 
     public function quizUrl(Request $request,$id){
         $quiz = Quiz::findOrFail($id);
+        if(!($quiz->published)){
+            abort(404);
+        }
         $attemptsCount = auth()->user()->attempts()->where('quiz_id',$quiz->id)->where('status','submitted')->count();
             if(!($quiz->attempts_no > $attemptsCount || $quiz->attempts_no == 0 )){
                 abort(404);

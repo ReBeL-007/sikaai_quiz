@@ -6,8 +6,8 @@ return [
         'title_singular' => 'User management',
     ],
     'courseManagement' => [
-        'title'          => 'Courses management',
-        'title_singular' => 'Course management',
+        'title'          => 'Categories management',
+        'title_singular' => 'Category management',
     ],
     'quizManagement' => [
         'title'          => 'Quizzes management',
@@ -153,8 +153,8 @@ return [
     ],
 
     'courses' => [
-		'title' => 'Courses',
-        'title_singular' => 'Course',
+		'title' => 'Categories',
+        'title_singular' => 'Category',
 		'created_at' => 'Time',
 		'fields' => [
             'grade' => 'Grade',
@@ -163,7 +163,7 @@ return [
 			'slug' => 'Slug',
 			'description' => 'Description',
 			'price' => 'Price',
-			'course-image' => 'Course image',
+			'course-image' => 'Category image',
 		],
 	],
 
@@ -172,7 +172,7 @@ return [
         'title_singular' => 'Lesson',
 		'created_at' => 'Time',
 		'fields' => [
-			'course' => 'Course',
+			'course' => 'Category',
 			'title' => 'Title',
 			'slug' => 'Slug',
 			'lesson-image' => 'Lesson image',
@@ -190,7 +190,7 @@ return [
         'title_singular' => 'Quiz',
 		'created_at' => 'Time',
 		'fields' => [
-			'course' => 'Course',
+			'course' => 'Category',
 			'lesson' => 'Lesson',
 			'title' => 'Title',
 			'description' => 'Description',

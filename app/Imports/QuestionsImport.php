@@ -19,9 +19,9 @@ class QuestionsImport implements ToModel,WithValidation, WithHeadingRow
 
     public function model(array $row)
     {
-        if($row['question_type'] == "mcq"){
+        if($row['question_type_maq_or_mcq'] == "mcq"){
             $question_type = "Multiple Choices";
-        }else if($row['question_type'] == "maq"){
+        }else if($row['question_type_maq_or_mcq'] == "maq"){
             $question_type = "Multiple Answers";
         }
         $quiz = Quiz::find($this->quiz);
@@ -68,7 +68,7 @@ class QuestionsImport implements ToModel,WithValidation, WithHeadingRow
                 'required',
                 'string',
             ],
-            'question_type' => [
+            'question_type_maq_or_mcq' => [
                 'required',
                 'string',
             ],

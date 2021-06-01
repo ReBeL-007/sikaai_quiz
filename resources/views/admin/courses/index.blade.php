@@ -34,8 +34,8 @@
 
                         </th>
                         <th>@lang('cruds.courses.fields.title')</th>
-                        <th>@lang('cruds.courses.fields.category')</th>
-                        <th>@lang('cruds.courses.fields.grade')</th>
+                        {{-- <th>@lang('cruds.courses.fields.category')</th> --}}
+                        {{-- <th>@lang('cruds.courses.fields.grade')</th> --}}
                         <th>@lang('cruds.courses.fields.description')</th>
                         <th>@lang('cruds.courses.fields.course-image')</th>
                         @if( request('show_deleted') == 1 )
@@ -54,8 +54,8 @@
                                 @endcan --}}
                                 <td></td>
                                 <td>{{ $course->title }}</td>
-                                <td><span class="badge badge-success"> {{ ($course->category)?$course->category->name:'' }} </span></td>
-                                <td><span class="badge badge-success"> {{ ($course->grade)?$course->grade->name:'' }} </span></td>
+                                {{-- <td><span class="badge badge-success"> {{ ($course->category)?$course->category->name:'' }} </span></td>
+                                <td><span class="badge badge-success"> {{ ($course->grade)?$course->grade->name:'' }} </span></td> --}}
                                 <td>{!! $course->description !!}</td>
                                 <td>  @foreach($course->thumbnail as $key => $media)
                                     <a href="{{ $media->getUrl() }}" target="_blank">
