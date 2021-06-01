@@ -26,7 +26,7 @@ class UpdateCoursesRequest extends FormRequest
     public function rules()
     {
         return [
-            'category_id' => 'required|exists:categories,id',
+            // 'category_id' => 'required|exists:categories,id',
             'teachers.*' => 'exists:admins,id',
             'title' => 'required',
             // 'start_date' => 'date_format:'.config('app.date_format'),

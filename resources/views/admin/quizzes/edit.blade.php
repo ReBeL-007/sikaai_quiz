@@ -100,7 +100,7 @@
     </div>
 </div>
 
-{{-- <div class="row">
+<div class="row">
     <div class="col-md-12 form-group">
         {!! Form::label('published', 'Published', ['class' => 'control-label']) !!}
         {!! Form::hidden('published', 0) !!}
@@ -112,7 +112,7 @@
         </p>
         @endif
     </div>
-</div> --}}
+</div>
 
 <div class="row">
     <div class="col-md-12 form-group">

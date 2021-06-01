@@ -23,7 +23,7 @@ class QuizAttemptsExport implements FromArray,WithHeadings
         foreach($quiz->questions as $question){
            $full_marks+=$question->marks;
         }
-        $attempts = $quiz->attempts;
+        $attempts = $quiz->attempts->where('status','submitted');
         $results = [];
         foreach ($attempts as $attempt) {
         $data = [
@@ -32,9 +32,17 @@ class QuizAttemptsExport implements FromArray,WithHeadings
             'full_marks' => $full_marks,
 
         ];
-        foreach ($attempt->attemptAnswers as $key => $answer) {
-            $data['Question '.($key+1)] = ''.$answer->marks.'/'.$answer->question->marks;
+        foreach($quiz->questions as $key=>$question){
+            $answer_mark = 0;
+            foreach ($attempt->attemptAnswers as $answer) {
+                if($question->id == $answer->question->id){
+                    $answer_mark = $answer->marks;
+                    break;
+                }
+            }
+            $data['Question '.($key+1)] = ''.$answer_mark.'/'.$question->marks;
         }
+
         array_push($results,$data);
 
         }

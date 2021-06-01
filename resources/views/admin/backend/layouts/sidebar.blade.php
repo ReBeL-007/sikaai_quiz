@@ -94,7 +94,7 @@
                     </p>
                 </a>
                 <ul class="nav nav-treeview" style="margin-left: 1rem;">
-                    @can('category-access')
+                    {{-- @can('category-access')
                     <li class="nav-item">
                         <a href="{{ route("admin.categories.index") }}"
                             class="nav-link {{ request()->is('admin/categories') || request()->is('admin/categories/*') ? 'active' : '' }}">
@@ -118,7 +118,7 @@
                             <p><span>{{ trans('cruds.grade.title') }}</span></p>
                         </a>
                     </li>
-                    @endcan
+                    @endcan --}}
 
                     @can('course-access')
                     <li class="nav-item">
