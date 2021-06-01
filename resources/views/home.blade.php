@@ -9,7 +9,7 @@
 <section id="content">
     <div>
         <div class="row">
-            <div class="col-md-3 content ">
+            {{-- <div class="col-md-3 content ">
                 <div class="leaderboard">
                     <h1 class="mx-auto text-center"><svg class="ico-cup">
                             <use xlink:href="#cup"></use>
@@ -24,7 +24,7 @@
                     <ol class="leaderbord-ol mt-2">
                     </ol>
                 </div>
-            </div>
+            </div> --}}
 
             <div class="col-md-4 content">
                 <div class="upcoming-test y-scroll">

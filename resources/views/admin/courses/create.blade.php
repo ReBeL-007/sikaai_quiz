@@ -34,7 +34,7 @@
                     @endif
                 </div>
             </div> --}}
-            @if (Auth::user()->isAdmin())
+            {{-- @if (Auth::user()->isAdmin())
             <div class="row">
                 <div class="col-md-12 form-group">
                     {!! Form::label('teachers', 'Teachers', ['class' => 'control-label row']) !!}
@@ -47,7 +47,7 @@
                     @endif
                 </div>
             </div>
-            @endif
+            @endif --}}
             <div class="row">
                 <div class="col-md-12 form-group">
                     {!! Form::label('title', 'Title', ['class' => 'control-label required']) !!}
