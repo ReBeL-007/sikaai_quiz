@@ -8,6 +8,9 @@
             <a class="btn btn-primary" href="{{ route("admin.students.create") }}">
                 {{ trans('global.add') }} {{ trans('cruds.student.title_singular') }}
             </a>
+            <a class="btn btn-success ml-2 " href="{{ route("admin.users.importUser") }}">
+                {{ trans('global.add') }} Users     <i class="fas fa-file-excel"></i>
+            </a>
         </div>
     </div>
 @endcan
@@ -34,18 +37,6 @@
                             {{ trans('cruds.student.fields.email') }}
                         </th>
                         <th>
-                            {{ trans('cruds.student.fields.address') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.student.fields.contact') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.student.fields.college') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.student.fields.preference') }}
-                        </th>
-                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -65,18 +56,7 @@
                             <td>
                                 {{ $student->email ?? '' }}
                             </td>
-                            <td>
-                                {{ $student->address ?? '' }}
-                            </td>
-                            <td>
-                                {{ $student->contact ?? '' }}
-                            </td>
-                            <td>
-                                {{ $student->passed ?? '' }}
-                            </td>
-                            <td>
-                                {{ $student->school ?? '' }}
-                            </td>
+
                             <td>
                                 <!-- @can('student-show')
                                     <a class="btn btn-xs btn-primary" href="{{ route('admin.students.show', $student->id) }}">
@@ -140,7 +120,7 @@
           url: config.url,
           data: { ids: ids, _method: 'DELETE' }})
           .done(function () { location.reload() })
-          
+
       }
     }
   }

@@ -28,15 +28,15 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.student.fields.email_helper') }}</span>
             </div>
-            <div class="form-group">
+            {{-- <div class="form-group">
                 <label class="" for="password">{{ trans('cruds.student.fields.password') }}</label>
                 <input class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" type="password" name="password" id="password" >
                 @if($errors->has('password'))
                     <span class="text-danger">{{ $errors->first('password') }}</span>
                 @endif
                 <span class="help-block">{{ trans('cruds.student.fields.password_helper') }}</span>
-            </div>
-            <div class="form-group">
+            </div> --}}
+            {{-- <div class="form-group">
                 <label class="" for="address">{{ trans('cruds.student.fields.address') }}</label>
                 <input class="form-control {{ $errors->has('address') ? 'is-invalid' : '' }}" type="text" name="address" id="address" value="{{ old('address', $student->address) }}" >
                 @if($errors->has('address'))
@@ -67,7 +67,7 @@
                     <span class="text-danger">{{ $errors->first('school') }}</span>
                 @endif
                 <span class="help-block">{{ trans('cruds.student.fields.preference_helper') }}</span>
-            </div>
+            </div> --}}
             <div class="form-group">
                 <button class="btn btn-success" type="submit">
                     {{ trans('global.save') }}

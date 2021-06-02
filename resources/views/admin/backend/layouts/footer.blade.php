@@ -222,7 +222,7 @@
 
             ckConfig["simpleUpload"] = {
         // The URL that the images are uploaded to.
-
+        uploadUrl: "{{ route('admin.assignments.storeMedia') }}",
         // Enable the XMLHttpRequest.withCredentials property.
         withCredentials: true,
 
@@ -232,9 +232,10 @@
         }
     };
             InlineEditor.create( document.querySelector( '#'+$(this).attr('id') ), ckConfig
-    //         simpleUpload: {
+            // simpleUpload: {
     //     // The URL that the images are uploaded to.
 
+        // }
     //     // Enable the XMLHttpRequest.withCredentials property.
     //     withCredentials: true,
 
