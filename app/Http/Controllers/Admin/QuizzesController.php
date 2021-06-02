@@ -17,7 +17,8 @@ use App\Http\Requests\UpdateTestsRequest;
 use Maatwebsite\Excel\Facades\Excel;
 use Symfony\Component\HttpFoundation\Response;
 use App\Notifications\QuizNotification;
-use Notification;
+use Illuminate\Support\Facades\Notification;
+
 class QuizzesController extends Controller
 {
     public function __construct()
@@ -73,8 +74,10 @@ class QuizzesController extends Controller
         $quiz->save();
         $users = User::all();
         $admins = Admin::all();
+        if($quiz->published){
         Notification::send($users,new QuizNotification($quiz,route('quiz_index')));
         Notification::send($admins,new QuizNotification($quiz,route('admin.quizzes.index')));
+        }
         return redirect()->route('admin.quizzes.index');
     }
 
@@ -117,7 +120,11 @@ class QuizzesController extends Controller
         if (!isset($request->time)) {
             $request->request->add(['time' => null, 'time_type' => null]);
         }
-        $quiz->update($request->all());
+        $quiz = $quiz->update($request->all());
+        if($quiz->published){
+            Notification::send($users,new QuizNotification($quiz,route('quiz_index')));
+            Notification::send($admins,new QuizNotification($quiz,route('admin.quizzes.index')));
+            }
         return redirect()->route('admin.quizzes.index');
     }
 
@@ -203,7 +210,11 @@ class QuizzesController extends Controller
     public function update_publish(Request $request){
         $quiz = Quiz::findOrFail($request->id);
         $quiz->published = ($request->is_published == 'true')?True:False;
-        $quiz->save();
+        $quiz = $quiz->save();
+        if($quiz->published){
+            Notification::send($users,new QuizNotification($quiz,route('quiz_index')));
+            Notification::send($admins,new QuizNotification($quiz,route('admin.quizzes.index')));
+            }
         return response()->json('success', 200);
     }
 

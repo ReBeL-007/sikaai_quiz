@@ -29,7 +29,7 @@ class UserImportController extends Controller
         $file = $request->file('excel');
         Excel::import(new UsersImport,$file);
         Session::flash('flash_success', 'Users added successfully!');
-        return redirect()->route('admin.users.index');
+        return redirect()->route('admin.students.index');
     }
 
 }

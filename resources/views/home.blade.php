@@ -42,7 +42,7 @@
                         <div class="row">
                             <div class="col-md-9">
                                 <h5>{{$test->title}}</h5>
-                                <p>{{$test->course->category->name}} ( {{$test->course->title}} )</p>
+                                <p>{{$test->course->title}} </p>
                             </div>
                             <div class="col-md-3 live-class">
                                 <a href="{{route('quizUrl',['id'=>$test->id])}}">Take Quiz</a>

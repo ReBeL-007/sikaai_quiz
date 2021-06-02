@@ -190,10 +190,8 @@
             <li class="nav-item">
                 <a href="{{ route('admin.students.index') }}"
                     class="nav-link {{ request()->is('admin/students') || request()->is('admin/students/*') ? 'active' : '' }}">
-                    <i class="fa-fw fas fa-question">
-
-                    </i>
-                    <p><span>students</span></p>
+                    <i class="fas fa-user-graduate"></i>
+                    <p><span>Students</span></p>
                 </a>
             </li>
             @endcan

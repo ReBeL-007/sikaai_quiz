@@ -7,9 +7,6 @@
             <a class="btn btn-primary" href="{{ route("admin.users.create") }}">
                 {{ trans('global.add') }} {{ trans('cruds.user.title_singular') }}
             </a>
-            <a class="btn btn-success ml-2 " href="{{ route("admin.users.importUser") }}">
-                {{ trans('global.add') }} Users     <i class="fas fa-file-excel"></i>
-            </a>
     </div>
 @endcan
 <div class="card">

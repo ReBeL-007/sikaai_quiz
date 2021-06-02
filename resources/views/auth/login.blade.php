@@ -73,7 +73,7 @@
                         </a>
                     </div> -->
                 </form>
-                <form action="{{route('register')}}" method="POST" class="sign-up-form">
+                {{--<form action="{{route('register')}}" method="POST" class="sign-up-form">
                     @csrf
                     <h2 class="title">Sign up</h2>
                     <div class="input-field">
@@ -124,21 +124,21 @@
                             <i class="fab fa-linkedin-in"></i>
                         </a>
                     </div> -->
-                </form>
+                </form>--}}
             </div>
         </div>
 
         <div class="panels-container">
             <div class="panel left-panel">
                 <div class="content">
-                    <h3>New here ?</h3>
-                    <p style="text-transform:uppercase">
+                    {{--<h3>New here ?</h3>--}}
+                    <h3 style="text-transform:uh3percase">
                     Global College International
-                    </p>
+                    </h3>
                     <p>
                     To be a reputed learning center of academic excellence focused on teaching and research in diverse streams of management studies.
                     </p>
-                    <button class="btn transparent" id="sign-up-btn">Sign up</button>
+                    {{-- <button class="btn transparent" id="sign-up-btn">Sign up</button> --}}
                 </div>
                 <img src="{{asset('img/log.svg')}}" class="image" alt="" />
             </div>
@@ -159,8 +159,8 @@
     </div>
     <script src="{{ asset('/backend/plugins/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('js/login/registerSigninapp.js')}}"></script>
-    <script>
-        $(function(){
+    {{-- <script>
+       $(function(){
             const href = window.location.href.split('#');
             const modal = href[href.length-1];
             if(window.location.href.indexOf(modal) != -1) {
@@ -173,7 +173,7 @@
                 $('.invalid-feedback').remove();
             });
         });
-    </script>
+    </script>--}}
 </body>
 
 </html>

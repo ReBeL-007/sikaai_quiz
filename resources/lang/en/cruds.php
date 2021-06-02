@@ -267,7 +267,7 @@ return [
     ],
     'student'           => [
         'title'          => 'Students',
-        'title_singular' => 'student',
+        'title_singular' => 'Student',
         'fields'         => [
             'id'                    => 'ID',
             'id_helper'             => '',
