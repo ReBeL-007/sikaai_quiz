@@ -151,9 +151,8 @@ class QuestionsController extends Controller
     {
         abort_if(Gate::denies('question-edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $quizzes = Quiz::all()->pluck('title', 'id')->prepend(trans('global.pleaseSelect').' a quiz', '');
+        $quizzes = Quiz::all();
         $question->load('quizzes');
-        // dd($question->questionOptions);
         return view('admin.questions.edit', compact('quizzes', 'question'));
     }
 

@@ -76,7 +76,7 @@
                 {!! Form::label('published', 'Published', ['class' => 'control-label']) !!}
                 {!! Form::hidden('published', 0) !!}
                 {!! Form::checkbox('published', 1, false, ['id'=>'']) !!}
-                <p class="help-block"></p>
+                <p class="help-block"><small class="text-muted"><i class="fas fa-exclamation"></i>&nbsp;&nbsp;&nbsp;Publish the quiz to user.</small></p>
                 @if($errors->has('published'))
                 <p class="help-block">
                     {{ $errors->first('published') }}
@@ -90,7 +90,8 @@
                 {!! Form::label('answer_publish', 'Publish Result', ['class' => 'control-label']) !!}
                 {!! Form::hidden('answer_publish', 0) !!}
                 {!! Form::checkbox('answer_publish', 1, false, ['id'=>'']) !!}
-                <p class="help-block"></p>
+                <p class="help-block"><small class="text-muted"><i class="fas fa-exclamation"></i>&nbsp;&nbsp;&nbsp;Allow user to view answer after
+                    completion of quiz</small></p>
                 @if($errors->has('answer_publish'))
                 <p class="help-block">
                     {{ $errors->first('answer_publish') }}

@@ -258,7 +258,6 @@
     $(document).ready(function(){
         $(document).on('change','#quiz_id',function(){
             $selected_option = $(this).find('option:selected');
-            console.log($selected_option.attr('rel-type'));
             if( $selected_option.attr('rel-time') == ''){
                 $('#time-container').removeClass('d-none');
             }else{
