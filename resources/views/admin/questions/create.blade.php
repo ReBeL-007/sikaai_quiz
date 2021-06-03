@@ -117,7 +117,7 @@
         </div>
         <div class="col-md-12 row option-pad">
             <div class="icheck-success">
-                <input type="radio" name="points" id="option2" value="1">
+                <input type="radio" name="points" id="option2" value="2">
                 <label for="option2">
                 </label>
             </div>
@@ -309,7 +309,7 @@
             if($('#maq-row'+i).length >0 && i == 4){
                 i=3;
             }
-            $('#mcq').append('<div class="col-md-12 row option-pad" id="row'+i+'"><br><div class="icheck-success"> <input type="radio" name="points" id="option'+i+'" value="1"> <label for="option'+i+'"> </label> </div> <div class="col-md-8 option-container"> <label for="question-text" class="editor-label">Option '+i+'</label> <textarea class="d-none" name="option_text[]" required></textarea> <div class="option-editor " id="option_text_'+i+'">{{ old('option_text[]', '') }}</div> </div> <div class="col-md-1"><button id="'+i+'" class="btn btn-secondary remove" alt="Delete this option"><i class="fas fa-trash"></i></button></div>');
+            $('#mcq').append('<div class="col-md-12 row option-pad" id="row'+i+'"><br><div class="icheck-success"> <input type="radio" name="points" id="option'+i+'" value="'+i+'"> <label for="option'+i+'"> </label> </div> <div class="col-md-8 option-container"> <label for="question-text" class="editor-label">Option '+i+'</label> <textarea class="d-none" name="option_text[]" required></textarea> <div class="option-editor " id="option_text_'+i+'">{{ old('option_text[]', '') }}</div> </div> <div class="col-md-1"><button id="'+i+'" class="btn btn-secondary remove" alt="Delete this option"><i class="fas fa-trash"></i></button></div>');
 
             var j = $('#mcq input[type="radio"]').length;
 

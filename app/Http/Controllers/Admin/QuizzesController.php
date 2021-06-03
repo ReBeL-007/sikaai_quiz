@@ -120,7 +120,9 @@ class QuizzesController extends Controller
         if (!isset($request->time)) {
             $request->request->add(['time' => null, 'time_type' => null]);
         }
-        $quiz = $quiz->update($request->all());
+        $quiz->update($request->all());
+        $users = User::all();
+        $admins = Admin::all();
         if($quiz->published){
             Notification::send($users,new QuizNotification($quiz,route('quiz_index')));
             Notification::send($admins,new QuizNotification($quiz,route('admin.quizzes.index')));
@@ -211,6 +213,8 @@ class QuizzesController extends Controller
         $quiz = Quiz::findOrFail($request->id);
         $quiz->published = ($request->is_published == 'true')?True:False;
         $quiz = $quiz->save();
+        $users = User::all();
+        $admins = Admin::all();
         if($quiz->published){
             Notification::send($users,new QuizNotification($quiz,route('quiz_index')));
             Notification::send($admins,new QuizNotification($quiz,route('admin.quizzes.index')));

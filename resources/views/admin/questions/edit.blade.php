@@ -259,7 +259,7 @@
                         if($('#row4').length !=0){
                             i=3
                         }
-                        $('#mcq').append('<div class="col-md-12 row option-pad" id="row'+i+'"><br><div class="icheck-success"> <input type="radio" name="points" id="option'+i+'" value="1 required"> <label for="option'+i+'"> </label> </div> <div class="col-md-8 option-container"> <label for="question-text" class="editor-label">Option '+i+'</label> <textarea class="d-none" name="option_text[]" required></textarea> <div class="option-editor {{ $errors->has('option_text') ? 'is-invalid' : '' }}" id="option_text_'+i+'">{{ old('option_text[]', '') }}</div> </div> <div class="col-md-1"><button id="'+i+'" class="btn btn-secondary remove" alt="Delete this option"><i class="fas fa-trash"></i></button></div> @if($errors->has('option_text')) <div class="invalid-feedback"> {{ $errors->first('option_text') }} </div> @endif <span class="help-block">{{ trans('cruds.option.fields.option_text_helper') }}</span> </div>');
+                        $('#mcq').append('<div class="col-md-12 row option-pad" id="row'+i+'"><br><div class="icheck-success"> <input type="radio" name="points" id="option'+i+'" value="'+i+'" required> <label for="option'+i+'"> </label> </div> <div class="col-md-8 option-container"> <label for="question-text" class="editor-label">Option '+i+'</label> <textarea class="d-none" name="option_text[]" required></textarea> <div class="option-editor {{ $errors->has('option_text') ? 'is-invalid' : '' }}" id="option_text_'+i+'">{{ old('option_text[]', '') }}</div> </div> <div class="col-md-1"><button id="'+i+'" class="btn btn-secondary remove" alt="Delete this option"><i class="fas fa-trash"></i></button></div> @if($errors->has('option_text')) <div class="invalid-feedback"> {{ $errors->first('option_text') }} </div> @endif <span class="help-block">{{ trans('cruds.option.fields.option_text_helper') }}</span> </div>');
                         let $this = $('#option_text_'+i);
                         InlineEditor.create( document.querySelector( '#option_text_'+i ), optionConfig ).then(editor=>{
                             editor.model.document.on( 'change', ( evt, data ) => {
@@ -402,7 +402,7 @@
         </div>
         <div class="col-md-12 row option-pad">
             <div class="icheck-success">
-                <input type="radio" name="points" id="option2" value="1">
+                <input type="radio" name="points" id="option2" value="2">
                 <label for="option2">
                 </label>
             </div>
