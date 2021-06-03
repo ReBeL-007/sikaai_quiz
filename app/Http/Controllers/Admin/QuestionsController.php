@@ -335,7 +335,10 @@ class QuestionsController extends Controller
     public function destroy(Question $question)
     {
         abort_if(Gate::denies('question-delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
+        foreach($question->quizzes as $quiz){
+            $quiz->remaining_marks += $question->marks;
+            $quiz->save();
+        }
         $question->delete();
 
         return back();
@@ -358,9 +361,17 @@ class QuestionsController extends Controller
     {
         abort_if(Gate::denies('question-delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         $question = Question::onlyTrashed()->findOrFail($id);
+        foreach($question->quizzes as $quiz){
+            $quiz->remaining_marks -= $question->marks;
+            if($quiz->remaining_marks>=0){
+                $quiz->save();
+            }else{
+                return back()->with('flash_success','Question Marks is more than remaining marks of quiz.');
+            }
+        }
         $question->restore();
 
-        return redirect()->route('admin.questions.index');
+        return back();
     }
 
     /**

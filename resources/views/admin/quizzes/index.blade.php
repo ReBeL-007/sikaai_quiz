@@ -30,6 +30,7 @@
             <thead>
                 <tr>
                     <th></th>
+                    <th>SN</th>
                     <th>@lang('cruds.quizzes.fields.course')</th>
                     @if (Auth::user()->isAdmin())
                     @endif
@@ -50,6 +51,7 @@
                 @foreach ($quizzes as $key=>$quiz)
                 <tr data-entry-id="{{ $quiz->id }}">
                     <td></td>
+                    <td>{{$key+1}}</td>
                     <td>{{ $quiz->course->title or '' }}</td>
                     @if (Auth::user()->isAdmin())
                     @endif
