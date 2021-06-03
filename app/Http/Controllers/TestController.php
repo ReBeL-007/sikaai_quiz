@@ -97,7 +97,13 @@ class TestController extends Controller
 
     public function getQuestions($quiz_id)
     {
-        $questions = Quiz::where('id', $quiz_id)->with('questions.questionOptions')->first();
+        $questions = Quiz::where('id', $quiz_id)
+            ->with(['questions' => function ($query) {
+                $query->with(['questionOptions' => function ($q) {
+                    $q->inRandomOrder();
+                }])->inRandomOrder();
+            }])->inRandomOrder()->first();
+        
         return $questions;
     }
 
