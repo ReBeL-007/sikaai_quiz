@@ -37,7 +37,7 @@ class QuizController extends Controller
                     $quizzes = $quizzes->forget($key);
                 }
             }
-            $attemptsCount = auth()->user()->attempts()->where('quiz_id',$quiz->id)->count();
+            $attemptsCount = auth()->user()->attempts()->where('status','submitted')->where('quiz_id',$quiz->id)->count();
             if(!($quiz->attempts_no > $attemptsCount || $quiz->attempts_no == 0 )){
                 array_push($attempted_quizzes,$quiz);
                 $quizzes = $quizzes->forget($key);

@@ -20,13 +20,16 @@
             enctype="multipart/form-data">
             @method('PUT')
             @csrf
-
             <div class="field-wrapper">
                 <label for="quiz_id" placeholder="Please select a quiz">Please select a quiz</label>
                 <select class="{{ $errors->has('quiz_id') ? 'is-invalid' : '' }}" name="quiz_id" id="quiz_id" required>
+                    <option value="">Please select a quiz</option>
                     @foreach($quizzes as $id => $quiz)
-                    <option value="{{ $id }}" @foreach($question->quizzes as
-                        $q){{ ($q->title ? $q->id : old('quiz_id')) == $id ? 'selected' : '' }}@endforeach>{{ $quiz }}
+                    <option value="{{ $quiz->id }}"  rel-time="{{isset($quiz->time)?$quiz->time:''}}" rel-marks="{{isset($quiz->remaining_marks)?$quiz->remaining_marks:''}}"
+                        rel-type="{{isset($quiz->quiz_type)?$quiz->quiz_type:''}}"
+                        @foreach($question->quizzes as $q)
+                        {{ ($q->id == $quiz->id || old('quiz_id') == $quiz->id)?'selected':''  }}
+                        @endforeach>{{ $quiz->title }}
                     </option>
                     @endforeach
                 </select>
@@ -190,22 +193,26 @@
                     <input type="checkbox" name="" id="time_limit"> Enable
                 </div>
             </div>
-            <div class="form-group" style="margin-top: 15px;">
+            <div class="form-group row ">
                 <label class="col-lg-2" for="marks" placeholder="">{{ trans('cruds.question.fields.marks') }}</label>
-                <input class="col-lg-1" type="number" name="marks" id="marks" value="{{$question->marks}}">
+                <div class="col-lg-2">
+                    <input type="number" name="marks" id="marks" value="{{$question->marks}}">
+                    <small id="remaining-marks"></small><br>
+                    <small class="marks-help-block help-block">
+                        {{ trans('cruds.question.fields.marks_helper') }}</small>
+                </div>
                 @if($errors->has('marks'))
                 <div class="invalid-feedback">
                     {{ $errors->first('marks') }}
                 </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.question.fields.marks_helper') }}</span>
             </div>
     </div>
 
     <div class="card-footer">
         <div class="form-group">
-            <button class="btn btn-danger" type="submit">
-                {{ trans('global.update') }}
+            <button class="btn btn-success" type="submit" id="submit-btn">
+                {{ trans('global.save') }}
             </button>
         </div>
     </div>
@@ -218,6 +225,52 @@
 <script src="{{ asset('js/admin/adaptiveDropdown.js') }}"></script>
 <script type="text/javascript">
     $(document).ready(function(){
+        $(document).on('change','#quiz_id',function(){
+            $selected_option = $(this).find('option:selected');
+            if( $selected_option.attr('rel-time') == ''){
+                $('#time-container').removeClass('d-none');
+            }else{
+                $('#time-container').addClass('d-none');
+            }
+            if($selected_option.attr('rel-type').trim()=='Practice Quiz'){
+                $('#remaining-marks').addClass('d-none');
+            }
+            $final_remaining_marks = parseFloat($selected_option.attr('rel-marks'))+parseFloat($('#marks').val());
+            if($selected_option != ''&& $final_remaining_marks!=''){
+                $('#remaining-marks').html('Remaining marks:'+$final_remaining_marks);
+                $('#remaining-marks').attr('rel-marks',$final_remaining_marks);
+                if(parseInt($final_remaining_marks)<=0 && $selected_option.attr('rel-type').trim()!='Practice Quiz'){
+                    $('#submit-btn').attr('disabled');
+                }
+            }
+        });
+        $('#quiz_id').val($('#quiz_id').val()).trigger('change');
+        $(document).on('keyup','#marks',function(){
+            $remaining_marks = $('#remaining-marks').attr('rel-marks') - $(this).val();
+            if($selected_option != ''&& $final_remaining_marks!=''){
+                $('#remaining-marks').html('Remaining marks:'+($final_remaining_marks-$(this).val()));
+                $('#remaining-marks').attr('rel-marks',$final_remaining_marks-$(this).val());
+            }
+            $selected_option = $('#quiz_id').find('option:selected');
+            if($selected_option.attr('rel-type').trim()=='Practice Quiz'){
+                $('#remaining-marks').addClass('d-none');
+            }
+            else{
+                $('#remaining-marks').removeClass('d-none');
+            }
+            if($remaining_marks<0 && $selected_option.attr('rel-type').trim()!='Practice Quiz'){
+                $('#submit-btn').attr('disabled',true);
+                $('.marks-help-block').html('Marks is more than remaining marks');
+            }else{
+                $('#submit-btn').removeAttr('disabled');
+                $('.marks-help-block').html('');
+            }
+            if($(this).val() == '' || $(this).val() == 0){
+                $(this).val(1).keyup();
+            }
+        });
+        $('#marks').keyup();
+
         $('#time_limit'). click(function(){
                 if($(this). is(":checked")){
                 $("#time, #time_type").removeAttr('disabled');

@@ -114,7 +114,7 @@
                     $attempts = $quiz->attempts->where('user_id',auth()->user()->id)->where('status','submitted');
                     $attemptsNo = count($attempts);
                     @endphp
-                    @if ($attemptsNo!=0 )
+                    @if ($attemptsNo!=0 && $quiz->answer_publish)
                     <div class="attempt-container w-100">
                         <small>Previous Result</small>
                         <div class="previous-result-container">
@@ -136,8 +136,10 @@
                     </div>
                     @endif
                     <div class="w-100 d-flex justify-content-center">
-                        @if ($attemptsNo!=0) <a class="btn lb-alt-btn" href="{{route('stat',['id'=>$quiz->id])}}">View
+                        @if ($attemptsNo!=0 && $quiz->answer_publish) <a class="btn lb-alt-btn" href="{{route('stat',['id'=>$quiz->id])}}">View
                             Stat</a>
+                        @else
+                        <p>No any stats</p>
                         @endif
                     </div>
                 </div>

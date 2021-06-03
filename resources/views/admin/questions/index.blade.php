@@ -22,9 +22,9 @@
 
 <p>
     <ul class="list-inline">
-        <li><a href="{{ route('admin.questions.index') }}"
+        <li><a href="{{ route('admin.questions.index') }}{{(request('quiz')!='')? "?quiz=".request('quiz'):''}}"
                 style="{{ request('show_deleted') == 1 ? '' : 'font-weight: 700' }}">All</a></li> |
-        <li><a href="{{ route('admin.questions.index') }}?show_deleted=1"
+        <li><a href="{{ route('admin.questions.index') }}?show_deleted=1{{(request('quiz')!='')? "&quiz=".request('quiz'):''}}"
                 style="{{ request('show_deleted') == 1 ? 'font-weight: 700' : '' }}">Trash</a></li>
     </ul>
 </p>
@@ -119,7 +119,7 @@
                             'style' => 'display: inline-block;',
                             'method' => 'DELETE',
                             'onsubmit' => "return confirm('".trans("global.areYouSure")."');",
-                            'route' => ['admin.questions.perma_del', $question->id])) !!}
+                            'route' => ['admin.questions.destroy', $question->id])) !!}
                             {!! Form::submit(trans('global.delete'), array('class' => 'btn btn-xs btn-danger')) !!}
                             {!! Form::close() !!}
                             @endcan

@@ -33,34 +33,37 @@
                 @if($errors->has('lesson_id'))
                 <p class="help-block">
                     {{ $errors->first('lesson_id') }}
-                </p>
-                @endif
-            </div>
-        </div> --}}
-        <div class="form-group" id="quiz_type-container">
-            <label for="quiz_type" class="required">Quiz Type: </label>
-            <div class="form-group">
-                <select class="{{ $errors->has('quiz_type') ? 'is-invalid' : '' }} col-lg-12" name="quiz_type"
-                    id="quiz_type" required>
-                    <option value="" {{ $test->quiz_type || old('quiz_type') ? 'selected' : '' }}>Select Quiz Type
-                    </option>
-                    <option value="Mock Test" {{ ($test->quiz_type == "Mock Test"|| old('quiz_type') == "Mock Test") ? 'selected' : '' }}>Mock Test
-                    </option>
-                    <option value="Practice Quiz" {{ ($test->quiz_type == "Practice Quiz" || old('quiz_type') == "Practice Quiz")? 'selected' : '' }}>
-                        Practice
-                        Quiz</option>
-                    <option value="Normal Quiz" {{ ($test->quiz_type == "Normal Quiz" || old('quiz_type') == "Normal Quiz") ? 'selected' : '' }}>Normal
-                        Quiz</option>
-                </select>
-            </div>
-            <div class="help-block"></div>
-            @if($errors->has('quiz_type'))
-            <p class="help-block">
-                {{ $errors->first('quiz_type') }}
-            </p>
-            @endif
-        </div>
-        {{-- <div class="row">
+        </p>
+        @endif
+    </div>
+</div> --}}
+<div class="form-group" id="quiz_type-container">
+    <label for="quiz_type" class="required">Quiz Type: </label>
+    <div class="form-group">
+        <select class="{{ $errors->has('quiz_type') ? 'is-invalid' : '' }} col-lg-12" name="quiz_type" id="quiz_type"
+            required>
+            <option value="" {{ $test->quiz_type || old('quiz_type') ? 'selected' : '' }}>Select Quiz Type
+            </option>
+            <option value="Mock Test"
+                {{ ($test->quiz_type == "Mock Test"|| old('quiz_type') == "Mock Test") ? 'selected' : '' }}>Mock Test
+            </option>
+            <option value="Practice Quiz"
+                {{ ($test->quiz_type == "Practice Quiz" || old('quiz_type') == "Practice Quiz")? 'selected' : '' }}>
+                Practice
+                Quiz</option>
+            <option value="Normal Quiz"
+                {{ ($test->quiz_type == "Normal Quiz" || old('quiz_type') == "Normal Quiz") ? 'selected' : '' }}>Normal
+                Quiz</option>
+        </select>
+    </div>
+    <div class="help-block"></div>
+    @if($errors->has('quiz_type'))
+    <p class="help-block">
+        {{ $errors->first('quiz_type') }}
+    </p>
+    @endif
+</div>
+{{-- <div class="row">
             <div class="col-md-12 form-group">
                 {!! Form::label('quiz_type', 'Quiz Type', ['class' => 'control-label required']) !!}
                 {!! Form::select('quiz_type', [''=>'Select Quiz Type','Mock Test'=>'Mock Test','Practice
@@ -70,9 +73,9 @@
                 @if($errors->has('quiz_type'))
                 <p class="help-block">
                     {{ $errors->first('quiz_type') }}
-        </p>
-        @endif
-    </div>
+</p>
+@endif
+</div>
 </div> --}}
 <div class="row">
     <div class="col-md-12 form-group">
@@ -105,7 +108,7 @@
         {!! Form::label('published', 'Published', ['class' => 'control-label']) !!}
         {!! Form::hidden('published', 0) !!}
         {!! Form::checkbox('published', 1, old('published'), []) !!}
-        <p class="help-block"></p>
+        <p class="help-block"><small class="text-muted"><i class="fas fa-exclamation"></i>&nbsp;&nbsp;&nbsp;Publish the quiz to user.</small></p>
         @if($errors->has('published'))
         <p class="help-block">
             {{ $errors->first('published') }}
@@ -113,16 +116,14 @@
         @endif
     </div>
 </div>
-<p class="help-block">
-    <small class="text-muted"><i class="fas fa-exclamation"></i>&nbsp;&nbsp;&nbsp;Publish the quiz to user.</small>
-</p>
 
 <div class="row">
     <div class="col-md-12 form-group">
         {!! Form::label('answer_publish', 'Publish Result', ['class' => 'control-label']) !!}
         {!! Form::hidden('answer_publish', 0) !!}
         {!! Form::checkbox('answer_publish', 1, false, ['id'=>'',($test->answer_publish)?'checked':'']) !!}
-        <p class="help-block"></p>
+        <p class="help-block"><small class="text-muted"><i class="fas fa-exclamation"></i>&nbsp;&nbsp;&nbsp;Allow user to view answer after
+            completion of quiz</small></p>
         @if($errors->has('answer_publish'))
         <p class="help-block">
             {{ $errors->first('answer_publish') }}
@@ -130,9 +131,7 @@
         @endif
     </div>
 </div>
-<p class="help-block">
-    <small class="text-muted"><i class="fas fa-exclamation"></i>&nbsp;&nbsp;&nbsp;Allow user to view answer after completion of quiz</small>
-</p>
+
 
 <div class="form-group" id="answer-view-container">
     <div class="row">
@@ -217,20 +216,20 @@
     </p>
 </div>
 <div class="row d-none" id="attempt-container">
-            <div class="col-md-12 form-group">
-                {!! Form::label('attempts_no', 'No of attempts', ['class' => 'control-label required']) !!}
-                {!! Form::number('attempts_no', old('attempts_no',0),
-                ['class' =>
-                'form-control', 'placeholder' => '','disabled']) !!}
-                <p class="help-block"><small class="form-text text-muted">0 means can attempt multiple times</small></p>
-                @if($errors->has('attempts_no'))
-                <p class="help-block">
-                    {{ $errors->first('attempts_no') }}
-                </p>
-                @endif
+    <div class="col-md-12 form-group">
+        {!! Form::label('attempts_no', 'No of attempts', ['class' => 'control-label required']) !!}
+        {!! Form::number('attempts_no', old('attempts_no',0),
+        ['class' =>
+        'form-control', 'placeholder' => '','disabled']) !!}
+        <p class="help-block"><small class="form-text text-muted">0 means can attempt multiple times</small></p>
+        @if($errors->has('attempts_no'))
+        <p class="help-block">
+            {{ $errors->first('attempts_no') }}
+        </p>
+        @endif
 
-            </div>
-        </div>
+    </div>
+</div>
 <div class="row d-none" id="full-mark-container">
     <div class="col-md-12 form-group">
         {!! Form::label('full_marks', 'Total Marks', ['class' => 'control-label']) !!}

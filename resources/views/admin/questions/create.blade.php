@@ -258,7 +258,6 @@
     $(document).ready(function(){
         $(document).on('change','#quiz_id',function(){
             $selected_option = $(this).find('option:selected');
-            console.log($selected_option.attr('rel-type'));
             if( $selected_option.attr('rel-time') == ''){
                 $('#time-container').removeClass('d-none');
             }else{
@@ -267,11 +266,11 @@
             if($selected_option.attr('rel-type').trim()=='Practice Quiz'){
                 $('#remaining-marks').addClass('d-none');
             }
-            $remaining_marks = $selected_option.attr('rel-marks');
-            if($selected_option != ''&& $remaining_marks!=''){
-                $('#remaining-marks').html('Remaining marks:'+$remaining_marks);
-                $('#remaining-marks').attr('rel-marks',$remaining_marks);
-                if(parseInt($remaining_marks)<=0 && $selected_option.attr('rel-type').trim()!='Practice Quiz'){
+            $final_remaining_marks = parseFloat($selected_option.attr('rel-marks'));
+            if($selected_option != ''&& $final_remaining_marks!=''){
+                $('#remaining-marks').html('Remaining marks:'+$final_remaining_marks);
+                $('#remaining-marks').attr('rel-marks',$final_remaining_marks);
+                if(parseInt($final_remaining_marks)<=0 && $selected_option.attr('rel-type').trim()!='Practice Quiz'){
                     $('#submit-btn').attr('disabled');
                 }
             }
@@ -279,6 +278,10 @@
         $('#quiz_id').val($('#quiz_id').val()).trigger('change');
         $(document).on('keyup','#marks',function(){
             $remaining_marks = $('#remaining-marks').attr('rel-marks') - $(this).val();
+            if($selected_option != ''&& $final_remaining_marks!=''){
+                $('#remaining-marks').html('Remaining marks:'+($final_remaining_marks-$(this).val()));
+                $('#remaining-marks').attr('rel-marks',$final_remaining_marks-$(this).val());
+            }
             $selected_option = $('#quiz_id').find('option:selected');
             if($selected_option.attr('rel-type').trim()=='Practice Quiz'){
                 $('#remaining-marks').addClass('d-none');
@@ -293,7 +296,11 @@
                 $('#submit-btn').removeAttr('disabled');
                 $('.marks-help-block').html('');
             }
+            if($(this).val() == '' || $(this).val() == 0){
+                $(this).val(1).keyup();
+            }
         });
+        $('#marks').keyup();
         $('#time_limit'). click(function(){
                 if($(this). is(":checked")){
                 $("#time, #time_type").removeAttr('disabled');

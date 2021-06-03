@@ -10,7 +10,7 @@
             </a>
             <a class="btn btn-success ml-2 " href="{{ route("admin.users.importUser") }}">
                 {{ trans('global.add') }} Users     <i class="fas fa-file-excel"></i>
-            </a>
+        </a>
         </div>
     </div>
 @endcan

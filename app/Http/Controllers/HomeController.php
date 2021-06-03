@@ -58,7 +58,7 @@ class HomeController extends Controller
                 }
             }
             array_push($quiz_for_leaderboard,$quiz);
-            $attemptsCount = auth()->user()->attempts()->where('quiz_id',$quiz->id)->count();
+            $attemptsCount = auth()->user()->attempts()->where('quiz_id',$quiz->id)->where('status','submitted')->count();
             if(!($quiz->attempts_no > $attemptsCount || $quiz->attempts_no == 0 )){
                 array_push($attempted_quizzes,$quiz);
                 $quizzes = $quizzes->forget($key);
