@@ -68,6 +68,9 @@ class QuizzesController extends Controller
     {
         abort_if(Gate::denies('quiz-create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         $quiz = Quiz::create($request->all());
+        if($quiz->quiz_type=='Practice Quiz'){
+            $quiz->attempts_no = 0;
+        }
         $teachers = \Auth::user()->isAdmin() ? array_filter((array)$request->input('teachers')) : [\Auth::user()->id];
         $quiz->teachers()->sync($teachers);
         $quiz->remaining_marks = $quiz->full_marks;
@@ -111,6 +114,10 @@ class QuizzesController extends Controller
     {
         abort_if(Gate::denies('quiz-edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         $quiz = Quiz::findOrFail($id);
+        if($quiz->quiz_type=='Practice Quiz'){
+            $quiz->attempts_no = 0;
+            $quiz->save();
+        }
         if (!isset($request->start_at)) {
             $request->request->add(['start_at' => null]);
         }

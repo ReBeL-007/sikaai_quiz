@@ -61,5 +61,12 @@
     .list-inline>li {
       display:inline-block;padding-right:5px;padding-left:5px
     }
+    *{
+      -moz-user-select: -moz-none;
+      -khtml-user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
   </style>
   @yield('styles')

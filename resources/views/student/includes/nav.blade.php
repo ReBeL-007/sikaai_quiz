@@ -6,7 +6,7 @@
             <a class="nav-link" data-widget="pushmenu" href="" role="button"><i class="fas fa-bars"></i></a>
         </li>
     </ul> --}}
-    <img src="{{ asset('gci.webp') }}">
+    <a href="{{route('home')}}"><img src="{{ asset('gci.webp') }}"></a>
     {{-- <!-- SEARCH FORM -->
 
     <!-- invisible form for mobile -->

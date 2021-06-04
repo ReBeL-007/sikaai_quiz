@@ -78,11 +78,8 @@
                                 <p>{{$start_date->format('g:i A')}}</p>
                             </div>
                             <div class="col-md-5">
-                                <h5>{{$test->course->category->name}} ( {{$test->course->title}} )</h5>
+                                <h5>( {{$test->course->title}} )</h5>
                                 <p>{{$test->title}}</p>
-                            </div>
-                            <div class="col-md-3 live-class">
-                                <a href="{{route('course_detail',[$test->course->id])}}">View Course</a>
                             </div>
                         </div>
                     </div>

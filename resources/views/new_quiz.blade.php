@@ -1,11 +1,7 @@
-@extends('layouts.app')
-
-@section('title','Quiz')
-
-@section('content')
+@extends('layouts.app') @section('title','Quiz') @section('content')
 <style>
     .timer-container {
-        border: #D6D6EF 2px solid;
+        border: #d6d6ef 2px solid;
         border-radius: 20px;
     }
 
@@ -16,7 +12,7 @@
 
     .question-no {
         padding: 5px;
-        background-color: #DCDCF1;
+        background-color: #dcdcf1;
         border-radius: 10px;
         max-height: 36.8px;
         font-weight: bold;
@@ -53,35 +49,35 @@
         display: none;
     }
 
-    .option input:checked~span {
-        background: #44C385;
-        border-color: #44C385;
+    .option input:checked ~ span {
+        background: #44c385;
+        border-color: #44c385;
     }
 
-    .option input:checked~span:before {
+    .option input:checked ~ span:before {
         width: 1rem;
         height: 0.15rem;
         transition: width 0.1s;
         transition-delay: 0.3s;
     }
 
-    .option input:checked~span:after {
+    .option input:checked ~ span:after {
         width: 0.4rem;
         height: 0.15rem;
         transition: width 0.1s;
         transition-delay: 0.2s;
     }
 
-    .option input:disabled~span {
+    .option input:disabled ~ span {
         background: #ececec;
         border-color: #dcdcdc;
     }
 
-    .option input:disabled~label {
+    .option input:disabled ~ label {
         color: #dcdcdc;
     }
 
-    .option input:disabled~label:hover {
+    .option input:disabled ~ label:hover {
         cursor: default;
     }
 
@@ -136,13 +132,13 @@
 
     .hint-text {
         padding: 10px;
-        border: #D6D6EF solid 2px;
+        border: #d6d6ef solid 2px;
         border-radius: 20px;
     }
 
     .hint-append {
         position: absolute;
-        top: .65rem;
+        top: 0.65rem;
         left: 20%;
         background-color: white;
         padding: 0px 5px;
@@ -155,18 +151,17 @@
 
     .solution-text {
         padding: 10px !important;
-        border: #D6D6EF solid 2px !important;
+        border: #d6d6ef solid 2px !important;
         border-radius: 20px !important;
     }
 
     .solution-append {
         position: absolute;
-        top: .65rem !important;
+        top: 0.65rem !important;
         left: 3.5 !important;
         background-color: white;
         padding: 0px 5px !important;
     }
-
 
     .timer--clock * {
         cursor: default;
@@ -215,27 +210,27 @@
         justify-content: space-around;
     }
 
-    .minutes-group>.number-grp {
-        color: #2927A3;
+    .minutes-group > .number-grp {
+        color: #2927a3;
     }
 
-    .score-group>.number-grp {
-        color: #2927A3;
+    .score-group > .number-grp {
+        color: #2927a3;
     }
 
-    .hours-group>.number-grp {
-        color: #2927A3;
+    .hours-group > .number-grp {
+        color: #2927a3;
     }
 
-    .seconds-group>.number-grp {
-        color: #FF8353;
+    .seconds-group > .number-grp {
+        color: #ff8353;
     }
 
     .minutes-container,
     .score-container,
     .hours-container,
     .seconds-container {
-        background-color: #F5F5FC;
+        background-color: #f5f5fc;
         text-align: center;
         padding: 10px;
         margin: 10px;
@@ -307,7 +302,7 @@
     }
 
     .progress-bar {
-        background-color: #05C56B !important;
+        background-color: #05c56b !important;
     }
 
     .quiz-card {
@@ -342,11 +337,11 @@
     .quiz-btn {
         margin-top: 1.5rem;
         display: flex;
-        justify-content: center
+        justify-content: center;
     }
 
     .submit-btn {
-        background: #575FCF;
+        background: #575fcf;
         color: white;
         font-size: 1rem !important;
         border-radius: 40px !important;
@@ -439,7 +434,7 @@
 
     .btn-quiz {
         padding: 1rem 1.2rem;
-        background: #575FCF;
+        background: #575fcf;
         border-radius: 100%;
         color: white;
     }
@@ -503,7 +498,7 @@
         justify-content: space-between;
         align-items: center;
         padding: 0rem 0.5rem;
-        border: 0.5px solid #808E9B;
+        border: 0.5px solid #808e9b;
         cursor: pointer;
         margin-bottom: 2rem;
         border-radius: 3px;
@@ -539,7 +534,7 @@
         display: inline-block;
         position: absolute;
         right: -1rem;
-        top: .9rem;
+        top: 0.9rem;
     }
 
     .radio-container::after {
@@ -556,7 +551,7 @@
         opacity: 0;
     }
 
-    .input-radio:checked~.option-wrapper-label .radio-container::after {
+    .input-radio:checked ~ .option-wrapper-label .radio-container::after {
         opacity: 1;
     }
 
@@ -567,7 +562,7 @@
         display: inline-block;
         position: absolute;
         right: -1rem;
-        top: .9rem;
+        top: 0.9rem;
     }
 
     .checkbox-container::after {
@@ -583,7 +578,7 @@
         opacity: 0;
     }
 
-    .input-checkbox:checked~.option-wrapper-label .checkbox-container::after {
+    .input-checkbox:checked ~ .option-wrapper-label .checkbox-container::after {
         opacity: 1;
     }
 
@@ -604,11 +599,11 @@
 
     .answer-append {
         position: absolute;
-        top: -.5rem;
+        top: -0.5rem;
         left: 1rem;
         background-color: white;
         padding: 0px 10px 0px 10px;
-        font-size: .7rem;
+        font-size: 0.7rem;
     }
 
     .ck.ck-editor__editable:not(.ck-editor__nested-editable).ck-rounded-corners {
@@ -623,9 +618,7 @@
                     <div class="card__header row">
                         <div class="row w-100">
                             <div class="col-md-3">
-                                <div class="mt-3">
-                                    <h4>Practice Test</h4>
-                                </div>
+                                <div class="mt-3"></div>
                             </div>
                             <div class="col-md-5">
                                 <small class="progress-percent">0%</small>
@@ -635,78 +628,165 @@
                             </div>
                             <div class="time-indicator col-md-4 d-none">
                                 <div class="clock">
-                                    <img class="clock-img" src="{{asset('img/clock.svg')}}">
+                                    <img
+                                        class="clock-img"
+                                        src="{{ asset('img/clock.svg') }}"
+                                    />
                                 </div>
                                 <div class="time-counter">
                                     <span class="timer"></span>
-                                    <div><small class="ml-auto">Time left</small></div>
+                                    <div>
+                                        <small class="ml-auto">Time left</small>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <br />
                     <div>
-                        Question <span class="question-no-span"></span> out of <span class="total-question-span"></span>
+                        Question <span class="question-no-span"></span> out of
+                        <span class="total-question-span"></span>
                     </div>
                     <div class="question-container">
                         <div class="question" rel="">
                             <div class="row">
-                                <div class="question-no">Q.<span class="question_no_span"></span></div>
-                                <div class="question-text col-md-10">
-                                    <div id="question-editor"> </div>
+                                <div class="question-no">
+                                    Q.<span class="question_no_span"></span>
                                 </div>
-                                <span class="solution-container ml-auto"><img data-toggle="tooltip" src=""
-                                        class="solution" /></span>
-                                <span class="hint-container ml-auto"><img data-toggle="tooltip" src=""
-                                        class="hint" /></span>
+                                <div class="question-text col-md-10">
+                                    <div id="question-editor"></div>
+                                </div>
+                                <span class="solution-container ml-auto"
+                                    ><img
+                                        data-toggle="tooltip"
+                                        src=""
+                                        class="solution"
+                                /></span>
+                                <span class="hint-container ml-auto"
+                                    ><img
+                                        data-toggle="tooltip"
+                                        src=""
+                                        class="hint"
+                                /></span>
                             </div>
                             <div class="hint-text-container d-none">
-                                <div class="hint-text" id="hint-editor">
-                                </div>
+                                <div class="hint-text" id="hint-editor"></div>
                                 <div class="hint-append">Hint</div>
                             </div>
                             <div class="solution-text-container d-none">
-                                <div class="solution-text" id="solution-editor">
-                                </div>
+                                <div
+                                    class="solution-text"
+                                    id="solution-editor"
+                                ></div>
                                 <div class="solution-append">Solution</div>
                             </div>
                             <div class="options">
                                 <div class="row">
                                     <div class="option-wrapper col-md-12">
-                                        <input id="" type="checkbox" class="input-radio" name="option" value="" />
-                                        <label for="" class="option-wrapper-label">
-                                            <div class="readonly-option-editor label-text" id="option-1">
-                                            </div><span class="radio-container"></span>
+                                        <input
+                                            id=""
+                                            type="checkbox"
+                                            class="input-radio"
+                                            name="option"
+                                            value=""
+                                        />
+                                        <label
+                                            for=""
+                                            class="option-wrapper-label"
+                                        >
+                                            <div
+                                                class="
+                                                    readonly-option-editor
+                                                    label-text
+                                                "
+                                                id="option-1"
+                                            ></div>
+                                            <span
+                                                class="radio-container"
+                                            ></span>
                                         </label>
                                     </div>
                                     <div class="option-wrapper col-md-12">
-                                        <input id="" type="checkbox" class="input-radio" name="option" value="" />
-                                        <label for="" class="option-wrapper-label">
-                                            <div class="readonly-option-editor label-text" id="option-2">
-                                            </div><span class="radio-container"></span>
+                                        <input
+                                            id=""
+                                            type="checkbox"
+                                            class="input-radio"
+                                            name="option"
+                                            value=""
+                                        />
+                                        <label
+                                            for=""
+                                            class="option-wrapper-label"
+                                        >
+                                            <div
+                                                class="
+                                                    readonly-option-editor
+                                                    label-text
+                                                "
+                                                id="option-2"
+                                            ></div>
+                                            <span
+                                                class="radio-container"
+                                            ></span>
                                         </label>
                                     </div>
                                     <div class="option-wrapper col-md-12">
-                                        <input id="option-" type="checkbox" class="input-radio" name="option"
-                                            value="" />
-                                        <label for="option-" class="option-wrapper-label">
-                                            <div class="readonly-option-editor label-text" id="option-3">
-                                            </div><span class="radio-container"></span>
+                                        <input
+                                            id="option-"
+                                            type="checkbox"
+                                            class="input-radio"
+                                            name="option"
+                                            value=""
+                                        />
+                                        <label
+                                            for="option-"
+                                            class="option-wrapper-label"
+                                        >
+                                            <div
+                                                class="
+                                                    readonly-option-editor
+                                                    label-text
+                                                "
+                                                id="option-3"
+                                            ></div>
+                                            <span
+                                                class="radio-container"
+                                            ></span>
                                         </label>
                                     </div>
                                     <div class="option-wrapper col-md-12">
-                                        <input id="option-" type="checkbox" class="input-radio" name="option"
-                                            value="" />
-                                        <label for="option-" class="option-wrapper-label">
-                                            <div class="readonly-option-editor label-text" id="option-4">
-                                            </div><span class="radio-container"></span>
+                                        <input
+                                            id="option-"
+                                            type="checkbox"
+                                            class="input-radio"
+                                            name="option"
+                                            value=""
+                                        />
+                                        <label
+                                            for="option-"
+                                            class="option-wrapper-label"
+                                        >
+                                            <div
+                                                class="
+                                                    readonly-option-editor
+                                                    label-text
+                                                "
+                                                id="option-4"
+                                            ></div>
+                                            <span
+                                                class="radio-container"
+                                            ></span>
                                         </label>
                                     </div>
                                 </div>
                                 <div class="answer-container d-none">
-                                    <div class="answer" id="answer-editor">
+                                    <div
+                                        class="answer"
+                                        id="answer-editor"
+                                    ></div>
+                                    <div class="answer-append">
+                                        Write your answer
                                     </div>
-                                    <div class="answer-append">Write your answer</div>
                                 </div>
                             </div>
                         </div>
@@ -719,86 +799,89 @@
 <div class="quiz-btn">
     <div class="quiz-btn-container">
         <button class="prev quiz-nav-btn">
-            <span class="btn-quiz"><i class="fas fa-arrow-left"></i></span>&nbsp;<span>Previous</span>
+            <span class="btn-quiz"><i class="fas fa-arrow-left"></i></span
+            >&nbsp;<span>Previous</span>
         </button>
         <button class="next quiz-nav-btn">
-            <span>Next</span>&nbsp;<span class="btn-quiz"><i class="fas fa-arrow-right"></i></span>
+            <span>Next</span>&nbsp;<span class="btn-quiz"
+                ><i class="fas fa-arrow-right"></i
+            ></span>
         </button>
     </div>
-    <div class="submit-container">
-    </div>
+    <div class="submit-container"></div>
 </div>
 
-@endsection
-@section('scripts')
+@endsection @section('scripts')
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
 <script>
     let $question_editor;
-    InlineEditor.create( document.querySelector('#question-editor'), {
-                image: {
-        toolbar: [
-            'imageTextAlternative',
-            'imageStyle:full',
-            'imageStyle:side'
-        ]
-    },
-                isReadOnly: true,
-            }) .then( editor => {
-                $question_editor = editor;
-                editor.isReadOnly = true;
-    } );
+    InlineEditor.create(document.querySelector("#question-editor"), {
+        image: {
+            toolbar: [
+                "imageTextAlternative",
+                "imageStyle:full",
+                "imageStyle:side",
+            ],
+        },
+        isReadOnly: true,
+    }).then((editor) => {
+        $question_editor = editor;
+        editor.isReadOnly = true;
+    });
     let $hint_editor;
-    InlineEditor.create( document.querySelector('#hint-editor'), {
-                image: {
-        toolbar: [
-            'imageTextAlternative',
-            'imageStyle:full',
-            'imageStyle:side'
-        ]
-    },
-                isReadOnly: true,
-            }) .then( editor => {
-                $hint_editor = editor;
-                editor.isReadOnly = true;
-    } );
+    InlineEditor.create(document.querySelector("#hint-editor"), {
+        image: {
+            toolbar: [
+                "imageTextAlternative",
+                "imageStyle:full",
+                "imageStyle:side",
+            ],
+        },
+        isReadOnly: true,
+    }).then((editor) => {
+        $hint_editor = editor;
+        editor.isReadOnly = true;
+    });
 
     let $solution_editor;
-    InlineEditor.create( document.querySelector('#solution-editor'), {
-                image: {
-        toolbar: [
-            'imageTextAlternative',
-            'imageStyle:full',
-            'imageStyle:side'
-        ]
-    },
-                isReadOnly: true,
-            }) .then( editor => {
-                $solution_editor = editor;
-                editor.isReadOnly = true;
-    } );
+    InlineEditor.create(document.querySelector("#solution-editor"), {
+        image: {
+            toolbar: [
+                "imageTextAlternative",
+                "imageStyle:full",
+                "imageStyle:side",
+            ],
+        },
+        isReadOnly: true,
+    }).then((editor) => {
+        $solution_editor = editor;
+        editor.isReadOnly = true;
+    });
 
     let $option_editors = [];
-    $('.readonly-option-editor').each(function(i,ele){
-        InlineEditor.create( document.querySelector('#'+$(this).attr('id')), {
-                image: {
-        toolbar: [
-            'imageTextAlternative',
-            'imageStyle:full',
-            'imageStyle:side'
-        ]
-    },
-                isReadOnly: true,
-            }) .then( editor => {
-                $option_editors.push(editor);
-                editor.isReadOnly = true;
-    } );
+    $(".readonly-option-editor").each(function (i, ele) {
+        InlineEditor.create(document.querySelector("#" + $(this).attr("id")), {
+            image: {
+                toolbar: [
+                    "imageTextAlternative",
+                    "imageStyle:full",
+                    "imageStyle:side",
+                ],
+            },
+            isReadOnly: true,
+        }).then((editor) => {
+            $option_editors.push(editor);
+            editor.isReadOnly = true;
+        });
     });
 
     let $answer_editor;
-        InlineEditor.create( document.querySelector('#answer-editor'), answerConfig
-        ) .then( editor => {
-                $answer_editor = editor;
-    } );
+    InlineEditor.create(
+        document.querySelector("#answer-editor"),
+        answerConfig
+    ).then((editor) => {
+        $answer_editor = editor;
+    });
     $(function () {
         let editors = [];
         var quiz = [];
@@ -806,7 +889,7 @@
         var $attempt;
         var $question_no = 1;
         var $total_question = 0;
-        var $user_id = '{{auth()->user()->id }}';
+        var $user_id = "{{auth()->user()->id }}";
         let timer;
         let answerInterval;
         let $left_time = null;
@@ -814,341 +897,475 @@
         let $timers = [];
         //question from ajax
         $.ajax({
-            url: "{{route('get_question',$quiz)}}"
-            , async: false
-            , dataType: 'json'
-            , success: function(json) {
+            type: "POST",
+            url: "{{route('get_question',$quiz)}}",
+            async: false,
+            headers: {
+                    "X-CSRF-TOKEN": "{{ csrf_token() }}",
+            },
+            dataType: "json",
+            success: function (json) {
                 quiz = json;
                 $total_question = quiz.questions.length;
-                $('.total-question-span').html($total_question);
-            }
+                $(".total-question-span").html($total_question);
+            },
         });
         function setCookie(cname, cvalue, exdays) {
-            Cookies.set(cname, cvalue, { expires: exdays});
+            Cookies.set(cname, cvalue, { expires: exdays });
         }
 
         // fuction to get cookie
         function getCookie(cname) {
-            return Cookies.get(cname) ;
+            return Cookies.get(cname);
         }
 
-        if (getCookie('attempt_' + quiz.id + '_' + $user_id) == '' || getCookie('attempt_' + quiz.id + '_' + $user_id) == undefined) {
+        if (
+            getCookie("attempt_" + quiz.id + "_" + $user_id) == "" ||
+            getCookie("attempt_" + quiz.id + "_" + $user_id) == undefined
+        ) {
             $.ajax({
-                type: 'POST'
-                ,async:false
-                , url: "{{ route('test_store') }}"
-                , headers: {
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                , }
-                , data: {
-                     'quiz': quiz.id
-                    , 'user': $user_id
-                , }
-                , success: function(data){
+                type: "POST",
+                async: false,
+                url: "{{ route('test_store') }}",
+                headers: {
+                    "X-CSRF-TOKEN": "{{ csrf_token() }}",
+                },
+                data: {
+                    quiz: quiz.id,
+                    user: $user_id,
+                },
+                success: function (data) {
                     $attempt = data;
-                }
-            , });
-            setCookie('attempt_' + quiz.id + '_' + $user_id,JSON.stringify($attempt));
-        }else{
-            $attempt = JSON.parse(getCookie('attempt_' + quiz.id + '_' + $user_id));
+                },
+            });
+            setCookie(
+                "attempt_" + quiz.id + "_" + $user_id,
+                JSON.stringify($attempt)
+            );
+        } else {
+            $attempt = JSON.parse(
+                getCookie("attempt_" + quiz.id + "_" + $user_id)
+            );
         }
 
-        if (getCookie('answer_'+quiz.id + '_' + $user_id) != undefined) {
-            $answer = JSON.parse(getCookie('answer_'+quiz.id + '_' + $user_id));
+        if (getCookie("answer_" + quiz.id + "_" + $user_id) != undefined) {
+            $answer = JSON.parse(
+                getCookie("answer_" + quiz.id + "_" + $user_id)
+            );
         }
-        if (getCookie('time_answer_'+quiz.id + '_' + $user_id) != undefined) {
-            $time_answer = JSON.parse(getCookie('time_answer_'+quiz.id + '_' + $user_id));
+        if (getCookie("time_answer_" + quiz.id + "_" + $user_id) != undefined) {
+            $time_answer = JSON.parse(
+                getCookie("time_answer_" + quiz.id + "_" + $user_id)
+            );
         }
-        if (getCookie('question_no_' + quiz.id + '_' + $user_id) != undefined) {
-            $question_no = parseInt(getCookie('question_no_' + quiz.id + '_' + $user_id));
+        if (getCookie("question_no_" + quiz.id + "_" + $user_id) != undefined) {
+            $question_no = parseInt(
+                getCookie("question_no_" + quiz.id + "_" + $user_id)
+            );
         }
-        if(quiz.time!=null){
-            switch(quiz.time_type){
+        if (quiz.time != null) {
+            switch (quiz.time_type) {
                 case 1:
-                    time = quiz.time*60;
+                    time = quiz.time * 60;
                     break;
                 case 2:
-                time = quiz.time*60*60;
+                    time = quiz.time * 60 * 60;
                     break;
                 default:
-                time = quiz.time;
-                break;
+                    time = quiz.time;
+                    break;
             }
             time *= 1000;
-            $date =new Date($attempt.created_at);
-            $now  = new Date();
-            $leftTime = (($date.getTime()+time)-$now)/(1000*60);
-            if($leftTime<0){
+            $date = new Date($attempt.created_at);
+
+            $now = new Date();
+            $leftTime = ($date.getTime() + time - $now) / (1000 * 60);
+            if (quiz.end_at) {
+                $endDate = new Date(quiz.end_at);
+                $endTime = ($endDate.getTime() - $now)/ (1000 * 60);
+                if($leftTime>$endTime){
+                    $leftTime = $endTime;
+                }
+            }
+            if ($leftTime < 0) {
                 submit();
             }
-            setLogoutTimer($leftTime,'quiz');
-            $('.time-indicator').removeClass('d-none');
+            setLogoutTimer($leftTime, "quiz");
+            $(".time-indicator").removeClass("d-none");
+        }
+        if (quiz.time == null && quiz.end_at) {
+            $end_Date = new Date(quiz.end_at);
+            $now = new Date();
+            $leftTime = ($end_Date.getTime() - $now) / (1000 * 60);
+            if ($leftTime < 0) {
+                submit();
+            }
+            if ($leftTime <= 180) {
+                setLogoutTimer($leftTime, "quiz");
+                $(".time-indicator").removeClass("d-none");
+            }
         }
 
         getQuestion($question_no);
 
         function getQuestion($ele) {
             clearInterval(answerInterval);
-            $('.submit-container').html('');
-            $answer_editor.setData('');
+            $(".submit-container").html("");
+            $answer_editor.setData("");
             $ele--;
-            setCookie('question_no_' + quiz.id + '_' + $user_id, $question_no, 1);
+            setCookie(
+                "question_no_" + quiz.id + "_" + $user_id,
+                $question_no,
+                1
+            );
             //disabling prev and next button
             if ($question_no != 1) {
-                $('.prev').removeClass('d-none');
-                $('.prev').prop('disabled', false);
+                $(".prev").removeClass("d-none");
+                $(".prev").prop("disabled", false);
             } else {
-                $('.prev').addClass('d-none');
-                $('.prev').prop('disabled', true);
+                $(".prev").addClass("d-none");
+                $(".prev").prop("disabled", true);
             }
             if ($question_no <= $total_question) {
-                $('.next').removeClass('d-none');
-                $('.next').prop('disabled', false);
+                $(".next").removeClass("d-none");
+                $(".next").prop("disabled", false);
             } else {
-                $('.next').addClass('d-none');
-                $('.next').prop('disabled', true);
+                $(".next").addClass("d-none");
+                $(".next").prop("disabled", true);
             }
-            if($question_no == $total_question){
-                $('.submit-container').html('<button class="btn submit-btn submit">Submit</button>');
+            if ($question_no == $total_question) {
+                $(".submit-container").html(
+                    '<button class="btn submit-btn submit">Submit</button>'
+                );
             }
             //updating question as per question number
             let is_time_up = false;
-            if(quiz.questions[$ele].time != null){
-                switch(quiz.questions[$ele].time_type){
-                case 1:
-                    time = quiz.questions[$ele].time;
-                    break;
-                case 2:
-                time = quiz.questions[$ele].time*60;
-                    break;
-                default:
-                time = quiz.questions[$ele].time/60;
-                break;
-            }
-            // $('.prev').remove();
-            $.each($time_answer,function(i,data){
-                if(data.question_id == quiz.questions[$ele].id){
-                    time = data.time;
-                    if(time<=0){
-                        is_time_up = true;
-                    }
+            if (quiz.questions[$ele].time != null) {
+                switch (quiz.questions[$ele].time_type) {
+                    case 1:
+                        time = quiz.questions[$ele].time;
+                        break;
+                    case 2:
+                        time = quiz.questions[$ele].time * 60;
+                        break;
+                    default:
+                        time = quiz.questions[$ele].time / 60;
+                        break;
                 }
-            });
-            if(is_time_up){
-                $('.option-wrapper').addClass('d-none');
-            }else{
-                $timers.push({"timer":setLogoutTimer(time,'question'),"question_no":quiz.questions[$ele].id});
+                // $('.prev').remove();
+                $.each($time_answer, function (i, data) {
+                    if (data.question_id == quiz.questions[$ele].id) {
+                        time = data.time;
+                        if (time <= 0) {
+                            is_time_up = true;
+                        }
+                    }
+                });
+                if (is_time_up) {
+                    $(".option-wrapper").addClass("d-none");
+                } else {
+                    $timers.push({
+                        timer: setLogoutTimer(time, "question"),
+                        question_no: quiz.questions[$ele].id,
+                    });
+                }
+                $(".time-indicator").removeClass("d-none");
             }
-            $('.time-indicator').removeClass('d-none');
-            }
-            $('.option-wrapper').addClass('d-none');
-            $('.answer-container').addClass('d-none');
+            $(".option-wrapper").addClass("d-none");
+            $(".answer-container").addClass("d-none");
             switch (quiz.questions[$ele].type) {
                 case "Multiple Choices":
-                    $.each(quiz.questions[$ele].question_options, function(i, ele) {
-                       renderOption(i,ele,is_time_up=is_time_up);
-                    });
+                    $.each(
+                        quiz.questions[$ele].question_options,
+                        function (i, ele) {
+                            renderOption(i, ele, (is_time_up = is_time_up));
+                        }
+                    );
                     break;
                 case "True or False":
-                $.each(quiz.questions[$ele].question_options, function(i, ele) {
-                       renderOption(i,ele,is_time_up=is_time_up);
-                    });;
+                    $.each(
+                        quiz.questions[$ele].question_options,
+                        function (i, ele) {
+                            renderOption(i, ele, (is_time_up = is_time_up));
+                        }
+                    );
                     break;
                 case "Multiple Answers":
-                $.each(quiz.questions[$ele].question_options, function(i, ele) {
-                       renderOption(i,ele,'checkbox',is_time_up=is_time_up);
-                    });
+                    $.each(
+                        quiz.questions[$ele].question_options,
+                        function (i, ele) {
+                            renderOption(
+                                i,
+                                ele,
+                                "checkbox",
+                                (is_time_up = is_time_up)
+                            );
+                        }
+                    );
                     break;
                 case "Short Answer":
-                    $('.answer-container').removeClass('d-none');
-                    answerInterval = setInterval(function() {
-                        localStorage.setItem('short_answer_'+quiz.questions[$ele].id+ '_' + $user_id,$answer_editor.getData());
+                    $(".answer-container").removeClass("d-none");
+                    answerInterval = setInterval(function () {
+                        localStorage.setItem(
+                            "short_answer_" +
+                                quiz.questions[$ele].id +
+                                "_" +
+                                $user_id,
+                            $answer_editor.getData()
+                        );
                     }, 5000);
                     break;
             }
-            $question_template = renderQuestion($question_no,quiz.questions[$ele].question_text,quiz.questions[$ele].question_hint,quiz.questions[$ele].id,quiz.answer_view,quiz.questions[$ele].answer_explanation);
+            $question_template = renderQuestion(
+                $question_no,
+                quiz.questions[$ele].question_text,
+                quiz.questions[$ele].question_hint,
+                quiz.questions[$ele].id,
+                quiz.answer_view,
+                quiz.questions[$ele].answer_explanation
+            );
 
             $('[data-toggle="tooltip"]').tooltip();
 
-    //progress bar
-    progress = ($answer.length/$total_question)*100;
-    $('.progress-bar').css('width',progress+'%');
-    $('.progress-percent').html(parseInt(progress)+'%');
-    //selecting selected answers
-    selectOption();
+            //progress bar
+            progress = ($answer.length / $total_question) * 100;
+            $(".progress-bar").css("width", progress + "%");
+            $(".progress-percent").html(parseInt(progress) + "%");
+            //selecting selected answers
+            selectOption();
         }
 
         function selectOption() {
-            $.each($answer, function(i, ele) {
-                if (ele.question_id == quiz.questions[$question_no-1].id) {
-                    if(ele.options == 'text_answer'){
-                        $answer_editor.setData(localStorage.getItem('short_answer_'+quiz.questions[$question_no-1].id + '_' + $user_id));
-                    }else{
-                    $.each(ele.options, function(key, val) {
-                        $("#option-" + val).trigger('click');
-                    });
-                }
+            $.each($answer, function (i, ele) {
+                if (ele.question_id == quiz.questions[$question_no - 1].id) {
+                    if (ele.options == "text_answer") {
+                        $answer_editor.setData(
+                            localStorage.getItem(
+                                "short_answer_" +
+                                    quiz.questions[$question_no - 1].id +
+                                    "_" +
+                                    $user_id
+                            )
+                        );
+                    } else {
+                        $.each(ele.options, function (key, val) {
+                            $("#option-" + val).trigger("click");
+                        });
+                    }
                 }
             });
         }
 
-        function renderQuestion(question_no,question_text,hint_text,question_id,answer_available,solution_text){
-            $('.hint-text-container').addClass('d-none');
-            $('.hint').removeClass('show');
-            $('.question').addClass(`questions-${question_no}`).attr('rel',`${question_id}`);
-            $('.question-no').html('Q.'+question_no);
-            $('.question-no-span').html(question_no);
+        function renderQuestion(
+            question_no,
+            question_text,
+            hint_text,
+            question_id,
+            answer_available,
+            solution_text
+        ) {
+            $(".hint-text-container").addClass("d-none");
+            $(".hint").removeClass("show");
+            $(".question")
+                .addClass(`questions-${question_no}`)
+                .attr("rel", `${question_id}`);
+            $(".question-no").html("Q." + question_no);
+            $(".question-no-span").html(question_no);
             $question_editor.setData(question_text);
-            if(answer_available == 'during_quiz'){
-                $('.solution').attr('src',"{{asset('solution.png')}}").attr('data-original-title','Solution available').addClass('active');
+            if (answer_available == "during_quiz") {
+                $(".solution")
+                    .attr("src", "{{asset('solution.png')}}")
+                    .attr("data-original-title", "Solution available")
+                    .addClass("active");
                 $solution_editor.setData(solution_text);
-            }else{
-                $('.solution').attr('src',"").attr('data-original-title','No Solution available').removeClass('active');
-                $solution_editor.setData('');
+            } else {
+                $(".solution")
+                    .attr("src", "")
+                    .attr("data-original-title", "No Solution available")
+                    .removeClass("active");
+                $solution_editor.setData("");
             }
-            if(hint_text != undefined){
-            $hint_editor.setData(hint_text);
-            }
-            if(solution_text != undefined && !answer_available == 'during_quiz' ){
-                $solution_editor.setData(solution_text);
-            }
-            hint = (hint_text != null)?'hint_on':'hint_off';
-            if (hint == 'hint_on'){
-                $('.hint').attr('src',"{{asset('img/hint_on.svg')}}").attr('data-original-title','Hint available').addClass('active');
+            if (hint_text != undefined) {
                 $hint_editor.setData(hint_text);
-            }else{
-                $('.hint').attr('src',"{{asset('img/hint_off.svg')}}").attr('data-original-title','No Hint available').removeClass('active');
-                $hint_editor.setData('');
+            }
+            if (
+                solution_text != undefined &&
+                !answer_available == "during_quiz"
+            ) {
+                $solution_editor.setData(solution_text);
+            }
+            hint = hint_text != null ? "hint_on" : "hint_off";
+            if (hint == "hint_on") {
+                $(".hint")
+                    .attr("src", "{{asset('img/hint_on.svg')}}")
+                    .attr("data-original-title", "Hint available")
+                    .addClass("active");
+                $hint_editor.setData(hint_text);
+            } else {
+                $(".hint")
+                    .attr("src", "{{asset('img/hint_off.svg')}}")
+                    .attr("data-original-title", "No Hint available")
+                    .removeClass("active");
+                $hint_editor.setData("");
             }
         }
 
-        function renderOption(option_no,ele,option_type='radio',is_time_up=false){
-            let $option_wrapper = $('.option-wrapper')[option_no];
-            if(!is_time_up){
-                $($option_wrapper).removeClass('d-none').removeClass('active');
+        function renderOption(
+            option_no,
+            ele,
+            option_type = "radio",
+            is_time_up = false
+        ) {
+            let $option_wrapper = $(".option-wrapper")[option_no];
+            if (!is_time_up) {
+                $($option_wrapper).removeClass("d-none").removeClass("active");
             }
-            $($option_wrapper).find('input').attr('id','option-'+ele.id).val(ele.id);
-            if(option_type == 'checkbox'){
-                $($option_wrapper).find('input').attr('type','checkbox').prop("checked", false);
-                $($option_wrapper).find('.radio-container').css('border-radius','0');
-            }else{
-                $($option_wrapper).find('input').attr('type','radio').prop("checked", false);
-                $($option_wrapper).find('.radio-container').css('border-radius','50%');
+            $($option_wrapper)
+                .find("input")
+                .attr("id", "option-" + ele.id)
+                .val(ele.id);
+            if (option_type == "checkbox") {
+                $($option_wrapper)
+                    .find("input")
+                    .attr("type", "checkbox")
+                    .prop("checked", false);
+                $($option_wrapper)
+                    .find(".radio-container")
+                    .css("border-radius", "0");
+            } else {
+                $($option_wrapper)
+                    .find("input")
+                    .attr("type", "radio")
+                    .prop("checked", false);
+                $($option_wrapper)
+                    .find(".radio-container")
+                    .css("border-radius", "50%");
             }
-            $($option_wrapper).find('label').attr('for','option-'+ele.id);
+            $($option_wrapper)
+                .find("label")
+                .attr("for", "option-" + ele.id);
             $option_editors[option_no].setData(ele.option_text);
         }
 
         //when next btn is clicked
-        $(document).on('click', '.next', function() {
+        $(document).on("click", ".next", function () {
             var selected_options = [];
-            $.each($("input[name='option']:checked"), function() {
+            $.each($("input[name='option']:checked"), function () {
                 selected_options.push($(this).val());
             });
-            if(quiz.questions[$question_no-1].time == null){
+            if (quiz.questions[$question_no - 1].time == null) {
                 $left_time = null;
             }
-            addAnswer(selected_options,$left_time);
-            if(!quiz.time){
+            addAnswer(selected_options, $left_time);
+            if (!quiz.time && !quiz.end_at) {
                 // clearInterval(timer);
-                $('.time-indicator').addClass('d-none');
+                $(".time-indicator").addClass("d-none");
             }
-            $.each($("input[name='option']"), function() {
-                $(this).prop('checked',false);
+            $.each($("input[name='option']"), function () {
+                $(this).prop("checked", false);
             });
-            if($question_no<$total_question){
+            if ($question_no < $total_question) {
                 $question_no++;
-            getQuestion($question_no);
-            }else{
-            getQuestion($question_no);
+                getQuestion($question_no);
+            } else {
+                getQuestion($question_no);
             }
         });
 
-        function addAnswer(option,time=null) {
-            var $question_id = quiz.questions[$question_no-1].id;
-            if(quiz.questions[$question_no-1].type == "Short Answer"){
-                if($answer_editor.getData() != ''){
+        function addAnswer(option, time = null) {
+            var $question_id = quiz.questions[$question_no - 1].id;
+            if (quiz.questions[$question_no - 1].type == "Short Answer") {
+                if ($answer_editor.getData() != "") {
                     option = "text_answer";
-                localStorage.setItem('short_answer_'+$question_id + '_' + $user_id,$answer_editor.getData());
+                    localStorage.setItem(
+                        "short_answer_" + $question_id + "_" + $user_id,
+                        $answer_editor.getData()
+                    );
                 }
             }
-            if(option.length!=0){
-            $answer.map(function(ele,i){
-                if (ele.question_id == $question_id) {
+            if (option.length != 0) {
+                $answer.map(function (ele, i) {
+                    if (ele.question_id == $question_id) {
                         $answer.splice(i, 1);
-                }
-            });
-            $ans = {
-                'question_id': $question_id
-                , 'options': option
+                    }
+                });
+                $ans = {
+                    question_id: $question_id,
+                    options: option,
+                };
+                $answer.push($ans);
+                setCookie(
+                    "answer_" + quiz.id + "_" + $user_id,
+                    JSON.stringify($answer),
+                    1
+                );
             }
-            $answer.push($ans);
-            setCookie('answer_'+quiz.id + '_' + $user_id, JSON.stringify($answer), 1);
-            }
-            if(time!=null){
-            $time_answer.map(function(ele,i){
-            if (ele.question_id == $question_id) {
-                    $time_answer.splice(i, 1);
-            }
-            });
-            $time_answer.push({
-                'question_id': $question_id
-                , 'options': (option == 0) ? 0:option
-                ,'time' : time
-            });
-            setCookie('time_answer_'+quiz.id + '_' + $user_id, JSON.stringify($time_answer), 1);
+            if (time != null) {
+                $time_answer.map(function (ele, i) {
+                    if (ele.question_id == $question_id) {
+                        $time_answer.splice(i, 1);
+                    }
+                });
+                $time_answer.push({
+                    question_id: $question_id,
+                    options: option == 0 ? 0 : option,
+                    time: time,
+                });
+                setCookie(
+                    "time_answer_" + quiz.id + "_" + $user_id,
+                    JSON.stringify($time_answer),
+                    1
+                );
             }
         }
 
         //when prev button is clicked
-        $(document).on('click', '.prev', function() {
+        $(document).on("click", ".prev", function () {
             var selected_options = [];
-            $.each($("input[name='option']:checked"), function() {
+            $.each($("input[name='option']:checked"), function () {
                 selected_options.push($(this).val());
             });
-            if(quiz.questions[$question_no-1].time == null){
+            if (quiz.questions[$question_no - 1].time == null) {
                 $left_time = null;
             }
-            addAnswer(selected_options,$left_time);
-            if(!quiz.time){
+            addAnswer(selected_options, $left_time);
+            if (!quiz.time) {
                 // clearInterval(timer);
-                $('.time-indicator').addClass('d-none');
+                $(".time-indicator").addClass("d-none");
             }
-            $.each($("input[name='option']"), function() {
-                $(this).prop('checked',false);
+            $.each($("input[name='option']"), function () {
+                $(this).prop("checked", false);
             });
-            if($question_no>0){
+            if ($question_no > 0) {
                 $question_no--;
-            getQuestion($question_no);
-            }else{
-            getQuestion($question_no);
+                getQuestion($question_no);
+            } else {
+                getQuestion($question_no);
             }
         });
 
+        $(document).on("click", ".hint.active", function () {
+            $(".hint-text-container").removeClass("d-none");
+            $(this).addClass("show");
+        });
+        $(document).on("click", ".hint.active.show", function () {
+            $(".hint-text-container").addClass("d-none");
+            $(this).removeClass("show");
+        });
+        $(document).on("click", ".solution.active", function () {
+            $(".solution-text-container").removeClass("d-none");
+            $(this).addClass("show");
+        });
+        $(document).on("click", ".solution.active.show", function () {
+            $(".solution-text-container").addClass("d-none");
+            $(this).removeClass("show");
+        });
 
-        $(document).on('click','.hint.active',function(){
-            $('.hint-text-container').removeClass('d-none');
-            $(this).addClass('show');
-        });
-        $(document).on('click','.hint.active.show',function(){
-            $('.hint-text-container').addClass('d-none');
-            $(this).removeClass('show');
-        });
-        $(document).on('click','.solution.active',function(){
-            $('.solution-text-container').removeClass('d-none');
-            $(this).addClass('show');
-        });
-        $(document).on('click','.solution.active.show',function(){
-            $('.solution-text-container').addClass('d-none');
-            $(this).removeClass('show');
-        });
-
-        $(document).on('change',"input[name='option']",function(){
-            $(this).parents('.option-wrapper').addClass('active');
-            $("input[name='option']:not(:checked)").each(function(i,ele){
-                $(ele).parents('.option-wrapper').removeClass('active');
+        $(document).on("change", "input[name='option']", function () {
+            $(this).parents(".option-wrapper").addClass("active");
+            $("input[name='option']:not(:checked)").each(function (i, ele) {
+                $(ele).parents(".option-wrapper").removeClass("active");
             });
-
         });
         // $(document).on('click','.option-wrapper-label',function(){
         //     if($(this).parents('.option-wrapper').hasClass('active')){
@@ -1158,9 +1375,9 @@
         //     }
         // });
 
-        $(document).on('click', '.submit', function() {
+        $(document).on("click", ".submit", function () {
             var selected_options = [];
-            $.each($("input[name='option']:checked"), function() {
+            $.each($("input[name='option']:checked"), function () {
                 selected_options.push($(this).val());
             });
             addAnswer(selected_options);
@@ -1168,119 +1385,137 @@
             submit();
         });
 
-        function submit(){
+        function submit() {
             let finalAnswer = [];
-            $.each($answer,function(i,element){
+            $.each($answer, function (i, element) {
                 ele = element;
-                if(ele.options == "text_answer"){
-                    ele.options = localStorage.getItem('short_answer_'+ele.question_id + '_' + $user_id);
+                if (ele.options == "text_answer") {
+                    ele.options = localStorage.getItem(
+                        "short_answer_" + ele.question_id + "_" + $user_id
+                    );
                 }
                 finalAnswer.push(ele);
             });
             console.log(finalAnswer);
             $.ajax({
-                type: 'POST'
-                , url: "{{ route('test_update') }}"
-                , headers: {
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                , }
-                , data: {
-                    'answers': finalAnswer
-                    , 'quiz': quiz.id
-                    , 'user': $user_id
-                    ,'attempt': $attempt.id
-                , }
-                ,success: function(data) {
-                    Cookies.remove('attempt_' + quiz.id + '_' + $user_id);
-                    Cookies.remove('answer_' + quiz.id + '_' + $user_id);
-                    Cookies.remove('question_no_' + quiz.id + '_' + $user_id);
-                    window.location.replace("/response/"+$attempt.id);
-                }
-            , });
+                type: "POST",
+                url: "{{ route('test_update') }}",
+                headers: {
+                    "X-CSRF-TOKEN": "{{ csrf_token() }}",
+                },
+                data: {
+                    answers: finalAnswer,
+                    quiz: quiz.id,
+                    user: $user_id,
+                    attempt: $attempt.id,
+                },
+                success: function (data) {
+                    Cookies.remove("attempt_" + quiz.id + "_" + $user_id);
+                    Cookies.remove("answer_" + quiz.id + "_" + $user_id);
+                    Cookies.remove("question_no_" + quiz.id + "_" + $user_id);
+                    window.location.replace("/response/" + $attempt.id);
+                },
+            });
         }
 
-
-    function getReadOnlyEditor(id){
-    //
-    }
-
-
-    function setLogoutTimer (minutes,type) {
-        let updateTimer = document.querySelector(".timer");
-        const tick = function () {
-          let hour = String(Math.trunc(time / (60 * 60))).padStart(2, 0);
-          let minute =
-            time / 60 >= 60? String(Math.trunc(time / 60) - Math.trunc(time / (60 * 60)) * 60)
-              : String(Math.trunc(time / 60)).padStart(2, 0);
-          let second = String(parseInt(time % 60)).padStart(2,0);
-          const stringTimer =+hour <= 0? `${minute}:${second}` : `${hour}:${minute}:${second}`;
-          updateTimer.textContent = stringTimer;
-          $left_time = time/60;
-          //if time = 0
-
-        if (parseInt(time) === 0) {
-            if (type == 'quiz'){
-                submit();
-            }else{
-                if(timer_question_id == quiz.questions[$question_no-1].id){
-                var selected_options = [];
-                $.each($("input[name='option']:checked"), function() {
-                    selected_options.push($(this).val());
-                });
-                addAnswer(selected_options,time=$left_time);
-                if($question_no<$total_question){
-                    $question_no++;
-                getQuestion($question_no);
-                }else{
-                getQuestion($question_no);
-                }
-            }
+        function getReadOnlyEditor(id) {
+            //
         }
-                $time_answer.map(function(ele,i){
-                if (ele.question_id == timer_question_id) {
-                        $time_answer.splice(i, 1);
+
+        function setLogoutTimer(minutes, type) {
+            let updateTimer = document.querySelector(".timer");
+            const tick = function () {
+                let hour = String(Math.trunc(time / (60 * 60))).padStart(2, 0);
+                let minute =
+                    time / 60 >= 60
+                        ? String(
+                              Math.trunc(time / 60) -
+                                  Math.trunc(time / (60 * 60)) * 60
+                          )
+                        : String(Math.trunc(time / 60)).padStart(2, 0);
+                let second = String(parseInt(time % 60)).padStart(2, 0);
+                const stringTimer =
+                    +hour <= 0
+                        ? `${minute}:${second}`
+                        : `${hour}:${minute}:${second}`;
+                updateTimer.textContent = stringTimer;
+                $left_time = time / 60;
+                //if time = 0
+
+                if (parseInt(time) === 0) {
+                    if (type == "quiz") {
+                        submit();
+                    } else {
+                        if (
+                            timer_question_id ==
+                            quiz.questions[$question_no - 1].id
+                        ) {
+                            var selected_options = [];
+                            $.each(
+                                $("input[name='option']:checked"),
+                                function () {
+                                    selected_options.push($(this).val());
+                                }
+                            );
+                            addAnswer(selected_options, (time = $left_time));
+                            if ($question_no < $total_question) {
+                                $question_no++;
+                                getQuestion($question_no);
+                            } else {
+                                getQuestion($question_no);
+                            }
+                        }
+                    }
+                    $time_answer.map(function (ele, i) {
+                        if (ele.question_id == timer_question_id) {
+                            $time_answer.splice(i, 1);
+                        }
+                    });
+                    $time_answer.push({
+                        question_id: timer_question_id,
+                        time: time / 60,
+                    });
+                    setCookie(
+                        "time_answer_" + quiz.id + "_" + $user_id,
+                        JSON.stringify($time_answer),
+                        1
+                    );
+                    clearInterval(timer);
+                    updateTimer.textContent = "Time Up";
+                    $(".time-indicator").addClass("d-none");
                 }
-                });
-                $time_answer.push({
-                    'question_id': timer_question_id
-                    ,'time' : time/60
-                });
-                setCookie('time_answer_'+quiz.id + '_' + $user_id, JSON.stringify($time_answer), 1);
+                if (timer_question_id != undefined) {
+                    $time_answer.map(function (ele, i) {
+                        if (ele.question_id == timer_question_id) {
+                            $time_answer.splice(i, 1);
+                        }
+                    });
+                    $time_answer.push({
+                        question_id: timer_question_id,
+                        time: time / 60,
+                    });
+                    setCookie(
+                        "time_answer_" + quiz.id + "_" + $user_id,
+                        JSON.stringify($time_answer),
+                        1
+                    );
+                }
+
+                //delay
+                time--;
+            };
+            // conversion
+            let intoSeconds = minutes * 60;
+            let time = intoSeconds;
+            let timer_question_id = quiz.questions[$question_no - 1].id;
+            tick();
+            try {
                 clearInterval(timer);
-                updateTimer.textContent = 'Time Up';
-                $('.time-indicator').addClass('d-none');
-        }
-            if(timer_question_id != undefined){
-                $time_answer.map(function(ele,i){
-            if (ele.question_id == timer_question_id) {
-                    $time_answer.splice(i, 1);
+            } finally {
             }
-            });
-            $time_answer.push({
-                'question_id': timer_question_id
-                ,'time' : time/60
-            });
-            setCookie('time_answer_'+quiz.id + '_' + $user_id, JSON.stringify($time_answer), 1);
-            }
-
-          //delay
-          time--;
-        };
-        // conversion
-        let intoSeconds = minutes * 60;
-        let time = intoSeconds;
-        let timer_question_id = quiz.questions[$question_no-1].id
-        tick();
-        try{
-        clearInterval(timer);
-        }finally{
-
+            timer = setInterval(tick, 1000);
+            return timer;
         }
-        timer = setInterval(tick, 1000);
-        return timer;
-      };
-
-});
-
+    });
 </script>
 @endsection

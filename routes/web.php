@@ -54,7 +54,7 @@ Route::get('/quiz/stat/{id}', 'TestController@attemptStat')->name('stat');
 Route::get('/gradeSheet', 'TestController@gradeSheet')->name('gradeSheet');
 
 
-Route::get('/question/{quiz_id}', 'TestController@getQuestions')->name('get_question');
+Route::post('/question/{quiz_id}', 'TestController@getQuestions')->name('get_question');
 Route::get('/quiz/top/{quiz}', 'HomeController@get_attempt_top')->name('get_top_attempt');
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
