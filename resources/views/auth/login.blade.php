@@ -136,7 +136,7 @@
                     Global College International
                     </h3>
                     <p>
-                    To be a reputed learning center of academic excellence focused on teaching and research in diverse streams of management studies.
+                    To be a reputed learning center of academic excellence focused on teaching and research in diverse streams of management and science studies.
                     </p>
                     {{-- <button class="btn transparent" id="sign-up-btn">Sign up</button> --}}
                 </div>
