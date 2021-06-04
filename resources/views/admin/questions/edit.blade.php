@@ -16,7 +16,7 @@
     </div>
 
     <div class="card-body">
-        <form method="POST" action="{{ route("admin.questions.update", [$question->id]) }}"
+        <form method="POST" class="question-update-form" action="{{ route("admin.questions.update", [$question->id]) }}"
             enctype="multipart/form-data">
             @method('PUT')
             @csrf
@@ -194,9 +194,11 @@
                 </div>
             </div>
             <div class="form-group row ">
-                <label class="col-lg-2" for="marks" placeholder="">{{ trans('cruds.question.fields.marks') }}</label>
+                <label class="ml-2" for="marks" placeholder="">{{ trans('cruds.question.fields.marks') }}</label>
                 <div class="col-lg-2">
-                    <input type="number" name="marks" id="marks" value="{{$question->marks}}">
+                    <input type="number" name="marks" class="form-control" id="marks" value="{{$question->marks}}">
+                    <div id="marks-feedback" class="invalid-feedback">
+                      </div>
                     <small id="remaining-marks"></small><br>
                     <small class="marks-help-block help-block">
                         {{ trans('cruds.question.fields.marks_helper') }}</small>
@@ -244,9 +246,16 @@
                 }
             }
         });
+        $(".question-update-form").submit(function(e){
+            if($('#marks').val() == '' || $('#marks').val() == 0){
+                e.preventDefault();
+                $('#marks').addClass('is-invalid');
+                $('#marks-feedback').html('Marks is required.');
+            }
+        });
         $('#quiz_id').val($('#quiz_id').val()).trigger('change');
         $(document).on('keyup','#marks',function(){
-            $remaining_marks = $('#remaining-marks').attr('rel-marks') - $(this).val();
+            $remaining_marks = $final_remaining_marks - $(this).val();
             if($selected_option != ''&& $final_remaining_marks!=''){
                 $('#remaining-marks').html('Remaining marks:'+($final_remaining_marks-$(this).val()));
                 $('#remaining-marks').attr('rel-marks',$final_remaining_marks-$(this).val());
@@ -258,15 +267,13 @@
             else{
                 $('#remaining-marks').removeClass('d-none');
             }
+            console.log($remaining_marks);
             if($remaining_marks<0 && $selected_option.attr('rel-type').trim()!='Practice Quiz'){
                 $('#submit-btn').attr('disabled',true);
                 $('.marks-help-block').html('Marks is more than remaining marks');
             }else{
                 $('#submit-btn').removeAttr('disabled');
                 $('.marks-help-block').html('');
-            }
-            if($(this).val() == '' || $(this).val() == 0){
-                $(this).val(1).keyup();
             }
         });
         $('#marks').keyup();
@@ -285,7 +292,8 @@
                         if($('#row4').length !=0){
                             i=3
                         }
-                        $('#maq').append('<div class="col-md-12 row option-pad" id="row'+i+'"> <div class="icheck-success"> <input type="checkbox" name="maq_points[]" id="checkbox'+i+'" value="'+i+' required"> <label for="checkbox'+i+'"> </label> </div> <div class="col-md-8 option-container"> <label for="question-text" class="editor-label">Option '+i+'</label> <textarea class="d-none" name="option_text2[]" required></textarea> <div class="option-editor {{ $errors->has('option_text2') ? 'is-invalid' : '' }}" id="option_text_maq_'+i+'">{{ old('option_text2[]', '') }}</div>  @if($errors->has('option_text2')) <div class="invalid-feedback"> {{ $errors->first('option_text2') }} </div> @endif <span class="help-block">{{ trans('cruds.option.fields.option_text_helper') }}</span> </div><div class="col-md-1"><button id="'+i+'" class="btn btn-secondary remove2" alt="Delete this option"><i class="fas fa-trash"></i></button></div>');
+                        // $('#maq').append('<div class="col-md-12 row option-pad" id="row'+i+'"> <div class="icheck-success"> <input type="checkbox" name="maq_points[]" id="checkbox'+i+'" value="'+i+' required"> <label for="checkbox'+i+'"> </label> </div> <div class="col-md-8 option-container"> <label for="question-text" class="editor-label">Option '+i+'</label> <textarea class="d-none" name="option_text2[]" required></textarea> <div class="option-editor {{ $errors->has('option_text2') ? 'is-invalid' : '' }}" id="option_text_maq_'+i+'">{{ old('option_text2[]', '') }}</div>  @if($errors->has('option_text2')) <div class="invalid-feedback"> {{ $errors->first('option_text2') }} </div> @endif <span class="help-block">{{ trans('cruds.option.fields.option_text_helper') }}</span> </div><div class="col-md-1"><button id="'+i+'" class="btn btn-secondary remove2" alt="Delete this option"><i class="fas fa-trash"></i></button></div>');
+                        $('#maq').append('<div class="col-md-12 row option-pad" id="row'+i+'"> <div class="icheck-success"> <input type="checkbox" name="maq_points[]" id="checkbox'+i+'" value="'+i+' required"> <label for="checkbox'+i+'"> </label> </div> <div class="col-md-8 option-container"> <label for="question-text" class="editor-label">Option '+i+'</label> <textarea class="d-none" name="option_text2[]" required></textarea> <div class="option-editor {{ $errors->has('option_text2') ? 'is-invalid' : '' }}" id="option_text_maq_'+i+'">{{ old('option_text2[]', '') }}</div>  @if($errors->has('option_text2')) <div class="invalid-feedback"> {{ $errors->first('option_text2') }} </div> @endif <span class="help-block">{{ trans('cruds.option.fields.option_text_helper') }}</span> </div><div class="col-md-1"></div>');
                         $this = $('#option_text_maq_'+i);
                         InlineEditor.create( document.querySelector( '#option_text_maq_'+i ), optionConfig ).then(editor=>{
                         editor.model.document.on( 'change', ( evt, data ) => {
@@ -312,7 +320,8 @@
                         if($('#row4').length !=0){
                             i=3
                         }
-                        $('#mcq').append('<div class="col-md-12 row option-pad" id="row'+i+'"><br><div class="icheck-success"> <input type="radio" name="points" id="option'+i+'" value="'+i+'" required> <label for="option'+i+'"> </label> </div> <div class="col-md-8 option-container"> <label for="question-text" class="editor-label">Option '+i+'</label> <textarea class="d-none" name="option_text[]" required></textarea> <div class="option-editor {{ $errors->has('option_text') ? 'is-invalid' : '' }}" id="option_text_'+i+'">{{ old('option_text[]', '') }}</div> </div> <div class="col-md-1"><button id="'+i+'" class="btn btn-secondary remove" alt="Delete this option"><i class="fas fa-trash"></i></button></div> @if($errors->has('option_text')) <div class="invalid-feedback"> {{ $errors->first('option_text') }} </div> @endif <span class="help-block">{{ trans('cruds.option.fields.option_text_helper') }}</span> </div>');
+                        $('#mcq').append('<div class="col-md-12 row option-pad" id="row'+i+'"><br><div class="icheck-success"> <input type="radio" name="points" id="option'+i+'" value="'+i+'" required> <label for="option'+i+'"> </label> </div> <div class="col-md-8 option-container"> <label for="question-text" class="editor-label">Option '+i+'</label> <textarea class="d-none" name="option_text[]" required></textarea> <div class="option-editor {{ $errors->has('option_text') ? 'is-invalid' : '' }}" id="option_text_'+i+'">{{ old('option_text[]', '') }}</div> </div> <div class="col-md-1"></div> @if($errors->has('option_text')) <div class="invalid-feedback"> {{ $errors->first('option_text') }} </div> @endif <span class="help-block">{{ trans('cruds.option.fields.option_text_helper') }}</span> </div>');
+                        // $('#mcq').append('<div class="col-md-12 row option-pad" id="row'+i+'"><br><div class="icheck-success"> <input type="radio" name="points" id="option'+i+'" value="'+i+'" required> <label for="option'+i+'"> </label> </div> <div class="col-md-8 option-container"> <label for="question-text" class="editor-label">Option '+i+'</label> <textarea class="d-none" name="option_text[]" required></textarea> <div class="option-editor {{ $errors->has('option_text') ? 'is-invalid' : '' }}" id="option_text_'+i+'">{{ old('option_text[]', '') }}</div> </div> <div class="col-md-1"><button id="'+i+'" class="btn btn-secondary remove" alt="Delete this option"><i class="fas fa-trash"></i></button></div> @if($errors->has('option_text')) <div class="invalid-feedback"> {{ $errors->first('option_text') }} </div> @endif <span class="help-block">{{ trans('cruds.option.fields.option_text_helper') }}</span> </div>');
                         let $this = $('#option_text_'+i);
                         InlineEditor.create( document.querySelector( '#option_text_'+i ), optionConfig ).then(editor=>{
                             editor.model.document.on( 'change', ( evt, data ) => {

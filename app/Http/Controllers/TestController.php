@@ -9,6 +9,7 @@ use App\AttemptAnswer;
 use App\AttemptOption;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Spatie\MediaLibrary\Models\Media;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Storage;
@@ -131,7 +132,7 @@ class TestController extends Controller
 
     public function showAttempts($id){
         $attempts = Attempt::findOrFail($id);
-        if(!$attempts->quiz->answer_publish){
+        if((!$attempts->quiz->answer_publish) || $attempts->user->id != Auth::id() || $attempts->status != 'submitted'){
             abort(404);
         }
         return view('admin.attempts.show',compact('attempts'));

@@ -31,8 +31,9 @@ class QuestionsImport implements ToModel,WithValidation, WithHeadingRow
             'type' => $question_type,
             'marks' => $row['marks'],
         ]);
-        $question = $question->save();
-        $quiz->remaining_marks -= $question->marks;
+        if($quiz->full_marks){
+            $quiz->remaining_marks -= $question->marks;
+        }
         $quiz->questions()->attach($question);
 
         Option::create([

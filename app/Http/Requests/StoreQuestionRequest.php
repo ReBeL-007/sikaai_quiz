@@ -26,6 +26,9 @@ class StoreQuestionRequest extends FormRequest
             'question_text' => [
                 'required',
             ],
+            'marks' => [
+                'required'
+            ],
             // 'option_text' => [
             //     'required',
             //     'array',

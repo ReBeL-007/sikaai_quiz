@@ -725,8 +725,7 @@
             <span>Next</span>&nbsp;<span class="btn-quiz"><i class="fas fa-arrow-right"></i></span>
         </button>
     </div>
-    <div>
-        <button class="btn submit-btn submit">Submit</button>
+    <div class="submit-container">
     </div>
 </div>
 
@@ -890,6 +889,7 @@
 
         function getQuestion($ele) {
             clearInterval(answerInterval);
+            $('.submit-container').html('');
             $answer_editor.setData('');
             $ele--;
             setCookie('question_no_' + quiz.id + '_' + $user_id, $question_no, 1);
@@ -907,6 +907,9 @@
             } else {
                 $('.next').addClass('d-none');
                 $('.next').prop('disabled', true);
+            }
+            if($question_no == $total_question){
+                $('.submit-container').html('<button class="btn submit-btn submit">Submit</button>');
             }
             //updating question as per question number
             let is_time_up = false;
@@ -1166,7 +1169,6 @@
         });
 
         function submit(){
-            console.log($answer);
             let finalAnswer = [];
             $.each($answer,function(i,element){
                 ele = element;

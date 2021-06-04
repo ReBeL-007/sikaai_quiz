@@ -366,7 +366,7 @@ class QuestionsController extends Controller
             if($quiz->remaining_marks>=0){
                 $quiz->save();
             }else{
-                return back()->with('flash_success','Question Marks is more than remaining marks of quiz.');
+                return back()->with('flash_danger','Question Marks is more than remaining marks of quiz.');
             }
         }
         $question->restore();

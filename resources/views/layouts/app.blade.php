@@ -3,6 +3,11 @@
 
 <head>
     @include('student.includes.head')
+    <style>
+        .content-wrapper,.main-header{
+            margin-left: 0px !important;
+        }
+    </style>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -14,10 +19,10 @@
         @include('student.includes.nav')
         <!-- /.navbar -->
 
-        <!-- Main Sidebar Container -->
+        {{-- <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-light-indigo">
             @include('student.includes.sidebar')
-        </aside>
+        </aside> --}}
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">

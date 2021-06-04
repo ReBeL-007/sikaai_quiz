@@ -225,9 +225,11 @@
         </div>
     </div>
     <div class="form-group row ">
-        <label class="col-lg-2" for="marks" placeholder="">{{ trans('cruds.question.fields.marks') }}</label>
+        <label class="ml-2" for="marks" placeholder="">{{ trans('cruds.question.fields.marks') }}</label>
         <div class="col-lg-2">
-            <input type="number" name="marks" id="marks" value="1">
+            <input type="number" name="marks" class="form-control" id="marks" value="1">
+            <div id="marks-feedback" class="invalid-feedback">
+              </div>
             <small id="remaining-marks"></small><br>
             <small class="marks-help-block help-block">
                 {{ trans('cruds.question.fields.marks_helper') }}</small>
@@ -244,6 +246,9 @@
         <button class="btn btn-success" type="submit" id="submit-btn">
             {{ trans('global.save') }}
         </button>
+        <a class="btn btn-danger" href="{{route('admin.questions.index')}}{{(request('quiz')!='')? "?quiz=".request('quiz'):''}}">
+            Back
+        </a>
     </div>
 </div>
 </form>
@@ -276,8 +281,10 @@
             }
         });
         $('#quiz_id').val($('#quiz_id').val()).trigger('change');
+
+        // onekyup of marks
         $(document).on('keyup','#marks',function(){
-            $remaining_marks = $('#remaining-marks').attr('rel-marks') - $(this).val();
+            $remaining_marks = $final_remaining_marks - $(this).val();
             if($selected_option != ''&& $final_remaining_marks!=''){
                 $('#remaining-marks').html('Remaining marks:'+($final_remaining_marks-$(this).val()));
                 $('#remaining-marks').attr('rel-marks',$final_remaining_marks-$(this).val());
@@ -296,11 +303,18 @@
                 $('#submit-btn').removeAttr('disabled');
                 $('.marks-help-block').html('');
             }
-            if($(this).val() == '' || $(this).val() == 0){
-                $(this).val(1).keyup();
-            }
+
         });
         $('#marks').keyup();
+
+        $("#create-question-form").submit(function(e){
+            if($('#marks').val() == '' || $('#marks').val() == 0){
+                e.preventDefault();
+                $('#marks').addClass('is-invalid');
+                $('#marks-feedback').html('Marks is required.');
+            }
+        });
+
         $('#time_limit'). click(function(){
                 if($(this). is(":checked")){
                 $("#time, #time_type").removeAttr('disabled');
@@ -313,10 +327,13 @@
         $('#add_mcq_option').click(function(){
             var i=$('#mcq input[type="radio"]').length;
             i++;
-            if($('#maq-row'+i).length >0 && i == 4){
-                i=3;
+            if($('#row'+i).length >0 && i == 4){
+                $('#row'+i).find('input').attr('id','option3');
+                $('#row'+i).find('label').attr('for','option3');
+                $('#row'+i).find('.editor-label').html('Option3');
             }
-            $('#mcq').append('<div class="col-md-12 row option-pad" id="row'+i+'"><br><div class="icheck-success"> <input type="radio" name="points" id="option'+i+'" value="'+i+'"> <label for="option'+i+'"> </label> </div> <div class="col-md-8 option-container"> <label for="question-text" class="editor-label">Option '+i+'</label> <textarea class="d-none" name="option_text[]" required></textarea> <div class="option-editor " id="option_text_'+i+'">{{ old('option_text[]', '') }}</div> </div> <div class="col-md-1"><button id="'+i+'" class="btn btn-secondary remove" alt="Delete this option"><i class="fas fa-trash"></i></button></div>');
+            // $('#mcq').append('<div class="col-md-12 row option-pad" id="row'+i+'"><br><div class="icheck-success"> <input type="radio" name="points" id="option'+i+'" value="'+i+'"> <label for="option'+i+'"> </label> </div> <div class="col-md-8 option-container"> <label for="question-text" class="editor-label">Option '+i+'</label> <textarea class="d-none" name="option_text[]" required></textarea> <div class="option-editor " id="option_text_'+i+'">{{ old('option_text[]', '') }}</div> </div> <div class="col-md-1"><a id="'+i+'" class="btn btn-danger text-white remove" alt="Delete this option"><i class="fas fa-trash"></i></a></div>');
+            $('#mcq').append('<div class="col-md-12 row option-pad" id="row'+i+'"><br><div class="icheck-success"> <input type="radio" name="points" id="option'+i+'" value="'+i+'"> <label for="option'+i+'"> </label> </div> <div class="col-md-8 option-container"> <label for="question-text" class="editor-label">Option '+i+'</label> <textarea class="d-none" name="option_text[]" required></textarea> <div class="option-editor " id="option_text_'+i+'">{{ old('option_text[]', '') }}</div> </div> <div class="col-md-1"></div>');
 
             var j = $('#mcq input[type="radio"]').length;
 
@@ -347,6 +364,18 @@
             if($('#maq-row'+a).length >0 && a == 4){
                 a=3;
             }
+            // $('#maq').append(`<div class="col-md-12 row option-pad" id="maq-row${a}">
+            //     <div class="icheck-success"> <input type="checkbox" name="maq_points[]" id="checkbox${a}" value="${a}"> <label
+            //             for="checkbox${a}"> </label> </div>
+            //     <div class="col-md-8 option-container"> <label for="question-text" class="editor-label">Option ${a}</label>
+            //         <textarea class="d-none" name="option_text2[]" required></textarea>
+            //         <div class="option-editor" id="option_text_maq_${a}">
+            //             {{ old('option_text2[]', '') }}</div>
+            //     </div>
+            //     <div class="col-md-1"><button id="${a}" class="btn btn-secondary remove2" alt="Delete this option"><i
+            //                 class="fas fa-trash"></i></button>
+            //     </div>
+            // </div>`);
             $('#maq').append(`<div class="col-md-12 row option-pad" id="maq-row${a}">
                 <div class="icheck-success"> <input type="checkbox" name="maq_points[]" id="checkbox${a}" value="${a}"> <label
                         for="checkbox${a}"> </label> </div>
@@ -354,9 +383,6 @@
                     <textarea class="d-none" name="option_text2[]" required></textarea>
                     <div class="option-editor" id="option_text_maq_${a}">
                         {{ old('option_text2[]', '') }}</div>
-                </div>
-                <div class="col-md-1"><button id="${a}" class="btn btn-secondary remove2" alt="Delete this option"><i
-                            class="fas fa-trash"></i></button>
                 </div>
             </div>`);
             let $this = $('#option_text_maq_'+a);

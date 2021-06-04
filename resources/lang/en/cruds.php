@@ -226,7 +226,7 @@ return [
             'options_helper'      => '',
             'quiz'             => 'Quiz',
             'quiz_helper'      => '',
-            'marks'             => 'Default Mark',
+            'marks'             => 'Mark',
             'marks_helper'      => '',
             'question_text'        => 'Question Text',
             'question_text_helper' => '',

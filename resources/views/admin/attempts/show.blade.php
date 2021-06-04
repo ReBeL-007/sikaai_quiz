@@ -165,7 +165,7 @@
                     @endphp
                     <h6>({{$marks}} / {{$question->marks}})Points</h6>
                     {{$question->type}}
-                    @if ($question->type=='Long Answer' || $question->type=='Short Answer')
+                    @if ($question->type=='Long Answer' || $question->type=='Short Answer' && $attempts->attemptAnswers->where('question_id',$question->id)->first() != null)
                     @foreach($attempts->attemptAnswers->where('question_id',$question->id)->first()->attemptOptions()->get()
                     as $option)
                     @if($option->answer_text!='')

@@ -340,6 +340,7 @@
                 $("#answer_view").attr('disabled','true');
                 }
             });
+            $('#quiz_type').trigger('change');
         });
 </script>
 @endsection
