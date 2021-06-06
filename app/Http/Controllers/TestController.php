@@ -101,8 +101,8 @@ class TestController extends Controller
         $questions = Quiz::where('id', $quiz_id)
             ->with(['questions' => function ($query) {
                 $query->with(['questionOptions' => function ($q) {
-                    $q->inRandomOrder();
-                }])->inRandomOrder();
+                    $q->whereNull('deleted_at')->inRandomOrder();
+                }])->whereNull('deleted_at')->inRandomOrder();
             }])->inRandomOrder()->first();
         
         return $questions;
