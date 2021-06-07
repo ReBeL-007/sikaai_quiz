@@ -32,18 +32,25 @@ class QuestionsController extends Controller
             $quiz = Quiz::findOrFail($request->quiz);
             $questions = $quiz->questions();
         }else{
-        $questions = Question::whereHas('quizzes', function ($q) {
+            $questions = Question::whereHas('quizzes', function ($q) {
                         $q->whereIn('quiz_id', Quiz::ofTeacher()->pluck('id'));
                     });
-                }
+        }
+        
         if (request('show_deleted') == 1) {
             abort_if(Gate::denies('question-access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-            $questions = $questions->onlyTrashed()->get();
+            $questions = $questions->onlyTrashed()->paginate(1);
+            $questions->withPath('questions?show_deleted=1&quiz='.$quiz->id);
         } else {
+            foreach($questions->where('deleted_at',NULL)->get() as $key => $question) {
+                $question->question_no = $key + 1;
+                $question->save();
+            }
             $questions = $questions->where('deleted_at',NULL)->paginate(10);
             $questions->withPath('questions?quiz='.$quiz->id);
             // dd($questions);
         }
+
         return view('admin.questions.index', compact('questions','quiz'));
     }
 
@@ -73,7 +80,13 @@ class QuestionsController extends Controller
                 $time=$time*60*60;
                 break;
         }
-
+        $quiz_id = $request->quiz_id;
+        $latest_question = Question::whereHas('quizzes', function ($query) use ($quiz_id) {
+                            $query->where('quiz_id', $quiz_id);
+                        })
+                        ->orderBy('question_no','desc')
+                        ->first();
+        // dd($latest_question);
         $data1 = [
             'question_text' => $request->question_text,
             'type' => $request->type,
@@ -81,8 +94,11 @@ class QuestionsController extends Controller
             'answer_explanation' => $request->answer_explanation,
             'question_hint' => $request->question_hint,
             'time'=>$time,
+            'question_no' => ($latest_question)?$latest_question->question_no+1:1,
         ];
+        // dd($data1);
         $question = Question::create($data1);
+        
         $question->quizzes()->sync($request->quiz_id);
         $quiz=Quiz::find($request->quiz_id);
         if($quiz->remaining_marks != NULL){
@@ -337,18 +353,47 @@ class QuestionsController extends Controller
     public function destroy(Question $question)
     {
         abort_if(Gate::denies('question-delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        foreach($question->quizzes as $quiz){
-            $quiz->remaining_marks += $question->marks;
-            $quiz->save();
-        }
+        $quiz = $question->quizzes->first();
         $question->delete();
-
+        $quiz->remaining_marks += $question->marks;
+        $quiz->save();
+        // dd($quiz);
+        $remaining_question = Question::whereHas('quizzes', function ($query) use ($quiz) {
+                                    $query->where('quiz_id', $quiz->id);
+                                })
+                                ->where('deleted_at',NULL)
+                                ->get();
+        foreach($remaining_question as $key => $question) {
+            $question->question_no = $key + 1;
+            $question->save();
+        }
         return back();
     }
 
     public function massDestroy(MassDestroyQuestionRequest $request)
     {
-        Question::whereIn('id', request('ids'))->delete();
+        $questions = Question::whereIn('id', request('ids'))->get();
+        // dd($questions);
+        foreach($questions as $question) {
+            $quiz = $question->quizzes->first();
+            $question->delete();
+            $quiz->remaining_marks += $question->marks;
+            $quiz->save(); 
+
+
+            $remaining_question = Question::whereHas('quizzes', function ($query) use ($quiz) {
+                                        $query->where('quiz_id', $quiz->id);
+                                    })
+                                    ->where('deleted_at',NULL)
+                                    ->get();
+            foreach($remaining_question as $key => $question) {
+                $question->question_no = $key + 1;
+                $question->save();
+            }
+        }
+        // dd($quiz);
+        
+        // Question::whereIn('id', request('ids'))->delete();
 
         return response(null, Response::HTTP_NO_CONTENT);
     }
@@ -363,16 +408,25 @@ class QuestionsController extends Controller
     {
         abort_if(Gate::denies('question-delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         $question = Question::onlyTrashed()->findOrFail($id);
-        foreach($question->quizzes as $quiz){
-            $quiz->remaining_marks -= $question->marks;
-            if($quiz->remaining_marks>=0){
-                $quiz->save();
-            }else{
-                return back()->with('flash_danger','Question Marks is more than remaining marks of quiz.');
-            }
-        }
         $question->restore();
 
+        $quiz = $question->quizzes->first();
+        $quiz->remaining_marks -= $question->marks;
+        if($quiz->remaining_marks>=0){
+            $quiz->save();
+        }else{
+            return back()->with('flash_danger','Question Marks is more than remaining marks of quiz.');
+        }
+        
+
+        $latest_question = Question::whereHas('quizzes', function ($query) use ($quiz) {
+            $query->where('quiz_id', $quiz->id);
+        })
+        ->orderBy('question_no','desc')
+        ->first();
+        $question->question_no = $latest_question->question_no + 1;
+        $question->save();
+        // dd($question);
         return back();
     }
 

@@ -30,7 +30,9 @@ class Question extends Model
         'marks',
         'time',
         'time_type',
+        'question_no',
     ];
+
 
     public function questionOptions()
     {

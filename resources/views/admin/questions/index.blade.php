@@ -42,7 +42,7 @@
 
                         </th>
                         <th>
-                            {{ trans('cruds.question.fields.id') }}
+                             Question No.
                         </th>
                         {{-- <th>
                             {{ trans('cruds.question.fields.category') }}
@@ -68,7 +68,7 @@
 
                         </td>
                         <td>
-                            {{ $key+1 }}
+                            {{ $question->question_no }}
                         </td>
                         {{-- <td>
                                 {{ $question->subcategory->category->name ?? '' }}
