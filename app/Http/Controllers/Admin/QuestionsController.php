@@ -40,7 +40,9 @@ class QuestionsController extends Controller
             abort_if(Gate::denies('question-access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
             $questions = $questions->onlyTrashed()->get();
         } else {
-            $questions = $questions->where('deleted_at',NULL)->get();
+            $questions = $questions->where('deleted_at',NULL)->paginate(10);
+            $questions->withPath('questions?quiz='.$quiz->id);
+            // dd($questions);
         }
         return view('admin.questions.index', compact('questions','quiz'));
     }
