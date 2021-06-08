@@ -40,6 +40,7 @@ class TestController extends Controller
     public function update(Request $request){
         $attempt_id = $request->attempt;
         $attempt = Attempt::find($attempt_id);
+        if($attempt->status != 'submitted') {
         if(isset($request->answers)){
         foreach ($request->answers as $key => $answer) {
                 $attemptAnswerData = [
@@ -89,6 +90,7 @@ class TestController extends Controller
     }
     $attempt->status = 'submitted';
     $attempt->save();
+    }
     }
 
     public function attemptStat($id){
