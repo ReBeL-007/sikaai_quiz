@@ -39,13 +39,13 @@ class QuestionsController extends Controller
         
         if (request('show_deleted') == 1) {
             abort_if(Gate::denies('question-access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-            $questions = $questions->onlyTrashed()->paginate(1);
+            $questions = $questions->onlyTrashed()->paginate(10);
             $questions->withPath('questions?show_deleted=1&quiz='.$quiz->id);
         } else {
-            foreach($questions->where('deleted_at',NULL)->get() as $key => $question) {
-                $question->question_no = $key + 1;
-                $question->save();
-            }
+            // foreach($questions->where('deleted_at',NULL)->get() as $key => $question) {
+            //     $question->question_no = $key + 1;
+            //     $question->save();
+            // }
             $questions = $questions->where('deleted_at',NULL)->paginate(10);
             $questions->withPath('questions?quiz='.$quiz->id);
             // dd($questions);
