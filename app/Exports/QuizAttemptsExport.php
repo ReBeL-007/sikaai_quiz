@@ -28,21 +28,24 @@ class QuizAttemptsExport implements FromArray,WithHeadings
         foreach ($attempts as $attempt) {
         $data = [
             'user' => $attempt->user->name,
-            'total_marks' => $attempt->total_marks,
+            'total_marks' => 0,
             'full_marks' => $full_marks,
 
         ];
+        $total_marks = 0;
         foreach($quiz->questions as $key=>$question){
             $answer_mark = 0;
             foreach ($attempt->attemptAnswers as $answer) {
                 if($question->id == $answer->question->id){
                     $answer_mark = $answer->marks;
+                    $total_marks += $answer_mark; 
                     break;
                 }
             }
             $data['Question '.($key+1)] = ''.$answer_mark.'/'.$question->marks;
         }
-
+        $data['total_marks'] = $total_marks;
+        // dd($data);
         array_push($results,$data);
 
         }

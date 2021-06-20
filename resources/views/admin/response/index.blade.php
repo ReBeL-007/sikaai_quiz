@@ -29,7 +29,7 @@
                     @if (Auth::user()->isAdmin())
                     @endif
                     <td>{{ $quiz->title }}</td>
-                    <td><span class="badge badge-{{count($quiz->attempts) != 0 ? 'success' : 'danger'}}">{{ count($quiz->attempts) ==0 ? 'No Response' : count($quiz->attempts)}}</span></td>
+                    <td><span class="badge badge-{{count($quiz->attempts) != 0 ? 'success' : 'danger'}}">{{ count($quiz->attempts->where('status','submitted')) ==0 ? 'No Response' : count($quiz->attempts->where('status','submitted'))}}</span></td>
                     <td>
                         <a href="{{ route('admin.responses.response',[$quiz->id]) }}"
                             class="btn btn-xs btn-success">View Response</a>

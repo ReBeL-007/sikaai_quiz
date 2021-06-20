@@ -24,11 +24,25 @@
             </thead>
 
             <tbody>
+            
                 @foreach ($quiz->attempts()->where('status','submitted')->orderBy('total_marks', 'DESC')->get() as $key=>$attempt)
                 <tr data-entry-id="{{ $attempt->id }}">
                     <td>{{$key+1}}</td>
                     <td>{{$attempt->user->name}}</td>
-                    <td>{{$attempt->total_marks}}</td>
+                    <td>
+                    <?php
+                        $total_marks = 0;
+                        foreach($quiz->questions as $key=>$question){
+                            $answer_mark = 0;
+                            foreach ($attempt->attemptAnswers as $answer) {
+                                if($question->id == $answer->question->id){
+                                    $total_marks += $answer->marks;
+                                    break;
+                                }
+                            }
+                        }
+                    ?>
+                    {{$total_marks}}</td>
                 </tr>
                 @endforeach
             </tbody>
@@ -42,6 +56,7 @@
     $(function () {
   let table = $('.datatable-Quiz').DataTable({
     select: false,
+    order: [[2,"desc"]],
     columnDefs: [ {
                 orderable: true
                 , searchable: true
