@@ -1,6 +1,11 @@
 <a href="{{route('admin.dashboard')}}" class="brand-link">
-    <img src="{{asset('gci.jpg')}}" alt="Asmita Logo" class="brand-image" />
-    <span class="brand-text font-weight-light" style="font-weight: bold">Quiz</span>
+    @if(isset($setting))
+        <img class="navbar-brand-full" src="{{asset('storage/uploads/logo/'.$setting->logo)}}" alt="{{$setting->title}}" width="150">
+        
+    @else 
+        <img src="{{asset('gci.jpg')}}" alt="Asmita Logo" class="brand-image" />
+        <span class="brand-text font-weight-light" style="font-weight: bold">Quiz</span>
+    @endif  
 </a>
 
 <div class="sidebar">
@@ -195,6 +200,26 @@
                 </a>
             </li>
             @endcan
+            @can('setting-create')
+            <li class="nav-item">
+                <a href="{{ route('admin.settings.create') }}" 
+                    class="nav-link {{ request()->is('admin/settings') || request()->is('admin/settings/*') ? 'active' : '' }}">
+                    <i class="fas fa-cog"></i>
+                    <p><span>{{ trans('global.setting') }}</span></p>
+                </a>
+            </li>
+            @endcan
+            @if(file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php')))
+                @can('profile_password_edit')
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->is('profile/password') || request()->is('profile/password/*') ? 'active' : '' }}" href="{{ route('profile.password.edit') }}">
+                            <i class="fa-fw fas fa-key nav-icon">
+                            </i>
+                            {{ trans('global.change_password') }}
+                        </a>
+                    </li>
+                @endcan
+            @endif
         </ul>
     </nav>
 

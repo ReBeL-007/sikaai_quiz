@@ -8,9 +8,9 @@
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
     <!-- <link rel="stylesheet" href="css/style.css" /> -->
-    <link rel = "icon" href ="{{asset('gci.jpg')}}" type = "image/x-icon">
+    <link rel = "icon" href ="{{asset('logo.png')}}" type = "image/x-icon">
     <link rel="stylesheet" href="{{asset('css/login/register-sign-in.css')}}" />
-    <title>GCI-Quiz</title>
+    <title>Sikaai</title>
 </head>
 
 <body>
@@ -73,7 +73,7 @@
                         </a>
                     </div> -->
                 </form>
-                {{--<form action="{{route('register')}}" method="POST" class="sign-up-form">
+                <form action="{{route('register')}}" method="POST" class="sign-up-form">
                     @csrf
                     <h2 class="title">Sign up</h2>
                     <div class="input-field">
@@ -124,32 +124,26 @@
                             <i class="fab fa-linkedin-in"></i>
                         </a>
                     </div> -->
-                </form>--}}
+                </form>
             </div>
         </div>
 
         <div class="panels-container">
             <div class="panel left-panel">
                 <div class="content">
-                    {{--<h3>New here ?</h3>--}}
-                    <h3 style="text-transform:uh3percase">
-                    Global College International
-                    </h3>
+                    <h3>New here ?</h3>
                     <p>
-                    To be a reputed learning center of academic excellence focused on teaching and research in diverse streams of management and science studies.
+                        Sikaai provides an intuitive experience in online learning. 
                     </p>
-                    {{-- <button class="btn transparent" id="sign-up-btn">Sign up</button> --}}
+                    <button class="btn transparent" id="sign-up-btn">Sign up</button>
                 </div>
                 <img src="{{asset('img/log.svg')}}" class="image" alt="" />
             </div>
             <div class="panel right-panel">
                 <div class="content">
                     <h3>One of us ?</h3>
-                    <p style="text-transform:uppercase">
-                    Global College International
-                    </p>
                     <p>
-                    To be a reputed learning center of academic excellence focused on teaching and research in diverse streams of management studies.
+                        Sikaai provides an intuitive experience in online learning. 
                     </p>
                     <button class="btn transparent" id="sign-in-btn">Sign in</button>
                 </div>

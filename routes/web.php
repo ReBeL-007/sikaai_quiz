@@ -96,6 +96,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
     Route::delete('groups/destroy', 'Admin\GroupsController@massDestroy')->name('groups.massDestroy');
     Route::resource('groups', 'Admin\GroupsController');
 
+    // settings
+    Route::resource('settings', 'Admin\SettingsController');
+
     // Categories
     // Route::delete('categories/destroy', 'Admin\CategoriesController@massDestroy')->name('categories.massDestroy');
     // Route::resource('categories', 'Admin\CategoriesController');
