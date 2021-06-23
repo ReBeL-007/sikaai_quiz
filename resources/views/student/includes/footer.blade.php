@@ -289,36 +289,36 @@
     document.getElementById("overlay").style.display = "block";
 }
 
-function closeSearch() {
-    document.getElementById("overlay").style.display = "none";
-}
-  document.onkeydown = function(e) {
-  if(event.keyCode == 123) {
-    console.log('You cannot inspect Element');
-     return false;
-  }
-  if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
-    console.log('You cannot inspect Element');
-    return false;
-  }
-  if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
-    console.log('You cannot inspect Element');
-    return false;
-  }
-  if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
-    console.log('You cannot inspect Element');
-    return false;
-  }
-  if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
-    console.log('You cannot inspect Element');
-    return false;
-  }
-}
-// prevents right clicking
-document.addEventListener('contextmenu', e => e.preventDefault());
-document.addEventListener("keydown", function(e) {
-  if (e.key === 's' && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
-    e.preventDefault();
-  }
-}, false);
+// function closeSearch() {
+//     document.getElementById("overlay").style.display = "none";
+// }
+//   document.onkeydown = function(e) {
+//   if(event.keyCode == 123) {
+//     console.log('You cannot inspect Element');
+//      return false;
+//   }
+//   if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+//     console.log('You cannot inspect Element');
+//     return false;
+//   }
+//   if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
+//     console.log('You cannot inspect Element');
+//     return false;
+//   }
+//   if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+//     console.log('You cannot inspect Element');
+//     return false;
+//   }
+//   if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+//     console.log('You cannot inspect Element');
+//     return false;
+//   }
+// }
+// // prevents right clicking
+// document.addEventListener('contextmenu', e => e.preventDefault());
+// document.addEventListener("keydown", function(e) {
+//   if (e.key === 's' && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
+//     e.preventDefault();
+//   }
+// }, false);
 </script>

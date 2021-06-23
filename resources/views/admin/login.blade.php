@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Admin Portal | Sikaai</title>
+    <link rel="shortcut icon" href="{{ asset('frontend/img/Group 395.svg')}}">
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- to accept http while server running on https -->
@@ -25,6 +26,8 @@
     <section>
         <div class="imgBx">
             <img src="{{asset('mangosoft.png')}}" alt="logo" />
+            <!-- <img src="{{asset('frontend/img/Group 396.png')}}" alt="logo" /> -->
+            
         </div>
         <div class="contentBx">
             <div class="formBx">

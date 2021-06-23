@@ -11,9 +11,9 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+})->name('index');
 // Route::get('/about', function () {
 //     return view('aboutus');
 // });
@@ -28,7 +28,7 @@
 // });
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/test', 'QuizController@index')->name('quiz_index');
 Route::get('/mycourses', 'HomeController@courses')->name('courses');
 Route::get('/notification', 'HomeController@get_notifications')->name('get_notifications');

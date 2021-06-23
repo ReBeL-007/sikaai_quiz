@@ -9,7 +9,7 @@
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{asset('/backend/plugins/fontawesome-free/css/all.min.css')}}">
-  <link rel = "icon" href ="{{asset('logo.png')}}" type = "image/x-icon">
+  <link rel="shortcut icon" href="{{ asset('frontend/img/Group 395.svg')}}">
   <!-- Ionicons -->
   {{-- <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> --}}
   <!-- Tempusdominus Bbootstrap 4 -->
