@@ -14,18 +14,18 @@
 Route::get('/', function () {
     return view('welcome');
 })->name('index');
-// Route::get('/about', function () {
-//     return view('aboutus');
-// });
-// Route::get('/courses', function () {
-//     return view('courses');
-// });
+Route::get('/about', function () {
+    return view('aboutus');
+})->name('aboutus');
+Route::get('/courses', function () {
+    return view('courses');
+})->name('course');
 // Route::get('/pricing', function () {
 //     return view('pricing');
-// });
-// Route::get('/contact', function () {
-//     return view('contact');
-// });
+// })->name('aboutus');
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

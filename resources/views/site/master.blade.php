@@ -11,9 +11,9 @@
         @section('content')
         @show
     </main>
-    <footer>
+    
         @include('site.footer')
-    </footer>
+    
 </body>
 </html> 
 

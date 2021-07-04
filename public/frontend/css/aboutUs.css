@@ -1,0 +1,183 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;900&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+:root {
+  --color-light-white: #fff;
+}
+
+*,
+::after,
+::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: poppins, sans-serif;
+}
+
+.about_us {
+    margin-top: 3rem;
+    display: flex;
+    /* align-items: center; */
+    padding-left: 10%;
+    padding-right: 10%;
+}
+.about_us .about_us_left  {
+    position: relative;
+}
+.about_us .about_us_left .ellipse_left {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+}
+
+.about_us .about_us_right {
+    position: relative;
+    width: 50%;
+    padding-top: 7rem;
+    
+}
+.about_us .about_us_right .ellipse_right {
+    position: absolute;
+    top: 0;
+    right: -25%;
+}
+
+.about_us .about_us_right .about_us_right_head {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 500;
+}
+.about_us .about_us_right .about_us_right_para {
+    padding-top: 2.5rem;
+}
+
+#yellow_line {
+    width: 100%;
+}
+
+.our_story {
+    padding: 5rem 5rem 0 5rem;
+}
+.our_story .our_story_head {
+    color: #585FCD;
+}
+.our_story .our_story_para {
+    padding-top: 2rem;
+    text-align: justify;
+}
+
+.why_sikaai_section {
+    margin-top: 10rem;
+}
+.why_sikaai_section h2 {
+    text-align: center;
+    color: #585FCD;
+}
+
+.why_sikaai {
+    display: flex;
+    /* margin: 0 5rem 0 5rem; */
+}
+
+
+.why_sikaai .why_sikaai_desc {
+    margin: 3.5rem 5rem 0 5rem;
+    width: 35%;
+    text-align: center;
+}
+.why_sikaai .why_sikaai_desc img {
+    width: 95%;
+}
+.why_sikaai .why_sikaai_desc h5,p {
+    padding-top: 1rem;
+}
+
+.about_sign {
+    margin-top: 10rem;
+}
+
+.sign_us {
+    margin: 0.5rem 5rem 0 5rem;
+    border: 3px solid black;
+    padding: 5rem 0rem 5rem 5rem;
+    border-radius: 30px;
+}
+.sign_us span {
+    color: #FF7067;
+    font-size: 2.5rem;
+}
+
+@media screen and (max-width:1025px) {
+    .about_us {
+        flex-direction: column;
+        align-items: center;
+    }
+    .about_us .about_us_right {
+        width: 100%;
+    }
+
+    .about_us .about_us_right .ellipse_right {
+        /* top: -200px;
+        right: -7rem;
+        margin-right: 4rem; */
+        display: none;
+    }
+    .about_us .about_us_right .ellipse_right svg {
+        /* width: 50%; */
+    }
+
+    .about_us .about_us_right .about_us_right_head {
+        text-align: start;
+    }
+
+    .our_story {
+        padding: 2rem;
+    }
+
+    .why_sikaai_section {
+        margin-top: 3rem;
+    }
+
+    .why_sikaai {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .why_sikaai .why_sikaai_desc {
+        width: 80%;
+    }
+    /* .ellipse_left {
+        left: -1.5rem;
+    }
+
+   .ellipse_left img {
+        width: 20%;
+    } */
+    .about_sign {
+        margin-top: 2rem;
+    }
+
+    .sign_us {
+        margin: 0.5rem 1rem 0 1rem;
+        padding: 2rem 1rem 2rem 1rem;
+    }
+
+    .sign_us span {
+        font-size: 2rem;
+    }
+    .sign_us p {
+        font-size: 1.3rem;
+    }
+    .ellipse_left, .ellipse_right, .ellipse-down {
+        display: none;
+    }
+}

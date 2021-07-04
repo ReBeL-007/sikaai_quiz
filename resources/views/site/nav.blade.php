@@ -45,17 +45,23 @@
         </div>
 
         <!-- main navigation    -->
-        <div class="nav__list">
-        <a href="#" class="nav__list-link">Home</a>
-        <a href="#" class="nav__list-link">About Us</a>
-        <a href="#" class="nav__list-link">Courses</a>
-        <a href="#" class="nav__list-link">Pricing</a>
-        <a href="#" class="nav__list-link">Contact Us</a>
+        <div class="nav__list-container">
+            <div class="nav__list">
+                <a href="{{route('index')}}" class="nav__list-link">Home</a>
+                <a href="{{route('aboutus')}}" class="nav__list-link">About Us</a>
+                <a href="{{route('course')}}" class="nav__list-link">Courses</a>
+                <!-- <a href="{{route('aboutus')}}" class="nav__list-link">Pricing</a> -->
+                <a href="{{route('contact')}}" class="nav__list-link">Contact Us</a>
+                <div class="mobile__actions">
+                    <a href="{{route('login')}}" class="action-btn btn btn-logIn">Log in</a>
+                    <a href="{{route('login')}}" class="action-btn btn btn-register">Log In</a>
+                </div>
+            </div>
         </div>
         <!-- actions -->
         <div class="action">
-        <a href="{{route('login')}}" class="action-btn btn btn-logIn">Log in</a
-        ><a href="{{route('login')}}" class="action-btn btn btn-register">Log In</a>
+            <a href="{{route('login')}}" class="action-btn btn btn-logIn">Log in</a>
+            <a href="{{route('login')}}" class="action-btn btn btn-register">Log In</a>
         </div>
     </div>
 </nav>

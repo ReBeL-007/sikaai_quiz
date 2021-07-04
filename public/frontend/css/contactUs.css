@@ -1,0 +1,277 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;900&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+:root {
+  --color-light-white: #fff;
+}
+
+*,
+::after,
+::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: poppins, sans-serif;
+}
+
+.contact-bg {
+  margin-top: 3rem;
+}
+
+.contact-bg .contact-background {
+  position: relative;
+}
+
+.contact-background .chat-with-sikaai {
+  position: absolute;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+  background: rgba(213, 221, 233, 0.6);
+  /* width: 35%; */
+  padding: 2rem 2rem 5rem 1rem;
+  top: 10%;
+  right: 11%;
+  text-align: center;
+}
+.contact-background .chat-with-sikaai .chat-head {
+  font-size: 2.5rem;
+  color: #585fcd;
+}
+.contact-background .chat-with-sikaai .chat-para {
+  padding-top: 2rem;
+}
+
+.contact-background .chat-with-sikaai .login-messenger {
+  text-decoration: none;
+  color: #fff;
+  background-color: #585fcd;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+}
+
+#svg-messenger {
+  position: absolute;
+  top: 50%;
+  right: 5%;
+}
+
+.contact-us {
+  display: flex;
+  margin: 0 5%;
+  box-shadow: 0px 8px 21px rgba(0, 0, 0, 0.24);
+  border-radius: 20px;
+  margin-bottom: 3rem;
+  position: absolute;
+  top: 80%;
+}
+
+.contact__us-form {
+  padding: 0 2.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+/* sanjit updates */
+
+.contact-us > * {
+  width: 100%;
+}
+
+/*  */
+.form__group {
+  width: 100%;
+}
+
+.form__group input,
+.form__group textarea {
+  width: 100%;
+}
+
+.group__elements {
+  display: flex;
+  gap: 2rem;
+}
+
+.group__elements > * {
+  width: 100%;
+}
+
+.contact-us .contact-us-left {
+  /* overflow: hidden; */
+  padding: 2.5rem 2.5rem;
+  border-radius: 20px 0 0 20px;
+  background-color: #585fcd;
+  color: #fff;
+}
+.contact-us .contact-us-left .contact-us-title {
+  font-size: 2rem;
+  font-weight: 600;
+}
+.contact-us .contact-us-left .sikaai-dot-com {
+  padding-top: 3rem;
+}
+
+.contact-us .contact-us-left .sikaai-dot-com .sikaai-dot-com-title {
+  font-size: 2rem;
+}
+.contact-us .contact-us-left .sikaai-dot-com .sikaai-dot-com-para {
+  padding-top: 0.5rem;
+}
+.contact-us .contact-us-left .info {
+  padding-top: 1rem;
+}
+.contact-us .contact-us-left .contact-us-left-address {
+  padding-top: 1rem;
+}
+.contact-us .contact-us-left .contact-us-left-address .address-title {
+  font-size: 2rem;
+}
+.contact-us .contact-us-left .contact-us-left-address .address-para {
+  padding-top: 0.5rem;
+}
+
+.contact-us .contact-us-left .phone {
+  padding-top: 2rem;
+}
+.contact-us .contact-us-left .phone .phone-title {
+  font-size: 2rem;
+}
+/* .contact-us .contact-us-left .phone .phone-no {
+    padding-top: 0.5rem;
+} */
+.contact-us .contact-us-left .phone .phone-details {
+  display: flex;
+  padding-top: 1rem;
+}
+.contact-us .contact-us-left .phone .phone-details .phone-icon {
+  font-size: 2.5rem;
+}
+.contact-us .contact-us-left .phone .phone-details .phone-content {
+  padding-left: 1rem;
+}
+
+.contact-us .contact-us-left .any-ques {
+  padding-top: 2rem;
+  font-weight: bold;
+}
+.contact-us .contact-us-left .fill-form {
+  padding-top: 1rem;
+}
+
+.contact-us .contact-us-right {
+  background-color: #fff;
+  border-radius: 0 20px 20px 0;
+}
+.contact-us .contact-us-right h2 {
+  padding-top: 1rem;
+  font-weight: 600;
+  text-align: center;
+  color: #585fcd;
+}
+
+.contact-us .contact-us-right form {
+  margin-top: 2rem;
+}
+
+.contact-us .contact-us-right form input,
+textarea,
+button {
+  padding: 0.8rem;
+  /* margin-left: 5%;
+  margin-top: 3rem; */
+}
+.contact-us .contact-us-right form button {
+  background-color: #585fcd;
+  border-style: none;
+  width: 10rem;
+  color: #fff;
+  border-radius: 15px;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 1025px) {
+  .contact-us {
+    flex-direction: column;
+    top: 100%;
+  }
+
+  .contact-us .contact-us-left {
+    border-radius: 20px 20px 0px 0;
+  }
+
+  .contact .contact-us-right {
+    border-radius: 0 0 20px 20px;
+  }
+
+  /* .contact-background .chat-with-sikaai {
+            width:80%;
+            top: 5%;
+        }
+        .contact-background .chat-with-sikaai .chat-head, .chat-para, .login-messenger {
+            font-size: 80%;
+        }
+
+        .break {
+            display: none;
+        } */
+}
+
+@media screen and (max-width: 600px) {
+  .chat-with-sikaai {
+    display: none;
+  }
+  .contact-us {
+    box-shadow: none;
+  }
+
+  .contact-us .contact-us-left {
+    background-color: #fff;
+    color: #111;
+  }
+
+  .contact-us .contact-us-left .contact-us-title {
+    color: #585fcd;
+    /* text-align: center; */
+  }
+  .contact-us .contact-us-left .sikaai-dot-com .sikaai-dot-com-title,
+  .contact-us .contact-us-left .contact-us-left-address .address-title,
+  .contact-us .contact-us-left .phone .phone-title {
+    font-size: 3rem;
+  }
+  #svg-messenger {
+    right: 5%;
+    top: 40%;
+  }
+
+  .sikaai-dot-com-para,
+  .address-para,
+  .fill-form,
+  .phone-no {
+    font-size: 1.4rem;
+  }
+
+  .sikaai-dot-com-title,
+  .address-title,
+  .phone-title {
+    font-size: 2.4rem;
+  }
+
+  .contact-us {
+    margin: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .group__elements {
+    flex-direction: column;
+  }
+}
