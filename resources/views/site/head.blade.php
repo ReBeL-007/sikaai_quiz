@@ -25,7 +25,7 @@ crossorigin="anonymous"
     crossorigin="anonymous"
 />
 
-<link rel="stylesheet" href="{{ asset('frontend/css/style.css')}}" />
 <link rel="stylesheet" href="{{ asset('frontend/css/myOwlStyle.css')}}" />
 <script src="{{ asset('frontend/js/pageAnimation.js')}}" defer></script>
 @yield('styles')
+<link rel="stylesheet" href="{{ asset('frontend/css/style.css')}}" />

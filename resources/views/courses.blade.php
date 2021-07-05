@@ -10,7 +10,7 @@
       <div class="grow_skills_left">
         <h2>Grow new skills with<br /><span id="text-sikaai">Sikaai</span></h2>
         <p>Learn different skills by exploring different courses online.</p>
-        <br /><br />
+        
         <a href="#">Start Learning</a>
       </div>
 
@@ -26,8 +26,8 @@
         <span class="category_head">Popular Categories</span>
         <p class="category_para">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-          mattis vel massa non vehicula.<br />Pellentesque vitae orci tristique,
-          feugiat nibh a, tempor felis. Fusce vel condimentum lorem.<br />Phasellus
+          mattis vel massa non vehicula.Pellentesque vitae orci tristique,
+          feugiat nibh a, tempor felis. Fusce vel condimentum lorem.Phasellus
           in nunc eu mauris lobortis posuere. Aenean
         </p>
       </div>
@@ -522,8 +522,8 @@
         <span class="category_head">Popular Categories</span>
         <p class="category_para">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-          mattis vel massa non vehicula.<br />Pellentesque vitae orci tristique,
-          feugiat nibh a, tempor felis. Fusce vel condimentum lorem.<br />Phasellus
+          mattis vel massa non vehicula.Pellentesque vitae orci tristique,
+          feugiat nibh a, tempor felis. Fusce vel condimentum lorem.Phasellus
           in nunc eu mauris lobortis posuere. Aenean
         </p>
       </div>
