@@ -6,19 +6,35 @@ const checkBox = document.querySelector("#check");
 
 console.log(checkBox);
 checkBox.addEventListener("click", function (e) {
-  if (checkBox.checked) {
-    return document.body.classList.add("overflow");
-  }
-  document.body.classList.remove("overflow");
-  // console.log();
+    if (checkBox.checked) {
+        return document.body.classList.add("overflow");
+    }
+    document.body.classList.remove("overflow");
+    // console.log();
 });
 
+let click = 0;
 moveDownBtn.addEventListener("click", function (e) {
-  e.preventDefault();
+    e.preventDefault();
 
-  section.scrollIntoView({
-    behavior: "smooth",
-  });
+    if (click === 0) {
+        section.scrollIntoView({
+            behavior: "smooth",
+            block: "center",
+            inline: "nearest",
+        });
+        click++;
+        return;
+    }
+
+    if (click > 0) {
+        console.log(click);
+        section.scrollIntoView({
+            behavior: "smooth",
+        });
+        click = 0;
+        return;
+    }
 });
 
 // // lazy loading

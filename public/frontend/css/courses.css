@@ -274,6 +274,69 @@ body {
     max-width: 70%;
     margin: 0 auto;
 }
+
+/* added code hover effect */
+.category {
+    position: relative;
+    overflow: hidden;
+}
+
+.hover__effect {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: blue;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    border-radius: inherit;
+    opacity: 0;
+    transition: all 0.3s;
+}
+
+.hover__effect-circle {
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    background-color: rgba(226, 228, 255, 0.3);
+    /* backdrop-filter: 5rem; */
+    z-index: 2;
+}
+
+.hover__effect-circle__1 {
+    top: -34%;
+    right: -34%;
+}
+
+.hover__effect-circle__2 {
+    bottom: -16%;
+    right: -50%;
+}
+
+.category:hover .hover__effect,
+.category:hover svg path,
+.category:active .hover__effect,
+.category:active svg path {
+    opacity: 1;
+}
+
+.category svg,
+.category span {
+    z-index: 20;
+    transition: all 0.3s;
+}
+
+.category:hover span,
+.category:active span {
+    color: #fff;
+}
+
+.category:hover svg path,
+.category:active svg path {
+    fill: #fff;
+}
+
 /* responsive */
 
 @media (max-width: 1180px) {
@@ -360,6 +423,21 @@ body {
         max-width: 100%;
         /* margin: 0 auto; */
     }
+
+    .hover__effect-circle {
+        width: 130px;
+        height: 130px;
+    }
+
+    .hover__effect-circle__1 {
+        top: -34%;
+        right: -22%;
+    }
+
+    .hover__effect-circle__2 {
+        bottom: -16%;
+        right: -33%;
+    }
 }
 
 @media (max-width: 600px) {
@@ -391,6 +469,23 @@ body {
     .category_para,
     p {
         text-align: justify;
+    }
+}
+
+@media (max-width: 400px) {
+    .hover__effect-circle {
+        width: 100px;
+        height: 100px;
+    }
+
+    .hover__effect-circle__1 {
+        top: -34%;
+        right: -22%;
+    }
+
+    .hover__effect-circle__2 {
+        bottom: -16%;
+        right: -33%;
     }
 }
 
