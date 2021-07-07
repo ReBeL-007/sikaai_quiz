@@ -865,7 +865,7 @@
     <!--end of our courses-->
 
     <!--start of sign up to newsletter-->
-    <section class="courses-sign-up">
+    <!-- <section class="courses-sign-up">
       <div class="sign-up-head">
         <h2>Sign Up to our Newsletter</h2>
         <p>SignUp to our Newsletter and get many interesting updates weekly</p>
@@ -922,5 +922,5 @@
           <button class="subscribe_btn" type="button">Subscribe</button>
         </div>
       </div>
-    </section>
+    </section> -->
 @endsection

@@ -47,11 +47,11 @@
         <!-- main navigation    -->
         <div class="nav__list-container">
             <div class="nav__list">
-                <a href="{{route('index')}}" class="nav__list-link nav__list-link-active">Home</a>
-                <a href="{{route('aboutus')}}" class="nav__list-link">About Us</a>
-                <a href="{{route('course')}}" class="nav__list-link">Courses</a>
-                <!-- <a href="{{route('aboutus')}}" class="nav__list-link">Pricing</a> -->
-                <a href="{{route('contact')}}" class="nav__list-link">Contact Us</a>
+                <a href="{{route('index')}}" class="nav__list-link {{ request()->is('/') ? 'nav__list-link-active' : '' }}">Home</a>
+                <a href="{{route('aboutus')}}" class="nav__list-link {{ request()->is('about') ? 'nav__list-link-active' : '' }}">About Us</a>
+                <a href="{{route('course')}}" class="nav__list-link {{ request()->is('courses') ? 'nav__list-link-active' : '' }}">Courses</a>
+                <!-- <a href="{{route('aboutus')}}" class="nav__list-link {{ request()->is('pricing') ? 'nav__list-link-active' : '' }}">Pricing</a> -->
+                <a href="{{route('contact')}}" class="nav__list-link {{ request()->is('contact') ? 'nav__list-link-active' : '' }}">Contact Us</a>
                 <div class="mobile__actions">
                     <a href="{{route('login')}}" class="action-btn btn btn-logIn">Log in</a>
                     <div class="btn__background">

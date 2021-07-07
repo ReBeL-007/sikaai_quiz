@@ -156,7 +156,7 @@
       </div>
     </section>
 
-    <section class="about_sign">
+    <!-- <section class="about_sign">
       <p style="text-align: center; font-size: 1.5rem">
         To get a step closer to your Dream Career.
       </p>
@@ -164,5 +164,5 @@
         <span>SIGN US FOR FREE</span>
         <p>To get a step closer to your Dream Career.</p>
       </div>
-    </section>
+    </section> -->
 @endsection
