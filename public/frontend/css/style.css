@@ -1187,7 +1187,7 @@ input:checked ~ label {
 
 @media (max-width: 900px) {
   .section__card-container {
-    grid-template-columns: repeat(1, minmax(200px, 450px));
+    grid-template-columns: repeat(2, minmax(200px, 450px));
     justify-content: center;
     row-gap: 4rem;
   }
@@ -1249,6 +1249,12 @@ input:checked ~ label {
 
   .section__card {
     margin-top: -10rem;
+  }
+}
+
+@media (max-width: 742px) {
+    .section__card-container {
+      grid-template-columns: repeat(1, minmax(200px, 450px));
   }
 }
 
