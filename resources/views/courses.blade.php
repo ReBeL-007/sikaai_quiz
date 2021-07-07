@@ -101,7 +101,11 @@
       </div>
 
       <div class="categories">
-        <div class="category">
+        <a href="" class="category">
+          <div class="hover__effect">
+            <div class="hover__effect-circle hover__effect-circle__1"></div>
+            <div class="hover__effect-circle hover__effect-circle__2"></div>
+          </div>
           <svg
             width="55"
             height="50"
@@ -115,9 +119,13 @@
             />
           </svg>
           <span>Development</span>
-        </div>
+        </a>
 
-        <div class="category">
+        <a href class="category">
+        <div class="hover__effect">
+            <div class="hover__effect-circle hover__effect-circle__1"></div>
+            <div class="hover__effect-circle hover__effect-circle__2"></div>
+          </div>
           <svg
             width="49"
             height="44"
@@ -135,9 +143,13 @@
             />
           </svg>
           <span>Graphics Design</span>
-        </div>
+        </a>
 
-        <div class="category">
+        <a href="" class="category">
+        <div class="hover__effect">
+            <div class="hover__effect-circle hover__effect-circle__1"></div>
+            <div class="hover__effect-circle hover__effect-circle__2"></div>
+          </div>
           <svg
             width="60"
             height="57"
@@ -151,9 +163,13 @@
             />
           </svg>
           <span>Digital Marketing</span>
-        </div>
+        </a>
 
-        <div class="category">
+        <a href="" class="category">
+        <div class="hover__effect">
+            <div class="hover__effect-circle hover__effect-circle__1"></div>
+            <div class="hover__effect-circle hover__effect-circle__2"></div>
+          </div>
           <svg
             width="49"
             height="44"
@@ -171,9 +187,13 @@
             />
           </svg>
           <span>Graphics Design</span>
-        </div>
+        </a>
 
-        <div class="category">
+        <a href="" class="category">
+        <div class="hover__effect">
+            <div class="hover__effect-circle hover__effect-circle__1"></div>
+            <div class="hover__effect-circle hover__effect-circle__2"></div>
+          </div>
           <svg
             width="49"
             height="44"
@@ -191,9 +211,13 @@
             />
           </svg>
           <span>Graphics Design</span>
-        </div>
+        </a>
 
-        <div class="category">
+        <a href="" class="category">
+        <div class="hover__effect">
+            <div class="hover__effect-circle hover__effect-circle__1"></div>
+            <div class="hover__effect-circle hover__effect-circle__2"></div>
+          </div>
           <svg
             width="55"
             height="50"
@@ -207,9 +231,13 @@
             />
           </svg>
           <span>Development</span>
-        </div>
+        </a>
 
-        <div class="category">
+        <a href="" class="category">
+        <div class="hover__effect">
+            <div class="hover__effect-circle hover__effect-circle__1"></div>
+            <div class="hover__effect-circle hover__effect-circle__2"></div>
+          </div>
           <svg
             width="49"
             height="44"
@@ -227,9 +255,13 @@
             />
           </svg>
           <span>Graphics Design</span>
-        </div>
+        </a>
 
-        <div class="category">
+        <a href class="category">
+        <div class="hover__effect">
+            <div class="hover__effect-circle hover__effect-circle__1"></div>
+            <div class="hover__effect-circle hover__effect-circle__2"></div>
+          </div>
           <svg
             width="60"
             height="57"
@@ -243,9 +275,13 @@
             />
           </svg>
           <span>Digital Marketing</span>
-        </div>
+        </a>
 
-        <div class="category">
+        <a href="" class="category">
+        <div class="hover__effect">
+            <div class="hover__effect-circle hover__effect-circle__1"></div>
+            <div class="hover__effect-circle hover__effect-circle__2"></div>
+          </div>
           <svg
             width="49"
             height="44"
@@ -263,9 +299,13 @@
             />
           </svg>
           <span>Graphics Design</span>
-        </div>
+        </a>
 
-        <div class="category">
+        <a href class="category">
+        <div class="hover__effect">
+            <div class="hover__effect-circle hover__effect-circle__1"></div>
+            <div class="hover__effect-circle hover__effect-circle__2"></div>
+          </div>
           <svg
             width="49"
             height="44"
@@ -283,7 +323,7 @@
             />
           </svg>
           <span>Graphics Design</span>
-        </div>
+        </a>
       </div>
     </section>
     <!--end of popular categories -->
@@ -597,7 +637,11 @@
       </div>
 
       <div class="categories">
-        <div class="category">
+        <a href="" class="category">
+        <div class="hover__effect">
+            <div class="hover__effect-circle hover__effect-circle__1"></div>
+            <div class="hover__effect-circle hover__effect-circle__2"></div>
+          </div>
           <svg
             width="55"
             height="50"
@@ -611,9 +655,13 @@
             />
           </svg>
           <span>Development</span>
-        </div>
+        </a>
 
-        <div class="category">
+        <a href="" class="category">
+        <div class="hover__effect">
+            <div class="hover__effect-circle hover__effect-circle__1"></div>
+            <div class="hover__effect-circle hover__effect-circle__2"></div>
+          </div>
           <svg
             width="49"
             height="44"
@@ -631,9 +679,13 @@
             />
           </svg>
           <span>Graphics Design</span>
-        </div>
+        </a>
 
-        <div class="category">
+        <a href="" class="category">
+        <div class="hover__effect">
+            <div class="hover__effect-circle hover__effect-circle__1"></div>
+            <div class="hover__effect-circle hover__effect-circle__2"></div>
+          </div>
           <svg
             width="60"
             height="57"
@@ -647,9 +699,13 @@
             />
           </svg>
           <span>Digital Marketing</span>
-        </div>
+        </a>
 
-        <div class="category">
+        <a href="" class="category">
+        <div class="hover__effect">
+            <div class="hover__effect-circle hover__effect-circle__1"></div>
+            <div class="hover__effect-circle hover__effect-circle__2"></div>
+          </div>
           <svg
             width="49"
             height="44"
@@ -667,9 +723,13 @@
             />
           </svg>
           <span>Graphics Design</span>
-        </div>
+        </a>
 
-        <div class="category">
+        <a href="" class="category">
+        <div class="hover__effect">
+            <div class="hover__effect-circle hover__effect-circle__1"></div>
+            <div class="hover__effect-circle hover__effect-circle__2"></div>
+          </div>
           <svg
             width="49"
             height="44"
@@ -687,9 +747,13 @@
             />
           </svg>
           <span>Graphics Design</span>
-        </div>
+        </a>
 
-        <div class="category">
+        <a href="" class="category">
+        <div class="hover__effect">
+            <div class="hover__effect-circle hover__effect-circle__1"></div>
+            <div class="hover__effect-circle hover__effect-circle__2"></div>
+          </div>
           <svg
             width="55"
             height="50"
@@ -703,9 +767,13 @@
             />
           </svg>
           <span>Development</span>
-        </div>
+        </a>
 
-        <div class="category">
+        <a href="" class="category">
+        <div class="hover__effect">
+            <div class="hover__effect-circle hover__effect-circle__1"></div>
+            <div class="hover__effect-circle hover__effect-circle__2"></div>
+          </div>
           <svg
             width="49"
             height="44"
@@ -723,9 +791,13 @@
             />
           </svg>
           <span>Graphics Design</span>
-        </div>
+        </a>
 
-        <div class="category">
+        <a href="" class="category">
+        <div class="hover__effect">
+            <div class="hover__effect-circle hover__effect-circle__1"></div>
+            <div class="hover__effect-circle hover__effect-circle__2"></div>
+          </div>
           <svg
             width="60"
             height="57"
@@ -739,9 +811,13 @@
             />
           </svg>
           <span>Digital Marketing</span>
-        </div>
+        </a>
 
-        <div class="category">
+        <a href="" class="category">
+        <div class="hover__effect">
+            <div class="hover__effect-circle hover__effect-circle__1"></div>
+            <div class="hover__effect-circle hover__effect-circle__2"></div>
+          </div>
           <svg
             width="49"
             height="44"
@@ -759,9 +835,13 @@
             />
           </svg>
           <span>Graphics Design</span>
-        </div>
+        </a>
 
-        <div class="category">
+        <a href="" class="category">
+        <div class="hover__effect">
+            <div class="hover__effect-circle hover__effect-circle__1"></div>
+            <div class="hover__effect-circle hover__effect-circle__2"></div>
+          </div>
           <svg
             width="49"
             height="44"
@@ -779,7 +859,7 @@
             />
           </svg>
           <span>Graphics Design</span>
-        </div>
+        </a>
       </div>
     </section>
     <!--end of our courses-->

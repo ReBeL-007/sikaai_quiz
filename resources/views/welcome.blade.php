@@ -3,7 +3,7 @@
 @section('title','Home')
 
 @section('content')
-  <section class="section section__intro">
+  <section class="section section__intro rellax" data-rellax-speed="5">
       <div class="intro__description">
         <div class="description__text">
           <span class="small__text">Sikaai makes it easy</span>
@@ -15,8 +15,8 @@
         </div>
         <a href="{{route('index')}}" class="btn btn-started">Get Started</a>
       </div>
-      <div class="intro__image">
-        <img src="{{ asset('frontend/img/Parallax image.svg')}}" alt="" />
+      <div class="intro__image rellax" data-rellax-speed="5" style="overflow:hidden" >
+        <img src="{{ asset('frontend/img/Parallax image.svg')}}" data-tilt alt="" />
       </div>
   </section>
   <section class="section section__intro-action">

@@ -140,3 +140,26 @@
     },
     });
 </script>
+<script src="https://cdn.jsdelivr.net/gh/dixonandmoe/rellax@master/rellax.min.js" ></script>
+    <script >
+        let rellax = new Rellax('.rellax', {
+        speed: -2,
+        center: false,
+        wrapper: null,
+        round: true,
+        vertical: true,
+        horizontal: false
+        });
+    </script>
+
+ 
+
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.0/ScrollTrigger.min.js"></script> -->
+<script src="{{ asset('frontend/js/animate.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tilt.js/1.2.1/tilt.jquery.min.js"></script>
+<script src="https://unpkg.com/tilt.js@1.2.1/dest/tilt.jquery.min.js""></script>
+<script>
+
+
+</script>
