@@ -13,28 +13,23 @@ checkBox.addEventListener("click", function (e) {
     // console.log();
 });
 
-let click = 0;
+// let click = 0;
 moveDownBtn.addEventListener("click", function (e) {
     e.preventDefault();
 
-    if (click === 0) {
-        section.scrollIntoView({
-            behavior: "smooth",
-            block: "center",
-            inline: "nearest",
-        });
-        click++;
-        return;
-    }
+    // if (click === 0) {
+    //     section.scrollIntoView({
+    //         behavior: "smooth",
+    //         block: "center",
+    //         inline: "nearest",
+    //     });
+    //     click++;
+    //     return;
+    // }
 
-    if (click > 0) {
-        console.log(click);
-        section.scrollIntoView({
-            behavior: "smooth",
-        });
-        click = 0;
-        return;
-    }
+    section.scrollIntoView({
+        behavior: "smooth",
+    });
 });
 
 // // lazy loading

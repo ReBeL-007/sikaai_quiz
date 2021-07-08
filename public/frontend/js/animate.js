@@ -4,7 +4,7 @@ const allCards = document.querySelectorAll(".section__description-card");
 
 const navContainer = document.querySelector(".nav__list");
 
-const allLinks = document.querySelectorAll(".nav__list-link");
+const allLinks = document.querySelector(".nav__list-link");
 
 // for (var i = 0; i < document.links.length; i++) {
 //     if (document.links[i].href == document.URL) {

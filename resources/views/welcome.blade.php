@@ -18,11 +18,12 @@
       <div class="intro__image rellax" data-rellax-speed="5" style="overflow:hidden" >
         <img src="{{ asset('frontend/img/Parallax image.svg')}}" data-tilt alt="" />
       </div>
+    
   </section>
   <section class="section section__intro-action">
       <!-- action button and title -->
       <div class="section main__des">
-        <a href="" class="btn btn-move__down">
+      <a href="" class="btn btn-move__down">
           <svg
             width="30"
             height=""

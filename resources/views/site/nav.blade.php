@@ -1,4 +1,4 @@
-<nav>
+<nav class="nav-area">
     <!-- mobile navigation -->
     <input type="checkbox" id="check" />
     <div class="hamburger-menu-container">
@@ -56,7 +56,9 @@
                     <a href="{{route('login')}}" class="action-btn btn btn-logIn">Log in</a>
                     <div class="btn__background">
 
-                        <a href="{{route('login')}}" class="action-btn btn btn-register">Log In</a>
+                        <a href="{{route('login')}}" class="action-btn btn btn-register">Log In
+                            </a>
+                           
                     </div>
                 </div>
             </div>
@@ -66,7 +68,9 @@
             <a href="{{route('login')}}" class="action-btn btn btn-logIn">Log in</a>
             <div class="btn__background">
                 
-                <a href="{{route('login')}}" class="action-btn btn btn-register">Log In</a>
+                <a href="{{route('login')}}" class="action-btn btn btn-register">Log In
+                    </a>
+                    <span></span>
             </div>
         </div>
     </div>

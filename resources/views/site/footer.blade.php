@@ -160,6 +160,43 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tilt.js/1.2.1/tilt.jquery.min.js"></script>
 <script src="https://unpkg.com/tilt.js@1.2.1/dest/tilt.jquery.min.js""></script>
 <script>
+    const main = document.querySelector('main');
 
+   $(function(){
+       let scroll = $(document).scrollTop();
+       let navHeight = $('.nav-area').outerHeight();
+
+       $(window).scroll(function(){
+           let scrolled = $(document).scrollTop();
+           
+
+           if(scrolled > navHeight){
+               $('.nav-area').addClass('animate-nav');
+            }else{
+               $('.nav-area').removeClass('animate-nav');
+               
+            }
+            
+            if(scrolled > scroll){
+               $('.nav-area').removeClass('sticky-nav');
+                // main.style.marginBottom = '0rem';
+               
+            }else{
+               $('.nav-area').addClass('sticky-nav');
+                // main.style.marginBottom = '10rem';
+           }
+
+           if(scrolled === 0){
+              
+               $('.nav-area').removeClass('sticky-nav');
+
+           }
+           
+           scroll = $(document).scrollTop();
+
+            // console.log('navHeight', navHeight);
+       })
+   });
+    
 
 </script>
