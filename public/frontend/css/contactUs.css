@@ -218,10 +218,21 @@ button {
 .contact-us .contact-us-right form button {
     background-color: #585fcd;
     border-style: none;
-    width: 10rem;
+    /* width: 10rem; */
+    font-size: 1.6rem;
+    padding: 1.2rem 4rem;
     color: #fff;
-    border-radius: 15px;
+    border-radius: 30px;
     font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    max-width: 134.5px;
+}
+
+.contact-us .contact-us-right form button:hover,
+.contact-us .contact-us-right form button:active {
+    background-color: hsl(236, 54%, 50%);
+    /* letter-spacing: 1px;  */
 }
 
 @media screen and (max-width: 1025px) {

@@ -16,7 +16,63 @@
         <a href="{{route('index')}}" class="btn btn-started">Get Started</a>
       </div>
       <div class="intro__image rellax" data-rellax-speed="5" style="overflow:hidden" >
-        <img src="{{ asset('frontend/img/Parallax image.svg')}}" data-tilt alt="" />
+        <img src="{{ asset('frontend/img/p-image.svg')}}"  alt="" />
+        <!-- float images -->
+        <div class="float__images " >
+           <div class="float__images-image float__images-1" >
+              <svg width="129" height="129" viewBox="0 0 129 129" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M50.1664 32.5735L102.411 64.426L41.7043 93.1742L50.1664 32.5735Z" fill="#FFA451"/>
+                <path d="M35.1104 68.4398L30.6682 108.384L66.5077 93.0828" stroke="#5A60CE" stroke-width="5"/>
+              </svg>
+           </div>
+           <div class="float__images-image float__images-2">
+              <svg width="97" height="80" viewBox="0 0 97 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="8.23287" y="44.8647" width="51.4627" height="29.9911" transform="rotate(-26.6726 8.23287 44.8647)" stroke="#5A60CE" stroke-width="11"/>
+                <path d="M86.2195 48.309C87.6306 43.769 88.1336 38.9957 87.6999 34.2614C87.2662 29.5271 85.9042 24.9245 83.6918 20.7166C81.4794 16.5086 78.4598 12.7776 74.8054 9.73664C71.1511 6.69565 66.9336 4.40421 62.3937 2.99316" stroke="#FFA451" stroke-width="5"/>
+              </svg>
+           </div>
+           <div class="float__images-image float__images-3">
+              <svg width="101" height="88" viewBox="0 0 101 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="27.6872" cy="9.62658" r="6.67579" transform="rotate(29.952 27.6872 9.62658)" fill="#5A60CE"/>
+                <circle cx="43.5936" cy="18.7919" r="6.67579" transform="rotate(29.952 43.5936 18.7919)" fill="#5A60CE"/>
+                <circle cx="59.5001" cy="27.9578" r="6.67579" transform="rotate(29.952 59.5001 27.9578)" fill="#5A60CE"/>
+                <circle cx="75.4066" cy="37.1237" r="6.67579" transform="rotate(29.952 75.4066 37.1237)" fill="#5A60CE"/>
+                <circle cx="91.3131" cy="46.2895" r="6.67579" transform="rotate(29.952 91.3131 46.2895)" fill="#5A60CE"/>
+                <circle cx="18.5211" cy="25.5326" r="6.67579" transform="rotate(29.952 18.5211 25.5326)" fill="#5A60CE"/>
+                <circle cx="34.4277" cy="34.6985" r="6.67579" transform="rotate(29.952 34.4277 34.6985)" fill="#5A60CE"/>
+                <circle cx="50.3342" cy="43.8644" r="6.67579" transform="rotate(29.952 50.3342 43.8644)" fill="#5A60CE"/>
+                <circle cx="66.2408" cy="53.0301" r="6.67579" transform="rotate(29.952 66.2408 53.0301)" fill="#5A60CE"/>
+                <circle cx="82.1473" cy="62.1961" r="6.67579" transform="rotate(29.952 82.1473 62.1961)" fill="#5A60CE"/>
+                <circle cx="9.35545" cy="41.4391" r="6.67579" transform="rotate(29.952 9.35545 41.4391)" fill="#5A60CE"/>
+                <circle cx="25.2619" cy="50.605" r="6.67579" transform="rotate(29.952 25.2619 50.605)" fill="#5A60CE"/>
+                <circle cx="41.1684" cy="59.7709" r="6.67579" transform="rotate(29.952 41.1684 59.7709)" fill="#5A60CE"/>
+                <circle cx="57.0751" cy="68.9368" r="6.67579" transform="rotate(29.952 57.0751 68.9368)" fill="#5A60CE"/>
+                <circle cx="72.9814" cy="78.1026" r="6.67579" transform="rotate(29.952 72.9814 78.1026)" fill="#5A60CE"/>
+              </svg>
+           </div>
+           <div class="float__images-image float__images-4">
+              <svg width="32" height="62" viewBox="0 0 32 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0.708683 58.0742C7.92314 58.202 14.8929 55.4585 20.0845 50.4474C25.2762 45.4363 28.2647 38.5681 28.3924 31.3536C28.5201 24.1392 25.7766 17.1695 20.7655 11.9778C15.7544 6.78605 8.88621 3.79764 1.67175 3.66993" stroke="#5A60CE" stroke-width="7"/>
+                  <path d="M1.16307 46.7187C5.51289 46.7187 9.68455 44.9908 12.7603 41.915C15.8361 38.8392 17.5641 34.6675 17.5641 30.3177" stroke="#FFA451" stroke-width="5"/>
+              </svg>
+           </div>
+           <div class="float__images-image float__images-5">
+              <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="17.1014" cy="17.8723" r="17.0404" fill="#FFA451"/>
+              </svg>
+           </div>
+           <div class="float__images-image float__images-6">
+              <svg width="94" height="97" viewBox="0 0 94 97" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="83.3494" cy="35.1011" r="7.77326" transform="rotate(-61.086 83.3494 35.1011)" fill="#FFA451"/>
+                <circle cx="39.9811" cy="53.3277" r="23.6497" transform="rotate(-61.086 39.9811 53.3277)" stroke="#5A60CE" stroke-width="11"/>
+              </svg>
+           </div>
+        </div>
+        <!--  -->
+        <div class="focus__content">
+          <span></span>
+          <p>Study Online</p>
+        </div>
       </div>
     
   </section>
