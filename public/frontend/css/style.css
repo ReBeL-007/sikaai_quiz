@@ -89,7 +89,7 @@ main {
 .hamburger-menu {
     width: 4rem;
     height: 4rem;
-    background-color: #0088cc;
+    background-color: #5a60ce;
     display: flex;
 
     justify-content: center;
@@ -275,6 +275,7 @@ nav {
     backdrop-filter: blur(2px);
     position: absolute;
     color: #fff;
+    z-index: 5;
 }
 
 .btn__background span {
@@ -1074,7 +1075,7 @@ input:checked ~ label {
     z-index: 30;
 
     padding: 2rem;
-    background: rgba(246, 222, 222, 0.5);
+    background: rgba(246, 222, 222, 0.2);
 
     backdrop-filter: blur(8.5px);
     -webkit-backdrop-filter: blur(8.5px);
@@ -1219,15 +1220,15 @@ input:checked ~ label {
     }
 
     .hamburger-menu div {
-        background: #0088cc;
+        background: #5a60ce;
     }
 
     .hamburger-menu div::before {
-        background-color: #0088cc;
+        background-color: #5a60ce;
     }
 
     .hamburger-menu div::after {
-        background-color: #0088cc;
+        background-color: #5a60ce;
     }
 
     #check {
@@ -1291,7 +1292,7 @@ input:checked ~ label {
 
     .nav__list-link-active {
         --pad: 3.2rem;
-        border-left: 5px solid #0088cc;
+        border-left: 5px solid #5a60ce;
         margin-left: 1.6rem;
     }
 
