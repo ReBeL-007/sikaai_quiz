@@ -996,8 +996,12 @@ input:checked ~ label {
     right: 10%;
 }
 
-.contact-bg + .section__newsletter,
+/* .contact-bg + .section__newsletter,
 .popular_categories + .section__newsletter {
+    margin-top: 8rem;
+} */
+
+.section__newsletter {
     margin-top: 8rem;
 }
 
