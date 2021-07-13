@@ -90,39 +90,15 @@
     <section class="our_story">
       <h3 class="our_story_head">Our Story</h3>
       <p class="our_story_para">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rutrum
-        malesuada sit duis ultrices diam aliquet nisl non. Nisl fringilla metus,
-        ullamcorper urna, consectetur purus imperdiet.Lorem ipsum dolor sit
-        amet, consectetur adipiscing elit. Rutrum malesuada sit duis ultrices
-        diam aliquet nisl non. Nisl fringilla metus, ullamcorper urna,
-        consectetur purus imperdiet.Lorem ipsum dolor sit amet, consectetur
-        adipiscing elit. Rutrum malesuada sit duis ultrices diam aliquet nisl
-        non. Nisl fringilla metus, ullamcorper urna, consectetur purus
-        imperdiet.Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Rutrum malesuada sit duis ultrices diam aliquet nisl non. Nisl fringilla
-        metus, ullamcorper urna, consectetur purus imperdiet.Lorem ipsum dolor
-        sit amet, consectetur adipiscing elit. Rutrum malesuada sit duis
-        ultrices diam aliquet nisl non. Nisl fringilla metus, ullamcorper urna,
-        consectetur purus imperdiet.Lorem ipsum dolor sit amet, consectetur
-        adipiscing elit. Rutrum malesuada sit duis ultrices diam aliquet nisl
-        non. Nisl fringilla metus, ullamcorper urna, consectetur purus
-        imperdiet.Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Rutrum malesuada sit duis ultrices diam aliquet nisl non. Nisl fringilla
-        metus, ullamcorper urna, consectetur purus imperdiet.Lorem ipsum dolor
-        sit amet, consectetur adipiscing elit. Rutrum malesuada sit duis
-        ultrices diam aliquet nisl non. Nisl fringilla metus, ullamcorper urna,
-        consectetur purus imperdiet.Lorem ipsum dolor sit amet, consectetur
-        adipiscing elit. Rutrum malesuada sit duis ultrices diam aliquet nisl
-        non. Nisl fringilla metus, ullamcorper urna, consectetur purus
-        imperdiet.Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Rutrum malesuada sit duis ultrices diam aliquet nisl non. Nisl fringilla
-        metus, ullamcorper urna, consectetur purus imperdiet.Lorem ipsum dolor
-        sit amet, consectetur adipiscing elit. Rutrum malesuada sit duis
-        ultrices diam aliquet nisl non. Nisl fringilla metus, ullamcorper urna,
-        consectetur purus imperdiet.Lorem ipsum dolor sit amet, consectetur
-        adipiscing elit. Rutrum malesuada sit duis ultrices diam aliquet nisl
-        non. Nisl fringilla metus, ullamcorper urna, consectetur purus
-        imperdiet.
+        Sikaai is an online learning platform that was founded in 2020 A.D.In this Platform.
+        In this learning platform, we have online entrance preparation for CMAT and KUUMAT exams. 
+        After +2 Level, to read any bachelor faculty in management field as BBA, BIM, BBM, BTTM BHM, BDevS and BDFin you need to give CMAT or KUUMAT entrance exam.
+        
+        Sikaai even conducts a Bridge course for SEE appeared students. The Bridge course helps to face entrance examinations at reputed colleges.
+        
+        Through Sikaai, we have daily online classes through ZOOM where we teach all the subjects according to CMAT/KUUMAT syllabus. We have a separate class for subjects as English, Logical Reasoning, General Awareness and Math.
+
+        For the students who are willing to go abroad for their further students after +2 or Bachelors, we conduct IELTS/PTE online class from very experienced people.
       </p>
     </section>
 
