@@ -48,9 +48,7 @@
         <div class="sikaai-dot-com">
             <span class="sikaai-dot-com-title">Sikaai.com</span>
             <p class="sikaai-dot-com-para">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rutrum
-            malesuada sit duis ultrices diam aliquet nisl non. Nisl
-            fringilla metus, ullamcorper urna, consectetur purus imperdiet.
+            Through Sikaai, we have daily online classes through ZOOM where we teach all the subjects according to CMAT/KUUMAT, IELTS/TOEFEL syllabus.
             </p>
         </div>
 
@@ -61,9 +59,7 @@
         <div class="contact-us-left-address">
             <span class="address-title">ADDRESS</span>
             <p class="address-para">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rutrum
-            malesuada sit duis ultrices diam aliquet nisl non. Nisl
-            fringilla metus, ullamcorper urna, consectetur purus imperdiet.
+            We are currently located at Baluwatar, Kathmandu.
             </p>
         </div>
 

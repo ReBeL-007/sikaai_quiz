@@ -21,7 +21,7 @@
       <div class="about_us_right">
         <p class="about_us_right_head">
           Learning is not attained by <br />
-          chance; it must be sought for with <br />
+          chance, it must be sought for with <br />
           ardour and attended to with <br />
           diligence.
         </p>
@@ -107,26 +107,28 @@
       <div class="why_sikaai">
         <div class="why_sikaai_desc">
           <img src="{{ asset('frontend/img/raising-hand.png')}}" alt="image" />
-          <h5>Lorem Ipsum</h5>
-        </div>
-
-        <div class="why_sikaai_desc">
-          <img src="{{ asset('frontend/img/raising-hand.png')}}" alt="image" />
-          <h5>Lorem Ipsum</h5>
+          <h5>CMAT / KUUMAT</h5>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rutrum
-            malesuada sit duis ultrices diam aliquet nisl non. Nisl fringilla
-            metus, ullamcorper urna <br />, consectetur purus imperdiet.
+            Sikaai offers entrance preparation class for CMAT/KUUMAT for students who are willing to study management faculty after +2 Level. 
+            We have career counseling and fun activities during the entrance preparation class.
           </p>
         </div>
 
         <div class="why_sikaai_desc">
           <img src="{{ asset('frontend/img/raising-hand.png')}}" alt="image" />
-          <h5>Lorem Ipsum</h5>
+          <h5>Bridge Course</h5>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rutrum
-            malesuada sit duis ultrices diam aliquet nisl non. Nisl fringilla
-            metus, ullamcorper urna <br />, consectetur purus imperdiet.
+            Sikaai provides special courses which helps you to face competitive entrance examinations. 
+            Sikaai teaches the various methods and techniques for solving the questions.
+          </p>
+        </div>
+
+        <div class="why_sikaai_desc">
+          <img src="{{ asset('frontend/img/raising-hand.png')}}" alt="image" />
+          <h5>IELTS, TOEFL, and SAT</h5>
+          <p>
+            Sikaai offers test preparation classes for the students who are willing to go abroad.
+            We also conduct comprehensive preparation for the interview through our experienced teachers.
           </p>
         </div>
       </div>

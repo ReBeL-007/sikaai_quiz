@@ -975,8 +975,8 @@
                 <img src="{{ asset('frontend/img/1.1.jpg')}}" alt="" />
               </div>
               <div class="tutor__description">
-                <h3 class="tutor__name">Khagendra P. Chamlagain</h3>
-                <span class="subject"> English </span>
+                <h3 class="tutor__name">Arjun Chapagain</h3>
+                <span class="subject"> General Knowledge </span>
               </div>
             </div>
           </div>
@@ -986,11 +986,11 @@
           <div class="mySlide">
             <div class="mySlide__content">
               <div class="mySlide--container">
-                <img src="{{ asset('frontend/img/1.1.jpg')}}" alt="" />
+                <img src="{{ asset('frontend/img/1.1.jpg')}}"/>
               </div>
               <div class="tutor__description">
-                <h3 class="tutor__name">Khagendra P. Chamlagain</h3>
-                <span class="subject"> English </span>
+                <h3 class="tutor__name">Hari Baniya</h3>
+                <span class="subject"> Mathematics </span>
               </div>
             </div>
           </div>
