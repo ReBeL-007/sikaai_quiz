@@ -48,7 +48,9 @@
         <div class="sikaai-dot-com">
             <span class="sikaai-dot-com-title">Sikaai.com</span>
             <p class="sikaai-dot-com-para">
-            Through Sikaai, we have daily online classes through ZOOM where we teach all the subjects according to CMAT/KUUMAT, IELTS/TOEFEL syllabus.
+            Through Sikaai, we have daily classes where we teach all the subjects
+            according to CMAT/KUUMAT syllabus and weekly MOCK exams for
+            CMAT/KUUMAT
             </p>
         </div>
 
@@ -59,7 +61,7 @@
         <div class="contact-us-left-address">
             <span class="address-title">ADDRESS</span>
             <p class="address-para">
-            We are currently located at Baluwatar, Kathmandu.
+            We are currently located at Putalisadak, Kathmandu.
             </p>
         </div>
 
@@ -73,7 +75,7 @@
 
             <div class="phone-content">
                 <span class="phone-no"
-                >+977 0123 456 789,<br />+977 0123 456 789</span
+                >+977 9851031252</span
                 >
             </div>
             </div>

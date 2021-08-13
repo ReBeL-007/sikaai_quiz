@@ -39,7 +39,7 @@
             <a href="">Contact Us</a>
             </div>
             <div class="social__links">
-            <a href=""
+            <a href="https://www.facebook.com/sikaai/"
                 ><svg
                 width="48"
                 height="48"
@@ -53,7 +53,7 @@
                 />
                 </svg>
             </a>
-            <a href="">
+            <a href="https://www.instagram.com/sikaai_/">
                 <svg
                 width="45"
                 height="46"
@@ -67,7 +67,7 @@
                 />
                 </svg>
             </a>
-            <a href="">
+            <a href="https://www.linkedin.com/company/sikaai">
                 <svg
                 width="49"
                 height="50"
@@ -81,7 +81,7 @@
                 />
                 </svg>
             </a>
-            <a href="">
+            <a href="https://twitter.com/SikaaiC">
                 <svg
                 width="50"
                 height="50"

@@ -90,15 +90,14 @@
     <section class="our_story">
       <h3 class="our_story_head">Our Story</h3>
       <p class="our_story_para">
-        Sikaai is an online learning platform that was founded in 2020 A.D.In this Platform.
-        In this learning platform, we have online entrance preparation for CMAT and KUUMAT exams. 
-        After +2 Level, to read any bachelor faculty in management field as BBA, BIM, BBM, BTTM BHM, BDevS and BDFin you need to give CMAT or KUUMAT entrance exam.
-        
-        Sikaai even conducts a Bridge course for SEE appeared students. The Bridge course helps to face entrance examinations at reputed colleges.
-        
-        Through Sikaai, we have daily online classes through ZOOM where we teach all the subjects according to CMAT/KUUMAT syllabus. We have a separate class for subjects as English, Logical Reasoning, General Awareness and Math.
-
-        For the students who are willing to go abroad for their further students after +2 or Bachelors, we conduct IELTS/PTE online class from very experienced people.
+      Sikaai is a learning center that was founded in 2020 A.D. In this platform, we conduct entrance
+      preparation for CMAT and KUUMAT exams. After +2 Level, to read any bachelor faculty in
+      management field as BBA, BIM, BBM, BCA, BTTM and BHM you need to give CMAT or
+      KUUMAT entrance exam to study in Tribhuvan University or Kathmandu University
+      respectively. Through Sikaai, we have daily classes in its premise where we teach all the subjects
+      according to CMAT/KUUMAT syllabus. We have separate classes for subjects as English,
+      Logical Reasoning, General Awareness and Math. For the students who are willing to go abroad
+      for their further study.
       </p>
     </section>
 
@@ -109,26 +108,30 @@
           <img src="{{ asset('frontend/img/raising-hand.png')}}" alt="image" />
           <h5>CMAT / KUUMAT</h5>
           <p>
-            Sikaai offers entrance preparation class for CMAT/KUUMAT for students who are willing to study management faculty after +2 Level. 
-            We have career counseling and fun activities during the entrance preparation class.
+          Sikaai offers entrance preparation classes for CMAT/KUUMAT for students who
+          are willing to study BBA, BBM, BIM, BCA, BTTM, BHM after +2 Level. We have best
+          faculty who promises to deliver best results
           </p>
         </div>
 
         <div class="why_sikaai_desc">
           <img src="{{ asset('frontend/img/raising-hand.png')}}" alt="image" />
-          <h5>Bridge Course</h5>
+          <h5>Career Counselling</h5>
           <p>
-            Sikaai provides special courses which helps you to face competitive entrance examinations. 
-            Sikaai teaches the various methods and techniques for solving the questions.
+          Sikaai offers career counselling for those who are not sure about picking right
+          subject after +2 level. We have counsellors from different domains who are
+          experts and have established career in their field. They will counsel you for
+          choosing the right subject for your Bachelor Degree
           </p>
         </div>
 
         <div class="why_sikaai_desc">
           <img src="{{ asset('frontend/img/raising-hand.png')}}" alt="image" />
-          <h5>IELTS, TOEFL, and SAT</h5>
+          <h5>MOCK Tests</h5>
           <p>
-            Sikaai offers test preparation classes for the students who are willing to go abroad.
-            We also conduct comprehensive preparation for the interview through our experienced teachers.
+          Sikaai offers regular MOCK tests for CMAT/KUUMAT for all the registered
+          students. The students can get used to with questions and get rid of exam fear
+          and attempt the exam with confidence
           </p>
         </div>
       </div>
