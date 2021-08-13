@@ -406,3 +406,14 @@ form.sign-in-form {
         left: 50%;
     }
 }
+
+.input-field select {
+    margin: 0;
+    border: none;
+    padding: 0;
+    color: #aaa;
+    font-weight: 500;
+    font-family: inherit;
+    font-size: 1.1rem;
+    outline: none;
+}
