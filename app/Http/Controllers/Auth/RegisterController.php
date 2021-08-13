@@ -54,7 +54,8 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'contact' => 'required',
-            'password' => 'required|string|min:6'
+            'password' => 'required|string|min:6',
+            'course_id' =>'required',
         ]);
     }
 
@@ -64,7 +65,8 @@ class RegisterController extends Controller
             "name" => $request['new-name'],
             "email" => $request['new-email'],
             "contact" => $request['new-contact'],
-            "password" => $request['new-password']
+            "password" => $request['new-password'],
+            "course_id" => $request['course_id'],
         ]);
             if ($validators->fails()) {
             return redirect('/login#register')
@@ -75,7 +77,8 @@ class RegisterController extends Controller
             "name" => $request['new-name'],
             "email" => $request['new-email'],
             "contact" => $request['new-contact'],
-            "password" => $request['new-password']
+            "password" => $request['new-password'],
+            "course_id" => $request['course_id'],
         ]);
         event(new Registered($user));
 
@@ -99,6 +102,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             "contact" => $data['contact'],
             'password' => Hash::make($data['password']),
+            "course_id" => $data['course_id'],
         ]);
     }
 

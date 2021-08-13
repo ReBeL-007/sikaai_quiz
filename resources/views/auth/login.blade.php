@@ -84,6 +84,10 @@
                         </a>
                     </div> -->
                 </form>
+                @php
+                    $courses = App\Course::get();
+                    
+                @endphp
                 <form action="{{route('register')}}" method="POST" class="sign-up-form">
                     @csrf
                     <h2 class="title">Sign up</h2>
@@ -102,6 +106,16 @@
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
                         <input type="password" placeholder="Password" name="new-password"  autocomplete="new-password"/>
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <select class="input-field {{ $errors->has('course_id') ? 'is-invalid' : '' }}" name="course_id" id="course_id" required>
+                            <option value="">Select course</option>
+                            @foreach($courses as $course)
+                            
+                                <option value="{{ $course->id }}" {{ old('course') ? 'selected' : '' }}>{{ $course->title }}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <input type="submit" class="btn" value="Sign up" />
                     @if ($errors->has('new-name'))
