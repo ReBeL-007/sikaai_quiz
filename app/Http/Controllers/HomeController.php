@@ -34,7 +34,12 @@ class HomeController extends Controller
     {
         $user = Auth::user();
         $now = Carbon::now();
-        $quizzes = Quiz::where('course_id',$user->course_id)->get();;
+        if($user->course_id) {
+            $quizzes = Quiz::where('course_id',$user->course_id)->get();
+        } else {
+            $quizzes = Quiz::all();
+        }
+
         $attempted_quizzes = [];
         $upcoming_tests = [];
         $quiz_for_leaderboard = [];
