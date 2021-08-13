@@ -383,7 +383,7 @@ nav {
     align-self: flex-start;
     font-size: 2rem;
     margin-bottom: 1.6rem;
-    border: 3px solid #5a60ce;
+    border: 4px solid #5a60ce;
     /* box-shadow: ; */
     /* background: #eef0f4; */
     padding: 1.6rem 4rem;
@@ -1128,6 +1128,44 @@ input:checked ~ label {
 .sticky-nav .hamburger-menu-container,
 .sticky-nav #check {
     top: 33% !important;
+}
+
+/*  */
+.btn-started {
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s all ease-out;
+}
+
+.btn-started::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    width: 0%;
+    background-color: #5a60ce;
+    z-index: -1;
+    transition: 0.3s all ease-in;
+}
+
+.btn-started:hover::before,
+.btn-started:active::before {
+    width: 100%;
+}
+
+.btn-started:hover,
+.btn-started:active {
+    color: #fff;
+    /* border-color: rgba(255, 255, 255, 0.226); */
+}
+
+.btn__all-courses:hover {
+    transform: translateY(-5px);
+}
+
+.btn__all-courses:active {
+    transform: translateY(0px);
 }
 
 @media (max-width: 1300px) {
