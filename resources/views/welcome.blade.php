@@ -13,7 +13,7 @@
           <span class="online">Online</span>
           <p>Pre-registration open for CMAT & KUUMAT courses on Sikaai.</p>
         </div>
-        <a href="{{route('index')}}" class="btn btn-started">Get Started</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfkNCD5nsFoNbAtYPi_f3m0rHM-swNT5lqfw68XA2LI9bjqrw/viewform" class="btn btn-started" target="_blank">Get Started</a>
       </div>
       <div class="intro__image rellax" data-rellax-speed="5" style="overflow:hidden" >
         <img src="{{ asset('frontend/img/p-image.svg')}}"  alt="" />
@@ -97,7 +97,7 @@
         </a>
         <h2 class="main__des-heading section__animate">
           <span>Sikaai</span> provides an
-          <span> intuitive experience</span> in online learning.
+          <span> intuitive experience</span> in learning through online and in-premise classes.
         </h2>
       </div>
     </section>
@@ -212,12 +212,11 @@
             Designed For <span>100% Success</span>
           </h2>
           <p class="section__summary">
-            Sikaai brings intuitive and user friendly approach to online
-            education making teaching and learning easy. Our highly regarded
-            teaching faculty brings years of experience and assurance.
+          Sikaai brings intuitive and user friendly approach to online and in-premise education
+          making teaching and learning easy. Our highly experienced faculty brings out best results.
           </p>
         </div>
-        <a href="" class="btn btn-started btn-courses">See Courses</a>
+        <a href="{{route('course')}}" class="btn btn-started btn-courses">See Courses</a>
       </div>
       <!--  -->
       <div class="section__description-card">
@@ -377,14 +376,14 @@
           </svg>
         </div>
         <div class="text__description">
-          <h2 class="section__heading">Whats in it <span>for you?</span></h2>
+          <h2 class="section__heading">Result oriented <span>teaching and learning</span></h2>
           <p class="section__summary">
             Sikaai provides a complete package for online learning with live
             classes, dedicated faculties, regular exams and resources for CMAT
             and KUUMAT preparation.
           </p>
         </div>
-        <a href="" class="btn btn-started btn-courses">See Courses</a>
+        <a href="{{route('course')}}" class="btn btn-started btn-courses">See Courses</a>
       </div>
       <!--  -->
       <div class="section__description-card section__descrition-card-3">
@@ -394,11 +393,12 @@
         <div class="text__description">
           <h2 class="section__heading">Study From <span>anywhere</span></h2>
           <p class="section__summary">
-            Take classes on the go with Sikaai. Study from your room, the bus,
-            or wherever you learn best.
+          Take classes on the go with Sikaai. Study from your room, the bus, or wherever
+          you learn best. If you want to come to classes, we have world class in-premise
+          classes with dedicated expert teachers
           </p>
         </div>
-        <a href="" class="btn btn-started btn-courses">See Courses</a>
+        <a href="{{route('course')}}" class="btn btn-started btn-courses">See Courses</a>
       </div>
     </section>
     <!--card  -->
@@ -414,7 +414,7 @@
           <div class="card-item__info">
             <span class="price">Rs. 200</span>
             <h5 class="card-item__info-heading">
-              Fundamental Compulsary Mathematics
+              CMAT Complete Course
             </h5>
             <div class="course__update">
               <div class="lesson">
@@ -504,7 +504,7 @@
           <div class="card-item__info">
             <span class="price">Rs. 200</span>
             <h5 class="card-item__info-heading">
-              Fundamental Compulsary Mathematics
+              KUUMAT Complete Course
             </h5>
             <div class="course__update">
               <div class="lesson">
@@ -594,7 +594,7 @@
           <div class="card-item__info">
             <span class="price">Rs. 200</span>
             <h5 class="card-item__info-heading">
-              Fundamental Compulsary Mathematics
+              MOCK Test for CMAT/KUUMAT
             </h5>
             <div class="course__update">
               <div class="lesson">
@@ -659,7 +659,7 @@
                 <label for="rate-1" class="fas fa-star"></label>
               </div>
             </div>
-            <a href="" class="dive__into">
+            <a href="{{route('home')}}" class="dive__into">
               <svg
                 width="47"
                 height="47"
@@ -677,7 +677,7 @@
         </div>
       </div>
       <!-- button -->
-      <a href="" class="btn btn__all-courses">View All Courses</a>
+      <a href="{{route('course')}}" class="btn btn__all-courses">View All Courses</a>
     </section>
 
     <!-- section -->

@@ -9,9 +9,11 @@
 <section class="grow_skills">
       <div class="grow_skills_left">
         <h2>Grow new skills with<br /><span id="text-sikaai">Sikaai</span></h2>
-        <p>Learn different skills by exploring different courses online.</p>
+        <p>Learn different skills by exploring different courses
+          Exclusive preparation classes for CMAT/KUUMAT
+        </p>
         
-        <a href="#">Start Learning</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfkNCD5nsFoNbAtYPi_f3m0rHM-swNT5lqfw68XA2LI9bjqrw/viewform" target="_b;ank">Start Learning</a>
       </div>
 
       <div class="grow_skills_right">
@@ -185,7 +187,7 @@
               fill="#5A60CE"
             />
           </svg>
-          <span>TOEFEL</span>
+          <span>TOEFL</span>
         </a>
 
         <a href="" class="category">
@@ -806,7 +808,7 @@
               fill="#5A60CE"
             />
           </svg>
-          <span>TOEFEL</span>
+          <span>TOEFL</span>
         </a>
 
         <a href="" class="category">
