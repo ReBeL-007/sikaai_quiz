@@ -986,7 +986,7 @@
           <div class="mySlide">
             <div class="mySlide__content">
               <div class="mySlide--container">
-                <img src="{{ asset('frontend/img/1.1.jpg')}}"/>
+                <img src="{{ asset('frontend/img/haribaniya.jpg')}}"/>
               </div>
               <div class="tutor__description">
                 <h3 class="tutor__name">Hari Baniya</h3>

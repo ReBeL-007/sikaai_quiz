@@ -24,7 +24,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container sign-up-mode">
         <div class="forms-container">
             <div class="signin-signup">
                 <form action="{{ route('login') }}" method="post" class="sign-in-form">
@@ -84,12 +84,16 @@
                         </a>
                     </div> -->
                 </form>
-                {{--<form action="{{route('register')}}" method="POST" class="sign-up-form">
+                <form action="{{route('register')}}" method="POST" class="sign-up-form">
                     @csrf
                     <h2 class="title">Sign up</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
                         <input type="text" placeholder="Name" name="new-name" value="{{ old('new-name', null) }}" autocomplete="new-name" />
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-phone"></i>
+                        <input type="number" placeholder="Contact"  value="{{ old('new-contact', null) }}" name="new-contact" autocomplete="new-contact"  autocomplete="off"/>
                     </div>
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
@@ -120,6 +124,26 @@
                         <strong>{{ str_replace('new-','',$errors->first('new-invalid')) }}</strong>
                     </span>
                     @endif
+                    @if ($errors->has('name'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('name') }}</strong>
+                    </span>
+                    @endif
+                    @if ($errors->has('email'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('email') }}</strong>
+                    </span>
+                    @endif
+                    @if ($errors->has('password'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('password') }}</strong>
+                    </span>
+                    @endif
+                    @if ($errors->has('invalid'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('invalid') }}</strong>
+                    </span>
+                    @endif
                     <!-- <p class="social-text">Or Sign up with social platforms</p>
                     <div class="social-media">
                         <a href="#" class="social-icon">
@@ -135,7 +159,7 @@
                             <i class="fab fa-linkedin-in"></i>
                         </a>
                     </div> -->
-                </form>--}}
+                </form>
             </div>
         </div>
 
@@ -177,11 +201,11 @@
                     <p>
                         Sikaai provides an intuitive experience in online learning. 
                     </p>
-                    {{--<button class="btn transparent" id="sign-up-btn">Sign up</button>--}}
+                    <button class="btn transparent" id="sign-up-btn">Sign up</button>
                 </div>
                 <img src="{{asset('img/log.svg')}}" class="image" alt="" />
             </div>
-        {{--<div class="panel right-panel">
+            <div class="panel right-panel">
                 <div class="content">
                     <h3>One of us ?</h3>
                     <p>
@@ -190,12 +214,12 @@
                     <button class="btn transparent" id="sign-in-btn">Sign in</button>
                 </div>
                 <img src="{{asset('img/register.svg')}}" class="image" alt="" />
-            </div>--}}
+            </div>
         </div>
     </div>
     <script src="{{ asset('/backend/plugins/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('js/login/registerSigninapp.js')}}"></script>
-    {{-- <script>
+    <script>
        $(function(){
             const href = window.location.href.split('#');
             const modal = href[href.length-1];
@@ -209,7 +233,7 @@
                 $('.invalid-feedback').remove();
             });
         });
-    </script>--}}
+    </script>
 </body>
 
 </html>

@@ -53,6 +53,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
+            'contact' => 'required',
             'password' => 'required|string|min:6'
         ]);
     }
@@ -62,6 +63,7 @@ class RegisterController extends Controller
         $validators = $this->validator([
             "name" => $request['new-name'],
             "email" => $request['new-email'],
+            "contact" => $request['new-contact'],
             "password" => $request['new-password']
         ]);
             if ($validators->fails()) {
@@ -72,6 +74,7 @@ class RegisterController extends Controller
         $user = $this->create([
             "name" => $request['new-name'],
             "email" => $request['new-email'],
+            "contact" => $request['new-contact'],
             "password" => $request['new-password']
         ]);
         event(new Registered($user));
@@ -80,7 +83,7 @@ class RegisterController extends Controller
 
 
         return $this->registered($request, $user)
-                        ?: redirect('/login#register');
+                        ?: redirect('/home');
     }
 
     /**
@@ -94,6 +97,7 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            "contact" => $data['contact'],
             'password' => Hash::make($data['password']),
         ]);
     }

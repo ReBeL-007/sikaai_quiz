@@ -26,9 +26,9 @@
                 </div>
             </div> --}}
 
-            <div class="col-md-4 content">
+            <div class="col-md-5 content">
                 <div class="upcoming-test y-scroll">
-                    <h4>Available Tests <small><a href="{{route('quiz_index')}}">See all</a></small> </h4>
+                    <h4>Available Tests <small><a href="{{route('quiz_index')}}"></a></small> </h4>
                     @if (count($quizzes)==0)
                     <p>No Available Tests</p>
                     @else
@@ -54,9 +54,9 @@
                     @endif
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-5">
                 <div class="upcoming-test y-scroll">
-                    <h4>Upcoming Tests <small><a href="{{route('quiz_index')}}">See all</a></small> </h4>
+                    <h4>Upcoming Tests <small><a href="{{route('quiz_index')}}"></a></small> </h4>
                     @if (count($upcoming_tests)==0)
                     <p>No Upcoming Tests</p>
                     @else
@@ -78,8 +78,8 @@
                                 <p>{{$start_date->format('g:i A')}}</p>
                             </div>
                             <div class="col-md-5">
-                                <h5>( {{$test->course->title}} )</h5>
-                                <p>{{$test->title}}</p>
+                                <h5>{{$test->title}}</h5>
+                                <p>{{$test->course->title}}</p>
                             </div>
                         </div>
                     </div>
