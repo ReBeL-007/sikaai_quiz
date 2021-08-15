@@ -70,6 +70,11 @@
               class="nav__list-link {{ request()->is('contact') ? 'nav__list-link-active' : '' }}"
               >Contact Us</a
             >
+            <a
+              href="{{route('home')}}"
+              class="nav__list-link {{ request()->is('contact') ? 'nav__list-link-active' : '' }}"
+              >Sikaai Exam</a
+            >
             <div class="mobile__actions">
               <a href="{{route('login')}}" class="action-btn btn btn-logIn"
                 >Log in</a

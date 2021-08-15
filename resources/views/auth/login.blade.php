@@ -24,7 +24,7 @@
 </head>
 
 <body>
-    <div class="container sign-up-mode">
+    <div class="container">
         <div class="forms-container">
             <div class="signin-signup">
                 <form action="{{ route('login') }}" method="post" class="sign-in-form">
