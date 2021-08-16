@@ -19,6 +19,9 @@
                 <tr>
                     <th>SN</th>
                     <th>User</th>
+                    <th>Email</th>
+                    <th>Contact</th>
+                    <th>Quiz</th>
                     <th>Total Marks</th>
                 </tr>
             </thead>
@@ -29,6 +32,9 @@
                 <tr data-entry-id="{{ $attempt->id }}">
                     <td>{{$key+1}}</td>
                     <td>{{$attempt->user->name}}</td>
+                    <td>{{$attempt->user->email}}</td>
+                    <td>{{$attempt->user->contact}}</td>
+                    <td>{{$attempt->quiz->title}}</td>
                     <td>
                     <?php
                         $total_marks = 0;
