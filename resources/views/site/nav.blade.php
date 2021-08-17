@@ -49,11 +49,19 @@
       <div class="main__nav-container">
         <div class="nav__list-container">
           <div class="nav__list">
+            @if(auth()->user())
+            <a
+              href="{{route('home')}}"
+              class="nav__list-link {{ request()->is('contact') ? 'nav__list-link-active' : '' }}"
+              >Dashboard</a
+            >
+            @else
             <a
               href="{{route('index')}}"
               class="nav__list-link {{ request()->is('/') ? 'nav__list-link-active' : '' }}"
               >Home</a
             >
+            @endif
             <a
               href="{{route('aboutus')}}"
               class="nav__list-link {{ request()->is('about') ? 'nav__list-link-active' : '' }}"
@@ -69,11 +77,6 @@
               href="{{route('contact')}}"
               class="nav__list-link {{ request()->is('contact') ? 'nav__list-link-active' : '' }}"
               >Contact Us</a
-            >
-            <a
-              href="{{route('home')}}"
-              class="nav__list-link {{ request()->is('contact') ? 'nav__list-link-active' : '' }}"
-              >Sikaai Exam</a
             >
             <div class="mobile__actions">
               <a href="{{route('login')}}" class="action-btn btn btn-logIn"

@@ -10,7 +10,7 @@
           <h1 class="heading__primary">
             Join CMAT & KUUMAT <span> preparation classes </span>
           </h1>
-          <span class="online">Online</span>
+          <span class="online"></span>
           <p>Pre-registration open for CMAT & KUUMAT courses on Sikaai.</p>
         </div>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSfkNCD5nsFoNbAtYPi_f3m0rHM-swNT5lqfw68XA2LI9bjqrw/viewform" class="btn btn-started" target="_blank">Get Started</a>
@@ -376,7 +376,7 @@
           </svg>
         </div>
         <div class="text__description">
-          <h2 class="section__heading">Result oriented <span>teaching and learning</span></h2>
+          <h2 class="section__heading">Result oriented <span>education</span></h2>
           <p class="section__summary">
             Sikaai provides a complete package for online learning with live
             classes, dedicated faculties, regular exams and resources for CMAT
