@@ -1214,7 +1214,7 @@ document__container {
     width: 150px;
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;
+    /* white-space: nowrap; */
 }
 
 .individual__pdf-img {
