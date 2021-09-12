@@ -1177,10 +1177,15 @@ document__container {
     max-height: 80vh;
     min-height: 50vh;
     background-color: #f4f6f7;
+}
+
+.document__container-content {
+    max-width: 1200px;
     display: flex;
     flex-direction: column;
     gap: 2.4rem;
-    max-width: 1200px;
+    justify-content: center;
+    margin: 0 auto;
 }
 
 .document__container .title {
