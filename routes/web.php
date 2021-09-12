@@ -20,9 +20,9 @@ Route::get('/about', function () {
 Route::get('/courses', function () {
     return view('courses');
 })->name('course');
-// Route::get('/pricing', function () {
-//     return view('pricing');
-// })->name('aboutus');
+Route::get('/documents', function () {
+    return view('documents');
+})->name('documents');
 Route::get('/contact', function () {
     return view('contact');
 })->name('contact');

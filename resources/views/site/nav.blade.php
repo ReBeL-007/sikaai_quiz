@@ -78,6 +78,11 @@
               class="nav__list-link {{ request()->is('contact') ? 'nav__list-link-active' : '' }}"
               >Contact Us</a
             >
+            <a
+              href="{{route('documents')}}"
+              class="nav__list-link {{ request()->is('documents') ? 'nav__list-link-active' : '' }}"
+              >Downloads</a
+            >
             <div class="mobile__actions">
               <a href="{{route('login')}}" class="action-btn btn btn-logIn"
                 >Log in</a

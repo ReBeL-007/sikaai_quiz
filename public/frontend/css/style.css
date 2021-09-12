@@ -809,7 +809,8 @@ input:checked ~ label {
 .section__newsletter,
 .section__card,
 .section__description,
-.section__footer {
+.section__footer,
+document__container {
     padding: 2.4rem 8rem;
 }
 
@@ -1168,6 +1169,70 @@ input:checked ~ label {
     transform: translateY(0px);
 }
 
+/* document */
+
+.document__container {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    max-height: 80vh;
+    min-height: 50vh;
+    background-color: #f4f6f7;
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+    max-width: 1200px;
+}
+
+.document__container .title {
+    border-bottom: 3px solid #5a60ce;
+    color: #5a60ce;
+    font-size: 2.4rem;
+}
+
+.document {
+    /* display: grid; */
+    /* grid-template-columns: repeat(5, minmax(50px, 150px)); */
+    display: flex;
+    gap: 2.4rem;
+    width: 100%;
+    justify-content: center;
+    max-width: 1100px;
+    flex-wrap: wrap;
+}
+
+.document__name {
+    display: inline-block;
+    font-size: 1.6rem;
+    padding-top: 0.8rem;
+
+    /*  */
+    width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.individual__pdf-img {
+    display: block;
+    width: 100%;
+}
+
+.individual__pdf-img img {
+    max-width: 100%;
+}
+
+.document__anker {
+    text-align: center;
+}
+
+.document > * {
+    flex-basis: 150px;
+}
+
+.individual__pdf {
+    width: 100%;
+}
+
 @media (max-width: 1300px) {
     .card-item__info-heading,
     .price {
@@ -1246,7 +1311,7 @@ input:checked ~ label {
     }
 }
 
-@media (max-width: 1050px) {
+@media (max-width: 1150px) {
     .hamburger-menu-container {
         display: flex;
         z-index: 45;
@@ -1632,6 +1697,16 @@ input:checked ~ label {
 }
 
 @media (max-width: 600px) {
+    .document {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(50px, 150px));
+        align-content: center;
+        flex-grow: 1;
+    }
+
+    .document__name {
+        width: 100%;
+    }
 }
 
 @media (max-width: 500px) {
@@ -1676,6 +1751,10 @@ input:checked ~ label {
     .nav__list,
     .nav__list-container {
         bottom: -40px;
+    }
+
+    .btn-courses {
+        margin-top: 0;
     }
 }
 
