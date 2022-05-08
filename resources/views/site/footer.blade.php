@@ -24,10 +24,10 @@
                     <div class="modal-content">
                         <div class="modal-header form__header">
                             <div class="form__header-1">
-                                <div class="logo-container">
+                                <!-- <div class="logo-container">
                                     <img src="{{ asset('img/form_logo.png')}}" alt="" class="img-fluid">
-                                </div>
-                                <h1 class="form-title">Shilapatra Ujjwal <span>Scholarship Form</span></h1>
+                                </div> -->
+                                <h1 class="form-title">Pre-Registration Form For<span>CMAT/KUUMAT Class</span></h1>
                             </div>
                             <button type="button" class="close text-danger" data-dismiss="modal">&times;</button>
                         </div>
@@ -50,16 +50,27 @@
                                             name="name" required>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="address" placeholder="Address"
-                                            name="address" required>
+                                        <input type="text" class="form-control" id="address" placeholder="Permanent Address"
+                                            name="p-address" required>
                                     </div>
                                     <div class="form-group">
-                                      
-                                      <input type="radio" class="form-control" name="valley" id="inside_valley" value="0">
-                                     <label for="inside_valley">Inside Kathmandu Valley</label><br>
-                                     <input type="radio" class="form-control" name="valley" id="outside_valley" value="1">
-                                     <label for="outside_valley">Outside Kathmandu Valley</label><br>
+                                        <input type="text" class="form-control" id="address" placeholder="Current Address"
+                                            name="c-address" required>
                                     </div>
+                                    <!-- <div class="group__content">
+                                        <div class="form-group">
+                                          
+                                          <input type="radio" class="form-control" name="valley" id="inside_valley" value="0">
+                                         <label for="inside_valley">Inside Kathmandu Valley</label>
+    
+                                        </div>
+                                         <div class="form-group">
+    
+                                             <input type="radio" class="form-control" name="valley" id="outside_valley" value="1">
+                                             <label for="outside_valley">Outside Kathmandu Valley</label><br>
+                                         </div>
+
+                                    </div> -->
                                     <div class="form-group">
                                       <input type="email" class="form-control" id="emailId" placeholder="Email ID"
                                       name="email" required>

@@ -6,6 +6,12 @@
 
   .modal-content{
     font-size: 62.5%;
+    background: transparent;
+    border: none;
+  }
+
+  .modal-body{
+    background-color: #fff;
   }
 
 .form__header {
@@ -13,6 +19,48 @@
     background-color: #02408b;
     padding: 2em 1.5em;
     /* border-color: red !important; */
+}
+
+.group__content{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.group__content > *{
+  width: 100%;
+}
+
+.group__content .form-group{
+  display: flex;
+  align-items: center;
+
+  font-size: 1.4em;
+}
+
+
+
+.group__content .form-group label{
+  margin-bottom:0rem;
+}
+.group__content .form-group label:hover{
+
+  cursor: pointer;
+  color: #000;
+}
+
+.group__content .form-group input{
+  width: 18px;
+  height: 18px;
+  margin-right:.4rem;
+}
+
+
+.group__content .form-group input:checked ~ label{
+  color: #000;
+}
+.group__content .form-group input:checked {
+  box-shadow: none;
 }
 
 .form__header-1 {
@@ -57,17 +105,16 @@
     height: calc(1.5em + 0.75rem + 10px);
     /* margin-top: -10px; */
     /* border-color: #D3D3D3; */
-    font-size: 1.5em;
     border-radius: 1em;
     font-weight: 500;
-}
-
-.form-control {
+  }
+  
+  .form-control {
     display: block;
     width: 100%;
     height: calc(1.5em + 0.75em + 2px);
-    padding: 1.75em 0.75em;
-    font-size: 1em;
+    padding: 1.4em 0.75em;
+    font-size: 1.4em;
     font-weight: 400;
     line-height: 1.5;
     color: #495057;
@@ -84,6 +131,14 @@
     color: #fff !important;
     opacity: 1 !important;
     font-size: 32px;
+    transition: all .3s ease;
+}
+
+.modal-header .close:hover,
+.modal-header .close:focus,
+.modal-header .close:active{
+  outline: none;
+  transform: scale(1.2)
 }
 
 .modal-header .close {
@@ -143,7 +198,8 @@ button.close {
 }
 .modal-dialog {
     top: 50%;
-    transform: translateY(-41%) !important;
+    left: 50%;
+    transform: translate(-50%, -50%) !important;
 }
 @media (min-width: 576px)
 .modal-dialog {
@@ -168,6 +224,16 @@ button.close {
 .scholarship-form form {
     display: flex;
     flex-direction: column;
+}
+
+#submit {
+    /* border: 3px solid #009c3f; */
+    border-radius: 4px;
+    background-color: #02408b;
+    color: #fff;
+    margin-top: 10px;
+    transition: opacity 0.3s;
+    align-self: end;
 }
 </style>
 @endsection
