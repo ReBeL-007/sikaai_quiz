@@ -1,8 +1,180 @@
 @extends('site.master')
 
 @section('title','Home')
+@section('styles')
+<style>
 
+  .modal-content{
+    font-size: 62.5%;
+  }
+
+.form__header {
+    display: flex;
+    background-color: #02408b;
+    padding: 2em 1.5em;
+    /* border-color: red !important; */
+}
+
+.form__header-1 {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 37rem;
+}
+
+.logo-container {
+    padding: 1.5rem 1rem;
+    background-color: #ecf0f1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1rem;
+}
+
+.form-title {
+    /* color: #009c3f; */
+    color: #fff;
+    /* border-radius: 4px; */
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+.form-title span {
+    display: block;
+}
+
+.scholarship-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-control {
+    /* width: 300px !important; */
+    height: calc(1.5em + 0.75rem + 10px);
+    /* margin-top: -10px; */
+    /* border-color: #D3D3D3; */
+    font-size: 1.5em;
+    border-radius: 1em;
+    font-weight: 500;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + 0.75em + 2px);
+    padding: 1.75em 0.75em;
+    font-size: 1em;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.modal-header .close {
+    padding: 0em 1em;
+    margin: -1.5em -1em -1em auto;
+    color: #fff !important;
+    opacity: 1 !important;
+    font-size: 32px;
+}
+
+.modal-header .close {
+    padding: 1em 1em;
+    margin: -1em -1em -1em auto;
+}
+[type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
+    cursor: pointer;
+}
+button.close {
+    padding: 0;
+    background-color: transparent;
+    border: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+.close {
+    font-size: 3.5rem;
+}
+.text-danger {
+    color: #dc3545!important;
+}
+.close {
+    float: right;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .5;
+}
+
+.modal-header {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    /* padding: 1rem 1rem; */
+    border-bottom: 1px solid #dee2e6;
+    border-top-left-radius: 0.3rem;
+    border-top-right-radius: 0.3rem;
+}
+  .modal.show .modal-dialog {
+    -webkit-transform: none;
+    transform: none;
+}
+
+.modal.fade .modal-dialog {
+    transition: -webkit-transform .3s ease-out;
+    transition: transform .3s ease-out;
+    transition: transform .3s ease-out,-webkit-transform .3s ease-out;
+    -webkit-transform: translate(0,-50px);
+    transform: translate(0,-50px);
+}
+.modal-dialog {
+    top: 50%;
+    transform: translateY(-41%) !important;
+}
+@media (min-width: 576px)
+.modal-dialog {
+    max-width: 500px;
+    margin: 1.75rem auto;
+}
+.modal-dialog {
+    position: relative;
+    width: auto;
+    margin: 0.5rem;
+    pointer-events: none;
+}
+
+.scholarship-form {
+    border-style: none;
+    height: 100%;
+    margin: 30px auto;
+    background-color: white;
+    width: 400px;
+}
+
+.scholarship-form form {
+    display: flex;
+    flex-direction: column;
+}
+</style>
+@endsection
 @section('content')
+
+  
+
   <section class="section section__intro rellax" data-rellax-speed="5">
       <div class="intro__description">
         <div class="description__text">
@@ -69,6 +241,9 @@
            </div>
         </div>
         <!--  -->
+
+
+        
         <div class="focus__content">
           <span></span>
           <p>Study Online</p>
@@ -219,6 +394,9 @@
         <a href="{{route('course')}}" class="btn btn-started btn-courses">See Courses</a>
       </div>
       <!--  -->
+
+      
+
       <div class="section__description-card">
         <div class="section__description-image">
           <svg
@@ -375,6 +553,9 @@
             </defs>
           </svg>
         </div>
+
+      
+
         <div class="text__description">
           <h2 class="section__heading">Result oriented <span>education</span></h2>
           <p class="section__summary">
@@ -998,6 +1179,7 @@
         <!--  -->
       </div>
     </section>
+
 
     
 @endsection

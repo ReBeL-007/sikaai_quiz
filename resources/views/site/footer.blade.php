@@ -1,3 +1,87 @@
+<!-- Pre-Registration Form For CMAT/KUUMAT Class -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div id="scholarship_modal" class="modal" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header form__header">
+                            <div class="form__header-1">
+                                <div class="logo-container">
+                                    <img src="{{ asset('img/form_logo.png')}}" alt="" class="img-fluid">
+                                </div>
+                                <h1 class="form-title">Shilapatra Ujjwal <span>Scholarship Form</span></h1>
+                            </div>
+                            <button type="button" class="close text-danger" data-dismiss="modal">&times;</button>
+                        </div>
+                        @if(Session::has('success'))
+                        <div class="alert alert-success" id="successMessage">
+                            {{ Session::get('success') }}
+                        </div>
+                        @endif
+                        @if(Session::has('error'))
+                        <div class="alert alert-warning" id="successMessage">
+                            {{ Session::get('error') }}
+                        </div>
+                        @endif
+                        <div class="modal-body">
+                            <div class="card scholarship-form">
+                                <form action="{{route('apply-pre-registration')}}" method="POST">
+                                    @csrf
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="fullName" placeholder="Full Name"
+                                            name="name" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="address" placeholder="Address"
+                                            name="address" required>
+                                    </div>
+                                    <div class="form-group">
+                                      
+                                      <input type="radio" class="form-control" name="valley" id="inside_valley" value="0">
+                                     <label for="inside_valley">Inside Kathmandu Valley</label><br>
+                                     <input type="radio" class="form-control" name="valley" id="outside_valley" value="1">
+                                     <label for="outside_valley">Outside Kathmandu Valley</label><br>
+                                    </div>
+                                    <div class="form-group">
+                                      <input type="email" class="form-control" id="emailId" placeholder="Email ID"
+                                      name="email" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="number" class="form-control" id="contactNo"
+                                            placeholder="Contact No." name="contact" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="previous_school"
+                                            placeholder="Which college did you appear +2 from?"
+                                            name="previous_school" required>
+                                    </div>
+                                   
+                                    <button type="submit" id="submit" class="btn btn-default">SUBMIT</button>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 <footer class="section section__footer">
     <div class="section__footer-content">
         <div class="logo">
@@ -102,11 +186,7 @@
 <p class="section footer__text">
     Copyright &copy; Sikaai 2021. All rights reserved
 </p>
-<script
-    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
-    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
-    crossorigin="anonymous"
-></script>
+
 <script
     src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
     integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
@@ -163,7 +243,8 @@
     const main = document.querySelector('main');
 
    $(function(){
-       let scroll = $(document).scrollTop();
+      $('#scholarship_modal').modal('toggle');
+       let scroll = $(document).scrollTop();    
        let navHeight = $('.nav-area').outerHeight();
 
        $(window).scroll(function(){

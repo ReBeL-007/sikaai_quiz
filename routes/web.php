@@ -181,3 +181,5 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
     Route::delete('students_perma_del/{id}', ['uses' => 'Admin\StudentsController@perma_del', 'as' => 'students.perma_del']);
 
 });
+
+    Route::post('apply-pre-registration','RegistrationController@preRegistration')->name('apply-pre-registration');
