@@ -7,6 +7,7 @@ use Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use App\Registration;
 
 class HomeController extends Controller
 {
@@ -78,6 +79,12 @@ class HomeController extends Controller
             $n->markAsRead();
         });
         return back();
+    }
+
+    public function registration()
+    {
+        $registrations = Registration::all();
+        return view('admin.registrations.index',compact('registrations'));
     }
 
 }

@@ -180,6 +180,7 @@
                     @endcan --}}
                 </ul>
             </li>
+
             @can('response-access')
             <li class="nav-item">
                 <a href="{{ route('admin.responses.index') }}"
@@ -197,6 +198,15 @@
                     class="nav-link {{ request()->is('admin/students') || request()->is('admin/students/*') ? 'active' : '' }}">
                     <i class="fas fa-user-graduate"></i>
                     <p><span>Students</span></p>
+                </a>
+            </li>
+            @endcan
+            @can('registration-show')
+            <li class="nav-item">
+                <a href="{{ route('admin.registrations') }}" 
+                    class="nav-link {{ request()->is('admin/registrations') ? 'active' : '' }}">
+                    <i class="fas fa-cog"></i>
+                    <p><span> New Registrations</span></p>
                 </a>
             </li>
             @endcan

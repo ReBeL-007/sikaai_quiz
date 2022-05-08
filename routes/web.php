@@ -66,6 +66,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
     Route::get('/notification', 'Admin\HomeController@get_notifications')->name('get_notifications');
     Route::get('/notification/show/{id}', 'Admin\HomeController@show_notifications')->name('show_notifications');
     Route::get('/notification/readall', 'Admin\HomeController@read_all_notifications')->name('read_all_notifications');
+    Route::get('/registrations','Admin\HomeController@registration')->name('registrations');
 
      //change password
      Route::get('change-password', 'Admin\ChangePasswordController@create')->name('password.create');
@@ -180,4 +181,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
     Route::post('students_restore/{id}', ['uses' => 'Admin\StudentsController@restore', 'as' => 'students.restore']);
     Route::delete('students_perma_del/{id}', ['uses' => 'Admin\StudentsController@perma_del', 'as' => 'students.perma_del']);
 
+    
+
 });
+
+    Route::post('apply-pre-registration','RegistrationController@preRegistration')->name('apply-pre-registration');
