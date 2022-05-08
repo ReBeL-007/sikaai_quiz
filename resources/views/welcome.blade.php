@@ -13,7 +13,7 @@
           <span class="online"></span>
           <p>Pre-registration open for CMAT & KUUMAT courses on Sikaai.</p>
         </div>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfkNCD5nsFoNbAtYPi_f3m0rHM-swNT5lqfw68XA2LI9bjqrw/viewform" class="btn btn-started" target="_blank">Get Started</a>
+        <button class="btn btn-started" data-toggle="modal" data-target="#scholarship_modal">Get Started</button>
       </div>
       <div class="intro__image rellax" data-rellax-speed="5" style="overflow:hidden" >
         <img src="{{ asset('frontend/img/p-image.svg')}}"  alt="" />
