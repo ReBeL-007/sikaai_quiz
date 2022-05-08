@@ -218,7 +218,7 @@ button.close {
     height: 100%;
     margin: 30px auto;
     background-color: white;
-    width: 400px;
+   max-width: 400px;
 }
 
 .scholarship-form form {
@@ -234,6 +234,11 @@ button.close {
     margin-top: 10px;
     transition: opacity 0.3s;
     align-self: end;
+}
+
+.alert{
+  margin-bottom: 0px;
+  
 }
 </style>
 @endsection
