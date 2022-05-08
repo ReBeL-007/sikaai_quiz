@@ -51,11 +51,11 @@
                                     </div>
                                     <div class="form-group">
                                         <input type="text" class="form-control" id="address" placeholder="Permanent Address"
-                                            name="p-address" required>
+                                            name="p_address" required>
                                     </div>
                                     <div class="form-group">
                                         <input type="text" class="form-control" id="address" placeholder="Current Address"
-                                            name="c-address" required>
+                                            name="c_address" required>
                                     </div>
                                     <!-- <div class="group__content">
                                         <div class="form-group">

@@ -11,8 +11,8 @@ class RegistrationController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'address' => 'required',
-            'valley' => 'required',
+            'p_address' => 'required',
+            'c_address' => 'required',
             'email' => 'required|email',
             'contact' => 'required',
             'previous_school' => 'required',
@@ -21,10 +21,10 @@ class RegistrationController extends Controller
         $data = [
             'name' => $request->name,
             'email' => $request->email,
-            'address' => $request->address,
-            'valley' => $request->valley,
+            'address' => $request->p_address,
             'previous_school' => $request->previous_school,
             'contact' => $request->contact,
+            'current_address' => $request->c_address,
         ];
 // dd($data);
         $registration = Registration::create($data);

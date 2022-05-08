@@ -24,7 +24,7 @@ class Registration extends Model
         'address',
         'contact',
         'email',
-        'valley',
+        'current_address',
         'previous_school',
         'created_at',
         'updated_at',
