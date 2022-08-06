@@ -83,6 +83,12 @@
               class="nav__list-link {{ request()->is('documents') ? 'nav__list-link-active' : '' }}"
               >Downloads</a
             >
+            <a
+              href="https://result.sikaai.com/public/admin/results"
+              class="nav__list-link"
+              target="_blank"
+              >Result</a
+            >
             <div class="mobile__actions">
               <a href="{{route('login')}}" class="action-btn btn btn-logIn"
                 >Log in</a
